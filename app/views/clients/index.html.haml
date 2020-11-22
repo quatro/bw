@@ -1,0 +1,43 @@
+
+.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-12
+        - flash.each do |type, msg|
+          %div.bg-danger
+            #{msg}
+
+    .row.mb-2
+      .col-sm-6
+        %h1.m-0.text-dark Clients
+
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{href: root_path} Dashboard
+          %li.breadcrumb-item.active Clients
+
+%section.content
+  .container-fluid
+    .row
+      .col-lg-8
+
+        =render 'clients/list', models: @models
+
+      .col-lg-4
+        =render 'clients/filter', q: @q
+
+
+:javascript
+
+  var ready = function() {
+    $('.data-table-requests').DataTable({
+        pageLength: 50,
+        paging: false,
+        searching: false,
+        sorting: true,
+        info: false
+    });
+  }
+
+  $(document).ready(ready);

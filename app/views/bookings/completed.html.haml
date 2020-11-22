@@ -9,41 +9,20 @@
 
     .row.mb-2
       .col-sm-6
-        %h1.m-0.text-dark Complete Bookings
+        %h1.m-0.text-dark Completed Bookings
       / /.col
       .col-sm-6
         %ol.breadcrumb.float-sm-right
           %li.breadcrumb-item
             %a{href: root_path} Dashboard
-          %li.breadcrumb-item.active Complete Bookings
+          %li.breadcrumb-item.active Completed Bookings
 
 %section.content
   .container-fluid
     .row
       .col-lg-8
 
-        %table.data-table-requests
-          %thead
-            %tr
-              %th User
-              %th Dates
-              %th Location
-              %th Client
-              %th Assignee
-              %th
-
-          %tbody
-            - @models.each do |br|
-              %tr
-                %td #{br.requestor.full_name}
-                %td #{br.dates_formatted}
-                %td #{br.location_formatted}
-                %td
-                  =link_to br.client_formatted, client_path(br.client)
-                %td
-                  =link_to br.requestor.full_name, user_path(br.requestor)
-                %td
-                  =link_to "Book", book_booking_request_path(br), class:'btn btn-info'
+        =render 'bookings/list', models: @models
 
       .col-lg-4
         =render 'bookings/filter', q: @q

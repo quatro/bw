@@ -1,0 +1,13 @@
+
+%table.data-table-requests
+  %thead
+    %tr
+      %th Name
+      %th
+
+  %tbody
+    - models.each do |client|
+      %tr
+        %td #{client.name}
+        %td
+          =link_to "Edit", edit_tenant_client_path(current_user.active_tenant, client), class:'btn btn-info'

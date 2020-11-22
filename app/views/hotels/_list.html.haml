@@ -1,0 +1,13 @@
+
+%table.data-table-requests.stripe
+  %thead
+    %tr
+      %th Name
+      %th
+
+  %tbody
+    - models.each do |hotel|
+      %tr
+        %td #{hotel.name}
+        %td
+          =link_to "Edit", edit_tenant_hotel_path(current_user.active_tenant, hotel), class:'btn btn-info'

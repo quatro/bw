@@ -1,0 +1,21 @@
+= search_form_for q, url: completed_bookings_path do |f|
+
+  .row.mb-2
+    .col-sm-12
+      .form-group
+        =f.label :booking_request_date_from_gt, "Date From"
+        =f.search_field :booking_request_date_from_gt, class:'form-control datepicker'
+
+      .form-group
+        =f.label :booking_request_date_to_gt, "Date To"
+        =f.search_field :booking_request_date_to_lt, class:'form-control datepicker'
+
+  -#\# Attributes may be chained. Search multiple attributes for one value...
+  -#\#{f.label :name_or_description_or_email_or_articles_title_cont}
+  -#\#{f.search_field :name_or_description_or_email_or_articles_title_cont}
+  -#
+
+
+  .row.mb-2
+    .col-sm-12
+      =f.submit "Search", class: 'btn btn-success'

@@ -1,0 +1,60 @@
+
+.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-12
+        - flash.each do |type, msg|
+          %div.bg-danger
+            #{msg}
+
+    .row.mb-2
+      .col-sm-6
+        %h1.m-0.text-dark Outstanding Bookings
+      / /.col
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{href: root_path} Dashboard
+          %li.breadcrumb-item.active Oustanding Bookings
+
+%section.content
+  .container-fluid
+    .row
+      .col-lg-12
+
+        %table.data-table-requests.stripe
+          %thead
+            %tr
+              %th Requestor
+              %th Dates
+              %th Location
+              %th Client
+              %th
+
+          %tbody
+            - @models.each do |br|
+              %tr
+                %td
+                  =link_to br.requestor.full_name, user_path(br.requestor)
+                %td #{br.dates_formatted}
+                %td #{br.location_formatted}
+                %td
+                  =link_to br.client_formatted, tenant_client_path(current_user.active_tenant, br.client)
+                %td
+                  =link_to "Book", book_booking_request_path(br), class:'btn btn-info'
+
+
+
+:javascript
+
+  var ready = function() {
+    $('.data-table-requests').DataTable({
+        pageLength: 50,
+        paging: false,
+        searching: false,
+        sorting: true,
+        info: false
+    });
+  }
+
+  $(document).ready(ready);
