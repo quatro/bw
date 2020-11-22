@@ -1,0 +1,22 @@
+
+
+%table.data-table-requests.stripe
+  %thead
+    %tr
+      %th Requestor
+      %th Dates
+      %th Location
+      %th Client
+      %th
+
+  %tbody
+    - models.each do |br|
+      %tr
+        %td
+          =link_to br.requestor.full_name, user_path(br.requestor)
+        %td #{br.dates_formatted}
+        %td #{br.location_formatted}
+        %td
+          =link_to br.client_formatted, tenant_client_path(current_user.active_tenant, br.client)
+        %td
+          =link_to "View", book_booking_request_path(br), class:'btn btn-info'

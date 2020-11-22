@@ -20,6 +20,10 @@ module ApplicationHelper
     User.for_tenant(tenant).count
   end
 
+  def my_queue_count
+    current_user.assigned_booking_requests.outstanding.count
+  end
+
   def date_nice(date)
     unless date.nil?
       date.strftime("%Y-%m-%d")

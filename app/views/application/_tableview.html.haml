@@ -1,0 +1,51 @@
+- list_partial = local_assigns[:list_partial].nil? ? "#{key.to_s}/list" : list_partial
+- filter_partial = local_assigns[:filter_partial].nil? ? "#{key}/filter" : filter_partial
+- has_filter = local_assigns[:has_filter].nil? ? false : has_filter
+
+.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-12
+        - flash.each do |type, msg|
+          %div.bg-danger
+            #{msg}
+
+    .row.mb-2
+      .col-sm-6
+        %h1.m-0.text-dark #{title}
+      / /.col
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{href: root_path} Dashboard
+          %li.breadcrumb-item.active #{title}
+
+%section.content
+  .container-fluid
+    .row
+      - if has_filter
+        .col-lg-8
+          =render list_partial, models: @models
+
+        .col-lg-4
+          =render filter_partial, q: @q
+
+      - else
+        .col-lg-12
+          =render list_partial, models: @models
+
+
+
+:javascript
+
+  var ready = function() {
+    $('.data-table-requests').DataTable({
+        pageLength: 50,
+        paging: false,
+        searching: false,
+        sorting: true,
+        info: false
+    });
+  }
+
+  $(document).ready(ready);

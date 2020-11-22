@@ -7,6 +7,10 @@ class BookingRequestsController < ApplicationController
     @models = BookingRequest.outstanding_for_tenant(current_user.active_tenant)
   end
 
+  def my
+    @models = current_user.assigned_booking_requests.outstanding
+  end
+
   def book
 
   end

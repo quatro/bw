@@ -61,17 +61,25 @@
           %ul.nav.nav-pills.nav-sidebar.flex-column{"data-accordion" => "false", "data-widget" => "treeview", :role => "menu"}
 
             %li.nav-item
+              %a.nav-link{href: my_booking_requests_path}
+                %i.nav-icon.fas.fa-th
+                %p
+                  My Queue
+                  %span.right.badge.badge-danger #{my_queue_count}
+
+            %li.nav-item
               %a.nav-link{href: outstanding_booking_requests_path}
                 %i.nav-icon.fas.fa-th
                 %p
-                  Outstanding Bookings
+                  Unassigned Requests
                   %span.right.badge.badge-danger #{outstanding_booking_request_count(current_user.active_tenant)}
+
             %li.nav-item
               %a.nav-link{href: completed_bookings_path}
                 %i.nav-icon.fas.fa-th
                 %p
                   Completed Bookings
-                  %span.right.badge.badge-info #{completed_booking_count(current_user.active_tenant)}
+                  %span.right.badge.badge-success #{completed_booking_count(current_user.active_tenant)}
 
 
             %li.nav-header ADMIN

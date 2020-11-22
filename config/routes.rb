@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :booking_requests do
     collection do
       get :outstanding
+      get :my
     end
 
     member do

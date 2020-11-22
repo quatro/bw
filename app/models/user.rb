@@ -11,6 +11,9 @@ class User < ApplicationRecord
   belongs_to :tenant, optional: true
   belongs_to :client, optional: true
 
+  has_many :assigned_booking_requests, foreign_key: 'assignee_id', class_name:'BookingRequest'
+
+
   has_many :serviced_bookings, foreign_key: 'assignee_id', class_name:'Booking'
   has_many :requested_bookings, foreign_key: 'requestor_id', class_name:'Booking'
 
