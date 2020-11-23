@@ -1,4 +1,4 @@
-= simple_form_for [model.tenant, model] do |f|
+= simple_form_for model do |f|
 
   .row.mb-2
     .col-sm-6
@@ -7,12 +7,15 @@
           #{model.errors.full_messages.join(', ')}
 
       =f.input :tenant, as: :hidden
-      =f.input :name
-      =f.input :address
+      =f.input :requestor, as: :hidden
+      =f.input :client, as: :hidden
+      =f.input :date_from
+      =f.input :date_to
       =f.input :city
-      =f.input :state, as: :select, collection: states
+      =f.input :state
       =f.input :zip
-      =f.input :rate
+      =f.input :reason
+      =f.input :job_identifier
 
   .row.mb-2
     .col-sm-6

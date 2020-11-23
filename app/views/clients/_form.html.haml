@@ -1,5 +1,4 @@
-
-= simple_form_for(model, as: :user, method: method_for_model(model), url: url_for_user_model(model)) do |f|
+= simple_form_for [model.tenant, model] do |f|
 
   .row.mb-2
     .col-sm-6
@@ -8,9 +7,7 @@
           #{model.errors.full_messages.join(', ')}
 
       =f.input :tenant, as: :hidden
-      =f.input :first
-      =f.input :last
-      =f.input :email
+      =f.input :name
 
   .row.mb-2
     .col-sm-6

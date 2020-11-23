@@ -2,50 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8372e9e-fb6a-4d18-b202-3e1a7a0cacee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/overrides.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/application/_formview.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/application/_pageheader.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/application/_showview.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/_form.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/show.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/clients/show.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hotels/_form.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hotels/edit.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hotels/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hotels/show.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/_form.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/_list.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/show.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/staff.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/booking-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/booking-web.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/booking_requests/_form.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/booking_requests/edit.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/booking_requests/show.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/clients/_form.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/clients/edit.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/clients/new.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/users/edit.html.haml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/booking_requests_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/booking_requests_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/bookings_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/bookings_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/clients_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/clients_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/hotels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/hotels_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/tenants_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tenants_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/booking.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/booking.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/booking_request.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/booking_request.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/client.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/client.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/hotel.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/hotel.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/tenant.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/tenant.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/application/_tableview.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/application/_tableview.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/booking_requests/_list.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/booking_requests/_list.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/booking_requests/_mylist.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/booking_requests/_mylist.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/booking_requests/book.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/booking_requests/book.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/bookings/_filter.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/_filter.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/bookings/_list.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/_list.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/dashboard.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/dashboard.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/hotels/_list.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/_list.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/hotels/index.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/index.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/_dashboard_view.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_dashboard_view.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/index.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/index.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/application/_showview.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/application/_showview.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/clients/_list.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/clients/_list.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/clients/index.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/clients/index.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/clients/show.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/clients/show.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/_form.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/_form.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_public_view.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_public_view.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/_form.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/_form.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/_list.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/_list.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/populate.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/populate.rake" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -81,14 +66,14 @@
           <entry key="css" value="4" />
           <entry key="erb" value="10" />
           <entry key="gitignore" value="1" />
-          <entry key="haml" value="138" />
+          <entry key="haml" value="170" />
           <entry key="js" value="9" />
           <entry key="json" value="9" />
           <entry key="lock" value="4" />
           <entry key="md" value="1" />
           <entry key="nvmrc" value="1" />
-          <entry key="rake" value="5" />
-          <entry key="rb" value="141" />
+          <entry key="rake" value="6" />
+          <entry key="rb" value="166" />
           <entry key="scss" value="3" />
           <entry key="webpack-dev-server" value="1" />
           <entry key="yml" value="6" />
@@ -97,13 +82,13 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="4" />
-          <entry key="Haml" value="127" />
+          <entry key="Haml" value="159" />
           <entry key="JSON" value="9" />
           <entry key="JavaScript" value="9" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="16" />
           <entry key="RHTML" value="10" />
-          <entry key="Ruby" value="154" />
+          <entry key="Ruby" value="180" />
           <entry key="SCSS" value="3" />
           <entry key="YAML" value="6" />
           <entry key="yarn.lock" value="2" />
@@ -114,11 +99,11 @@
           <entry key="Gemfile" value="108" />
           <entry key="css" value="129" />
           <entry key="erb" value="5" />
-          <entry key="haml" value="7076" />
+          <entry key="haml" value="7549" />
           <entry key="js" value="414" />
           <entry key="json" value="22" />
-          <entry key="rake" value="2038" />
-          <entry key="rb" value="7664" />
+          <entry key="rake" value="2292" />
+          <entry key="rb" value="8430" />
           <entry key="scss" value="9" />
           <entry key="yml" value="76" />
         </counts>
@@ -126,12 +111,12 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="129" />
-          <entry key="Haml" value="6850" />
+          <entry key="Haml" value="7323" />
           <entry key="JSON" value="22" />
           <entry key="JavaScript" value="446" />
           <entry key="PLAIN_TEXT" value="194" />
           <entry key="RHTML" value="5" />
-          <entry key="Ruby" value="9810" />
+          <entry key="Ruby" value="10830" />
           <entry key="SCSS" value="9" />
           <entry key="YAML" value="76" />
         </counts>
@@ -141,91 +126,73 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/booking.rb">
+        <entry file="file://$PROJECT_DIR$/app/controllers/booking_requests_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="55" column="74" selection-start-line="55" selection-start-column="74" selection-end-line="55" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/hotels/show.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/bookings/_form.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/bookings_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/bookings/show.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/bookings/completed.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="59" selection-start-line="1" selection-start-column="59" selection-end-line="1" selection-end-column="59" />
+            <state relative-caret-position="285">
+              <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/bookings/_list.html.haml">
+        <entry file="file://$PROJECT_DIR$/app/views/booking_requests/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="75" selection-start-line="24" selection-start-column="75" selection-end-line="24" selection-end-column="75" />
+            <state relative-caret-position="165">
+              <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/bookings/_filter.html.haml">
+        <entry file="file://$PROJECT_DIR$/app/views/clients/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+            <state relative-caret-position="315">
+              <caret line="21" column="24" selection-end-line="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/booking_requests_controller.rb">
+        <entry file="file://$PROJECT_DIR$/app/views/booking_requests/edit.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+            <state relative-caret-position="15">
+              <caret line="1" column="84" selection-start-line="1" selection-start-column="84" selection-end-line="1" selection-end-column="84" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/schema.rb">
+        <entry file="file://$PROJECT_DIR$/app/views/booking_requests/_form.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="60" column="23" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="23" />
+            <state relative-caret-position="150">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/clients/_form.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/booking_request.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="97" selection-start-line="16" selection-start-column="97" selection-end-line="16" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/clients/edit.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="58" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -234,13 +201,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>user_path</find>
-      <find>tenant_users_path</find>
-      <find>webpacker</find>
-      <find>config.webpacker.check_yarn_integrity = false</find>
-      <find>check_yarn_integrity</find>
-      <find>webpack</find>
-      <find>yarn</find>
       <find>webpaker</find>
       <find>clients</find>
       <find>clients_path</find>
@@ -264,6 +224,13 @@
       <find>booking_requests&quot;</find>
       <find>&quot;bookings&quot;</find>
       <find>def show_</find>
+      <find>def show</find>
+      <find>def edit</find>
+      <find>simple_form_for</find>
+      <find>client</find>
+      <find>justify-content-center</find>
+      <find>elliott</find>
+      <find>def update</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -272,57 +239,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/clients_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/clients/_list.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/clients/_filter.html.haml" />
-        <option value="$PROJECT_DIR$/app/models/client.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20201122205959_create_hotel.rb" />
-        <option value="$PROJECT_DIR$/lib/tasks/populate.rake" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/views/clients/index.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/bookings/completed.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/booking_requests/outstanding.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/booking_requests/my.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/booking_requests/_list.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/booking_requests/_mylist.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/users/index.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/users/staff.html.haml" />
         <option value="$PROJECT_DIR$/app/views/users/new.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/overrides.css" />
         <option value="$PROJECT_DIR$/app/views/home/dashboard.html.haml" />
         <option value="$PROJECT_DIR$/app/views/application/_pageheader.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_dashboard_view.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/clients/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/users/_form.html.haml" />
         <option value="$PROJECT_DIR$/app/views/users/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/users/_list.html.haml" />
         <option value="$PROJECT_DIR$/app/views/application/_tableview.html.haml" />
         <option value="$PROJECT_DIR$/app/views/hotels/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/hotels/new.html.haml" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/hotels/_form.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/hotels/_list.html.haml" />
         <option value="$PROJECT_DIR$/app/views/hotels/edit.html.haml" />
-        <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-        <option value="$PROJECT_DIR$/app/models/hotel.rb" />
         <option value="$PROJECT_DIR$/app/models/tenant.rb" />
         <option value="$PROJECT_DIR$/app/views/hotels/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/application/_showview.html.haml" />
-        <option value="$PROJECT_DIR$/app/models/booking_request.rb" />
         <option value="$PROJECT_DIR$/app/views/booking_requests/book.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/application/_formview.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/hotels_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/tenants_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/booking_requests_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/bookings/_form.html.haml" />
-        <option value="$PROJECT_DIR$/app/models/booking.rb" />
         <option value="$PROJECT_DIR$/app/views/bookings/show.html.haml" />
         <option value="$PROJECT_DIR$/app/views/bookings/_filter.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/bookings_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/bookings/_list.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/clients/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/clients/new.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/clients/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/clients_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/hotels_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/bookings_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/clients/edit.html.haml" />
+        <option value="$PROJECT_DIR$/app/models/client.rb" />
+        <option value="$PROJECT_DIR$/app/views/clients/_form.html.haml" />
+        <option value="$PROJECT_DIR$/app/models/hotel.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/views/users/edit.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/users/_list.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/users/_form.html.haml" />
+        <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/clients/_list.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/devise/sessions/new.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_public_view.html.haml" />
+        <option value="$PROJECT_DIR$/lib/tasks/populate.rake" />
+        <option value="$PROJECT_DIR$/app/models/booking.rb" />
+        <option value="$PROJECT_DIR$/app/views/application/_formview.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/application/_showview.html.haml" />
+        <option value="$PROJECT_DIR$/app/models/booking_request.rb" />
+        <option value="$PROJECT_DIR$/app/views/booking_requests/edit.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/booking_requests/_form.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/booking_requests_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/booking_requests/show.html.haml" />
       </list>
     </option>
   </component>
@@ -347,9 +314,9 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1680" />
+    <option name="width" value="840" />
     <option name="height" value="1027" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -430,6 +397,21 @@
               <item name="booking-web" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="devise" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="booking-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="booking-web" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="devise" type="462c0819:PsiDirectoryNode" />
+              <item name="sessions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="booking-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="booking-web" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -473,7 +455,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="bookings_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/bookings_controller.rb&#10;booking.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;booking_request_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;schema.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/schema.rb&#10;booking_re&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;booking_requests_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;hotels_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/hotels_controller.rb&#10;routes.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/routes.rb&#10;tenants_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/tenants_controller.rb&#10;booking.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;booking_request.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;hotel.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/hotel.rb&#10;hotel.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/hotel.rb&#10;app&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;users_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/users_controller.rb&#10;application&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;hotels_&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/hotels_controller.rb&#10;user.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/user.rb&#10;appli&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;application_he&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;simple_form_bootstrap.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/initializers/simple_form_bootstrap.rb&#10;Gemfile&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/Gemfile&#10;popu&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;schema&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/schema.rb&#10;applica&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;pop&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;booking_req&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;populate&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;client.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/client.rb&#10;20201122205959_create_hotel.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20201122205959_create_hotel.rb&#10;popula&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;webpacker&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;development.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/environments/development.rb&#10;package-lo&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/package-lock.json&#10;webpacker.ym&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;packa&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/node_modules/webpack/package.json&#10;package.json&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/node_modules/webpack/package.json&#10;webp&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;webpack&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;users_c&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/users_controller.rb&#10;user.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/user.rb&#10;booking&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;routes&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/routes.rb&#10;package.js&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/package.json&#10;booking_requests&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;booking_&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;booking_request.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;application_helpe&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;home_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/home_controller.rb&#10;ability&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/ability.rb" />
+    <property name="SearchEverywhereHistoryKey" value="boo&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;clients&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/clients_controller.rb&#10;booking_request.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;clients_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/clients_controller.rb&#10;booking_requests_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;booking_re&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;routes.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/routes.rb&#10;booking.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;client.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/client.rb&#10;popul&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;popu&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;users_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/users_controller.rb&#10;application_hel&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;user.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/user.rb&#10;clien&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/client.rb&#10;hotel.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/hotel.rb&#10;bookings_c&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/bookings_controller.rb&#10;hotels_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/hotels_controller.rb&#10;applica&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;bookings_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/bookings_controller.rb&#10;booking_request_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;schema.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/schema.rb&#10;tenants_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/tenants_controller.rb&#10;booking.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;booking_request.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;hotel.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/hotel.rb&#10;app&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;application&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;hotels_&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/hotels_controller.rb&#10;appli&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;application_he&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;simple_form_bootstrap.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/initializers/simple_form_bootstrap.rb&#10;Gemfile&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/Gemfile&#10;schema&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/schema.rb&#10;pop&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;booking_req&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;populate&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;20201122205959_create_hotel.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20201122205959_create_hotel.rb&#10;popula&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;webpacker&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;development.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/environments/development.rb&#10;package-lo&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/package-lock.json&#10;webpacker.ym&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;packa&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/node_modules/webpack/package.json&#10;package.json&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/node_modules/webpack/package.json&#10;webp&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;webpack&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;users_c&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/users_controller.rb&#10;user.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/user.rb&#10;booking&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -617,12 +599,12 @@
       <workItem from="1605988340092" duration="21732000" />
       <workItem from="1606057617440" duration="11432000" />
       <workItem from="1606078160196" duration="12377000" />
-      <workItem from="1606146397215" duration="4458000" />
+      <workItem from="1606146397215" duration="7376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52003000" />
+    <option name="totallyTimeSpent" value="54921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -657,125 +639,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/clients/_list.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="79" selection-start-line="12" selection-start-column="79" selection-end-line="12" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20201122205959_create_hotel.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/populate.rake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="113" column="48" selection-start-line="113" selection-start-column="48" selection-end-line="113" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/clients/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="48" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/booking_requests/my.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="114" selection-start-line="1" selection-start-column="114" selection-end-line="1" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/booking_requests/outstanding.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/booking_requests/_list.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/booking_requests/_mylist.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/clients/_filter.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/overrides.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/simple_form_bootstrap.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="415" column="65" selection-start-line="415" selection-start-column="65" selection-end-line="415" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/dashboard.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/application/_pageheader.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_dashboard_view.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="84" column="88" selection-start-line="84" selection-start-column="88" selection-end-line="84" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/application/_tableview.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -790,24 +653,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/_list.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -825,52 +674,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/hotels/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="122" selection-start-line="1" selection-start-column="122" selection-end-line="1" selection-end-column="122" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/hotels/_list.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/hotels/edit.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="59" selection-start-line="1" selection-start-column="59" selection-end-line="1" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="733">
-          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/hotels/new.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/hotel.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -881,76 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/hotels/_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/application/_showview.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/booking_requests/book.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/booking_request.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/application/_formview.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/tenants_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/hotels_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/clients/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/hotels/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -958,24 +695,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/booking_requests_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/bookings/_form.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/booking.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="55" column="74" selection-start-line="55" selection-start-column="74" selection-end-line="55" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -993,13 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/bookings_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/bookings/completed.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1011,6 +727,268 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="75" selection-start-line="24" selection-start-column="75" selection-end-line="24" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/hotels/_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/hotels/_list.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/hotels/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="62" selection-start-line="1" selection-start-column="62" selection-end-line="1" selection-end-column="123" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/hotels/new.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/clients/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/hotels/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/hotels_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/tenants_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/bookings_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/clients/new.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/hotel.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/edit.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="78" selection-start-line="1" selection-start-column="78" selection-end-line="1" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/_list.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="16" column="79" selection-start-line="16" selection-start-column="79" selection-end-line="16" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="80" selection-start-line="1" selection-start-column="80" selection-end-line="1" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="718">
+          <caret line="71" column="50" selection-start-line="71" selection-start-column="50" selection-end-line="71" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/clients/_list.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/_pageheader.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/devise/sessions/new.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_public_view.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tasks/populate.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="123" column="177" selection-start-line="123" selection-start-column="177" selection-end-line="123" selection-end-column="177" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/client.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/_showview.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/booking_requests/book.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/_formview.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/booking.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="52" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/booking_request.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="97" selection-start-line="16" selection-start-column="97" selection-end-line="16" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/booking_requests/edit.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="84" selection-start-line="1" selection-start-column="84" selection-end-line="1" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/clients/_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/booking_requests/_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/clients_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/clients/edit.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="58" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/booking_requests_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/clients/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="24" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/booking_requests/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
         </state>
       </provider>
     </entry>

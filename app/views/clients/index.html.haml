@@ -1,2 +1,2 @@
 
-=render 'application/tableview', title: "Clients", key: :clients, has_filter: true
+=render 'application/tableview', title: "Clients", key: :clients, new_link: new_tenant_client_path(current_user.active_tenant)

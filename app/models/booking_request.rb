@@ -13,6 +13,10 @@ class BookingRequest < ApplicationRecord
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
   scope :unassigned, -> { where(assignee: nil) }
 
+  def name
+    ["Request for", location_formatted, "on", dates_formatted, "by", requestor.full_name].join(" ")
+  end
+
   def location_formatted
     [city, state].join(', ')
   end
@@ -23,6 +27,10 @@ class BookingRequest < ApplicationRecord
 
   def client_formatted
     client.try(:name)
+  end
+
+  def edit_path
+    Rails.application.routes.url_helpers.edit_booking_request_path(self)
   end
 
   def show_map

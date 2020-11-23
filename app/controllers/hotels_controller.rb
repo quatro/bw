@@ -12,6 +12,8 @@ class HotelsController < ApplicationController
     @model = Hotel.new({tenant_id: params[:tenant_id]})
   end
 
+  def edit; end
+
   def create
     @model = Hotel.new(hotel_params)
     @model.tenant_id = params[:tenant_id]

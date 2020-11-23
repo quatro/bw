@@ -17,4 +17,8 @@ class Hotel < ApplicationRecord
         ["rate", "Rate", Proc.new {|val| number_to_currency(val)}],
     ]
   end
+
+  def edit_path
+    Rails.application.routes.url_helpers.edit_tenant_hotel_path(tenant, self)
+  end
 end

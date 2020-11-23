@@ -3,7 +3,13 @@
   .container-fluid
     .row
       .col-lg-6
-        - model.show_map.each do |a|
-          %dl.row
-            %dt.col-sm-3 #{a[1]}
-            %dd.coll-sm-9 #{a[2].call(model.send(a[0]))}
+        .card
+          .card-header
+            =link_to "Edit", model.edit_path
+          .card-body
+            %ul.todo-list
+              - model.show_map.each do |a|
+                %li
+                  %dl.row
+                    %dt.col-sm-3 #{a[1]}
+                    %dd.coll-sm-9 #{a[2].call(model.send(a[0]))}

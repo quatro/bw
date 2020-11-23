@@ -9,8 +9,8 @@
         / small box
         .small-box.bg-info
           .inner
-            %h3 #{@model.bookings.count}
-            %p Bookings
+            %h3 #{@model.assignee.try(:full_name)}
+            %p Assignee
           .icon
             %i.ion.ion-bag
           -#%a.small-box-footer{:href => "#"}

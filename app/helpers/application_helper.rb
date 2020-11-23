@@ -2,13 +2,14 @@ require 'carmen'
 
 module ApplicationHelper
   include Carmen
+  include ActionView::Helpers::NumberHelper
 
   def outstanding_booking_request_count(tenant)
-    BookingRequest.outstanding_for_tenant(tenant).unassigned.count
+    human_number(BookingRequest.outstanding_for_tenant(tenant).unassigned.count)
   end
 
   def completed_booking_count(tenant)
-    Booking.for_tenant(tenant).count
+    human_number(Booking.for_tenant(tenant).count)
   end
 
   def tenant_hotel_count(tenant)
@@ -53,5 +54,21 @@ module ApplicationHelper
   def states
     us = Country.named('United States')
     us.subregions.map{|a| a.name}
+  end
+
+  def human_number(val)
+    number_to_human(val, format: '%n%u', units: { thousand: 'K', million: 'M' })
+  end
+
+  def form_submit_label(model)
+    model.new_record? ? "Create" : "Update"
+  end
+
+  def method_for_model(model)
+    model.new_record? ? :post : :put
+  end
+
+  def url_for_user_model(model)
+    model.new_record? ? create_staff_users_path : user_path(model)
   end
 end

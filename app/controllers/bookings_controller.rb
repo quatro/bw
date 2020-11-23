@@ -18,6 +18,8 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit; end
+
   def show
 
   end

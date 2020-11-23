@@ -48,6 +48,10 @@ class Booking < ApplicationRecord
   persistize :total
 
 
+  def edit_path
+    Rails.application.routes.url_helpers.edit_booking_path(self)
+  end
+
 
   def show_map
     [

@@ -22,7 +22,12 @@ namespace :db do
     end
 
     itg = Tenant.create({name: 'ITG'})
-    elliott = Client.create({tenant: itg, name: 'Elliott'})
+
+    clients = [
+        ["Elliott"],
+        ["Another Client"],
+        ["Pike Energy"],
+    ]
 
     hotels = [
         ["DoublelTree By Hilton Hotel - Universal Studio", "5780 Major Blvd", "Orlando", "Florida", "32819", 66.0],
@@ -75,10 +80,14 @@ namespace :db do
         ["Matt", "Howard", "matt@gmail.com"]
     ]
 
+    clients.each do |c|
+      Client.create({name: c[0], tenant: itg})
+    end
+
     users.each do |u|
       user_email = u[2]
       user = User.find_by_email(user_email)
-      User.create({first: u[0], last: u[1], email: user_email, password:'123123123', password_confirmation: '123123123', client: elliott}) if user.nil?
+      User.create({first: u[0], last: u[1], email: user_email, password:'123123123', password_confirmation: '123123123', client: Client.find_by_name(clients[rand(0..2)])}) if user.nil?
     end
 
     staff.each do |u|
@@ -93,7 +102,7 @@ namespace :db do
 
 
     # Create a few requests
-    20.times.each do |a|
+    200.times.each do |a|
       i = rand(0..city_states.length-1)
       i2 = rand(0..city_states.length-1)
       i3 = rand(0..city_states.length-1)
@@ -105,13 +114,14 @@ namespace :db do
 
       user = User.find_by_email(user_hash[2])
 
-      br = BookingRequest.create({tenant: itg, requestor: user, client: elliott, date_from: dates[0], date_to: dates[1], city: city_state[0], state: city_state[1]})
+      br = BookingRequest.create({tenant: itg, requestor: user, client: user.client, date_from: dates[0], date_to: dates[1], city: city_state[0], state: city_state[1]})
 
       if i < 4
         confirmation_number = '123'
         assignee = User.find_by_email(staff[rand(0..2)][2])
         br.update({assignee: assignee})
-        b = Booking.create({assignee: assignee, requestor: br.requestor, booking_request: br, hotel: Hotel.find_by_name(hotel[0]), client: elliott, tenant: itg})
+        hotel = Hotel.find_by_name(hotel[0])
+        b = Booking.create({rate: hotel.rate, tax: hotel.rate * 0.12, assignee: assignee, requestor: br.requestor, booking_request: br, hotel: hotel, client: br.requestor.client, tenant: itg})
       end
     end
 

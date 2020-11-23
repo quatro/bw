@@ -42,4 +42,17 @@ class User < ApplicationRecord
   def dashboard_header_name
     active_tenant.try(:name)
   end
+
+  def show_map
+    [
+        ["first", "First Name", Proc.new {|val| val}],
+        ["last", "Last Name", Proc.new {|val| val}],
+        ["email", "Email", Proc.new {|val| val}],
+        client.present? ? ["client_id", "Client", Proc.new {|val| Client.find(val).name}] : nil
+    ].compact
+  end
+
+  def edit_path
+    Rails.application.routes.url_helpers.edit_tenant_hotel_path(tenant, self)
+  end
 end

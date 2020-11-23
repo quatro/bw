@@ -22,6 +22,8 @@ class UsersController < ApplicationController
     @model = User.new({tenant_id: params[:tenant_id], client_id: params[:client_id]})
   end
 
+  def edit; end
+
   def create_staff
     @model = User.new(user_params)
 
@@ -36,6 +38,14 @@ class UsersController < ApplicationController
       redirect_to @model
     else
       render "new"
+    end
+  end
+
+  def update
+    if @model.update(user_params)
+      redirect_to @model
+    else
+      render "edit"
     end
   end
 
