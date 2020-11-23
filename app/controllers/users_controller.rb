@@ -6,12 +6,47 @@ class UsersController < ApplicationController
     @models = User.for_tenant(current_user.active_tenant)
   end
 
+  def staff
+    @models = User.for_tenant(current_user.active_tenant)
+  end
+
   def bookings
     @models = @model.bookings
   end
 
+  def show
+
+  end
+
+  def new
+    @model = User.new({tenant_id: params[:tenant_id], client_id: params[:client_id]})
+  end
+
+  def create_staff
+    @model = User.new(user_params)
+
+    # Assign Default Password and require it to be updated
+    @model.password = SecureRandom.uuid
+    @model.password_confirmation = @model.password
+
+    if @model.save
+
+      # Send a welcome email and instructions to reset the password
+
+      redirect_to @model
+    else
+      render "new"
+    end
+  end
+
+
+
   private
   def set_model
-    @model = Uuser.where(id: params[:id]) if params[:id]
+    @model = User.where(id: params[:id]).first if params[:id]
+  end
+
+  def user_params
+    params.require(:user).permit(:first, :last, :email, :tenant_id, :client_id)
   end
 end

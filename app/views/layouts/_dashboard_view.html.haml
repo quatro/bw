@@ -82,7 +82,7 @@
                   %span.right.badge.badge-success #{completed_booking_count(current_user.active_tenant)}
 
 
-            %li.nav-header ADMIN
+            %li.nav-header #{[current_user.active_tenant.try(:name), 'ADMIN'].join(' ')}
             %li.nav-item
               %a.nav-link{href: tenant_clients_path(current_user.active_tenant)}
                 %i.nav-icon.far.fa-calendar-alt
@@ -96,11 +96,11 @@
                   Hotels
                   %span.right.badge.badge-info #{tenant_hotel_count(current_user.active_tenant)}
             %li.nav-item
-              %a.nav-link{href: users_path}
+              %a.nav-link{href: staff_users_path}
                 %i.nav-icon.far.fa-calendar-alt
                 %p
-                  Users
-                  %span.badge.badge-info.right #{tenant_user_count(current_user.active_tenant)}
+                  Staff
+                  %span.badge.badge-info.right #{tenant_staff_count(current_user.active_tenant)}
 
 
 

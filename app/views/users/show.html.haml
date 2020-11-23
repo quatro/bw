@@ -1,0 +1,30 @@
+
+=render 'application/pageheader', title: @model.full_name
+
+%section.content
+  .container-fluid
+    / Small boxes (Stat box)
+    .row
+      .col-lg-3.col-6
+        / small box
+        .small-box.bg-info
+          .inner
+            %h3 #{@model.serviced_bookings.count}
+            %p Bookings Processed
+          .icon
+            %i.ion.ion-bag
+          -#%a.small-box-footer{:href => "#"}
+            More info
+            %i.fas.fa-arrow-circle-right
+      / ./col
+      .col-lg-3.col-6
+        / small box
+        .small-box.bg-success
+          .inner
+            %h3 #{@model.assigned_booking_requests.outstanding.count}
+            %p Queued Bookings
+          .icon
+            %i.ion.ion-stats-bars
+          -#%a.small-box-footer{:href => "#"}
+            More info
+            %i.fas.fa-arrow-circle-right

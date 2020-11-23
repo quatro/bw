@@ -1,30 +1,19 @@
 - list_partial = local_assigns[:list_partial].nil? ? "#{key.to_s}/list" : list_partial
 - filter_partial = local_assigns[:filter_partial].nil? ? "#{key}/filter" : filter_partial
 - has_filter = local_assigns[:has_filter].nil? ? false : has_filter
+- new_link = local_assigns[:new_link].nil? ? nil : new_link
+- should_display_new_link = new_link.present?
 
-.content-header
-  .container-fluid
-    .row.mb-2
-      .col-sm-12
-        - flash.each do |type, msg|
-          %div.bg-danger
-            #{msg}
-
-    .row.mb-2
-      .col-sm-6
-        %h1.m-0.text-dark #{title}
-      / /.col
-      .col-sm-6
-        %ol.breadcrumb.float-sm-right
-          %li.breadcrumb-item
-            %a{href: root_path} Dashboard
-          %li.breadcrumb-item.active #{title}
+=render 'application/pageheader', title: title
 
 %section.content
   .container-fluid
     .row
       - if has_filter
         .col-lg-8
+          - if should_display_new_link
+            =link_to "New", new_link, class:'btn btn-success'
+            %hr
           =render list_partial, models: @models
 
         .col-lg-4
@@ -32,6 +21,9 @@
 
       - else
         .col-lg-12
+          - if should_display_new_link
+            =link_to "New", new_link, class:'btn btn-success'
+            %hr
           =render list_partial, models: @models
 
 

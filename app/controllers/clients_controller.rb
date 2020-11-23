@@ -10,6 +10,6 @@ class ClientsController < ApplicationController
 
   private
   def set_model
-    @model = Client.where(id: params[:id]) if params[:id]
+    @model = Client.where(id: params[:id]).first if params[:id]
   end
 end

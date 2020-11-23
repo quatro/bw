@@ -10,10 +10,18 @@ Rails.application.routes.draw do
   end
 
   resources :tenants do
+    member do
+      get :hotel
+    end
     resources :hotels
     resources :clients
   end
   resources :users do
+    collection do
+      get :staff
+      post :create_staff
+    end
+
     member do
       get :bookings
     end
@@ -26,6 +34,7 @@ Rails.application.routes.draw do
 
     member do
       get :book
+      post :claim_and_book
     end
   end
   resources :bookings do

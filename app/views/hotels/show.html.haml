@@ -1,0 +1,22 @@
+
+=render 'application/pageheader', title: @model.name
+
+%section.content
+  .container-fluid
+    / Small boxes (Stat box)
+    .row
+      .col-lg-3.col-6
+        / small box
+        .small-box.bg-info
+          .inner
+            %h3 #{@model.bookings.count}
+            %p Bookings
+          .icon
+            %i.ion.ion-bag
+          -#%a.small-box-footer{:href => "#"}
+            More info
+            %i.fas.fa-arrow-circle-right
+
+
+%hr
+=render 'application/showview', model: @model

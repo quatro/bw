@@ -1,27 +1,7 @@
 
 
-.content-header
-  .container-fluid
-    .row.mb-2
-      .col-sm-12
-        - flash.each do |type, msg|
-          %div.bg-danger
-            #{msg}
+=render 'application/pageheader', title: 'Dashboard'
 
-    .row.mb-2
-      .col-sm-6
-        %h1.m-0.text-dark Dashboard
-      / /.col
-      .col-sm-6
-        %ol.breadcrumb.float-sm-right
-          %li.breadcrumb-item
-            %a{:href => "#"} Home
-          %li.breadcrumb-item.active Dashboard v1
-      / /.col
-    / /.row
-  / /.container-fluid
-/ /.content-header
-/ Main content
 %section.content
   .container-fluid
     / Small boxes (Stat box)

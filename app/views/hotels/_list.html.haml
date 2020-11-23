@@ -10,4 +10,5 @@
       %tr
         %td #{hotel.name}
         %td
+          =link_to "Show", tenant_hotel_path(current_user.active_tenant, hotel), class:'btn btn-info'
           =link_to "Edit", edit_tenant_hotel_path(current_user.active_tenant, hotel), class:'btn btn-info'

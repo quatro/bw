@@ -1,0 +1,9 @@
+
+%section.content
+  .container-fluid
+    .row
+      .col-lg-6
+        - model.show_map.each do |a|
+          %dl.row
+            %dt.col-sm-3 #{a[1]}
+            %dd.coll-sm-9 #{a[2].call(model.send(a[0]))}

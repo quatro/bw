@@ -4,8 +4,14 @@ class TenantsController < ApplicationController
 
   def index; end
 
+
+
+  def hotel
+    render json: Hotel.where(id: params[:hotel_id]).first
+  end
+
   private
   def set_model
-    @model = Tenant.where(id: params[:id]) if params[:id]
+    @model = Tenant.where(id: params[:id]).first if params[:id]
   end
 end

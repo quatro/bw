@@ -1,0 +1,19 @@
+
+%table.data-table-requests.stripe
+  %thead
+    %tr
+      %th First
+      %th Last
+      %th Email
+      %th Serviced Bookings
+      %th
+
+  %tbody
+    - models.each do |u|
+      %tr
+        %td #{u.first}
+        %td #{u.last}
+        %td #{u.email}
+        %td #{u.serviced_bookings.count}
+        %td
+          =link_to "View", user_path(u), class:'btn btn-info'

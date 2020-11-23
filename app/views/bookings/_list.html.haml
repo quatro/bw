@@ -2,7 +2,7 @@
 %table.data-table-requests.stripe
   %thead
     %tr
-      %th User
+      %th Customer
       %th Dates
       %th Location
       %th Client
@@ -22,5 +22,5 @@
         %td
           =link_to br.assignee.full_name, user_path(br.assignee)
         %td
-          #{datetime_nice(booking.created_at)}
+          =link_to datetime_nice(booking.created_at), booking_path(booking)
         %td

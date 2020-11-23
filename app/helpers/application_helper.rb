@@ -1,7 +1,10 @@
+require 'carmen'
+
 module ApplicationHelper
+  include Carmen
 
   def outstanding_booking_request_count(tenant)
-    BookingRequest.outstanding_for_tenant(tenant).count
+    BookingRequest.outstanding_for_tenant(tenant).unassigned.count
   end
 
   def completed_booking_count(tenant)
@@ -16,7 +19,7 @@ module ApplicationHelper
     Client.for_tenant(tenant).count
   end
 
-  def tenant_user_count(tenant)
+  def tenant_staff_count(tenant)
     User.for_tenant(tenant).count
   end
 
@@ -38,5 +41,17 @@ module ApplicationHelper
     else
       ""
     end
+  end
+
+  def alert_class_for_type(t)
+    return "alert-info" if t == 'alert'
+    return "alert-danger" if t == 'error'
+    return "alert-success" if t == 'notice'
+    return "alert-info"
+  end
+
+  def states
+    us = Country.named('United States')
+    us.subregions.map{|a| a.name}
   end
 end

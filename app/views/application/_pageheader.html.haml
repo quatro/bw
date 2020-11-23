@@ -1,0 +1,21 @@
+- title = local_assigns[:title].nil? ? '' : title
+
+
+.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-12
+        - flash.each do |type, msg|
+          - alert_class = alert_class_for_type(type)
+          %span.alert{class: alert_class}
+            #{msg}
+
+    .row.mb-2
+      .col-sm-6
+        %h1.m-0.text-dark #{title}
+      / /.col
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{href: root_path} Dashboard
+          %li.breadcrumb-item.active #{title}

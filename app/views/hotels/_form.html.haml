@@ -1,0 +1,19 @@
+= simple_form_for [model.tenant, model] do |f|
+
+  .row.mb-2
+    .col-sm-6
+      - if model.errors.any?
+        .alert.alert-danger
+          #{model.errors.full_messages.join(', ')}
+
+      =f.input :tenant, as: :hidden
+      =f.input :name
+      =f.input :address
+      =f.input :city
+      =f.input :state, as: :select, collection: states
+      =f.input :zip
+      =f.input :rate
+
+  .row.mb-2
+    .col-sm-6
+      =f.submit "Create", class: 'btn btn-success'

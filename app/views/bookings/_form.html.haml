@@ -1,0 +1,43 @@
+
+
+= simple_form_for model do |f|
+
+  .row.mb-2
+    .col-sm-6
+      - if model.errors.any?
+        .alert.alert-danger
+          #{model.errors.full_messages.join(', ')}
+
+      =f.input :booking_request_id, as: :hidden
+      =f.input :hotel_id, as: :select, collection: current_user.tenant.hotels
+      =f.input :rate
+      =f.input :tax
+
+  .row.mb-2
+    .col-sm-6
+      =f.submit "Finalize Booking", class: 'btn btn-success'
+
+
+:javascript
+  function load_hotel_rate() {
+
+    $.ajax({
+      url: "#{hotel_tenant_path(model.booking_request.tenant)}",
+      data: {
+        hotel_id: $('#booking_hotel_id').val()
+      },
+      success: function(data) {
+        $('#booking_rate').val(data.rate);
+      }
+    });
+  }
+
+
+  var ready = function() {
+
+    $('#booking_hotel_id').on('change', function(e){
+      load_hotel_rate();
+    });
+  }
+
+  $(document).ready(ready);

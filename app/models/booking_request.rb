@@ -1,4 +1,5 @@
 class BookingRequest < ApplicationRecord
+  include ApplicationHelper
 
   audited
 
@@ -10,6 +11,7 @@ class BookingRequest < ApplicationRecord
 
   scope :outstanding,    -> { joins("LEFT OUTER JOIN bookings on bookings.booking_request_id = booking_requests.id").where("bookings.id IS NULL") }
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
+  scope :unassigned, -> { where(assignee: nil) }
 
   def location_formatted
     [city, state].join(', ')
@@ -21,5 +23,16 @@ class BookingRequest < ApplicationRecord
 
   def client_formatted
     client.try(:name)
+  end
+
+  def show_map
+    [
+        ["date_from", "From", Proc.new {|val| date_nice(val)}],
+        ["date_to", "To", Proc.new {|val| date_nice(val)}],
+        ["city", "City", Proc.new {|val| val}],
+        ["state", "State", Proc.new {|val| val}],
+        ["reason", "Reason", Proc.new {|val| val}],
+        ["job_identifier", "Job Identifier", Proc.new {|val| val}],
+    ]
   end
 end
