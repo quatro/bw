@@ -6,6 +6,23 @@ class Hotel < ApplicationRecord
 
   scope :for_tenant,      ->(tenant) { where(tenant: tenant) }
 
+  def lat
+    geo.latitude
+  end
+  persistize :lat
+
+  def lng
+    geo.longitude
+  end
+  persistize :lng
+
+  def name_with_rate
+    [name, number_to_currency(rate)].join(' / ')
+  end
+
+  def geocode_address
+    [[address, city].join(' '), state].join(', ')
+  end
 
   def show_map
     [
@@ -20,5 +37,15 @@ class Hotel < ApplicationRecord
 
   def edit_path
     Rails.application.routes.url_helpers.edit_tenant_hotel_path(tenant, self)
+  end
+
+  def denormalize
+    self.lat_will_change!
+    save
+  end
+
+  private
+  def geo
+    @geo ||= Geocoder.new.geocode(geocode_address)
   end
 end

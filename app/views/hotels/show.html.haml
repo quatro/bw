@@ -19,4 +19,9 @@
 
 
 %hr
-=render 'application/showview', model: @model
+
+%section.content
+  .container-fluid
+    .row
+      .col-lg-6.col-6
+        =render 'application/showview', model: @model

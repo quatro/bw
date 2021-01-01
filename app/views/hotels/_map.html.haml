@@ -1,0 +1,89 @@
+
+
+- content_for :js_before do
+  = javascript_include_tag 'https://polyfill.io/v3/polyfill.min.js?features=default'
+  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV.fetch('GOOGLE_MAPS_API_KEY')}&callback=initMap&libraries=&v=weekly", defer: true
+
+
+#map{style:'height: 100%;'}
+
+
+
+:javascript
+
+  let map;
+  var markers = [];
+
+  function initMap() {
+    var geocoder = new google.maps.Geocoder();
+
+    map = new google.maps.Map(document.getElementById("map"), {
+      // center: { lat: -34.397, lng: 150.644 },
+      center: { lat: 0, lng: 0 },
+      zoom: 8,
+    });
+
+    // alert("#{center_address}");
+    geocoder.geocode({'address': "#{center_address}"}, function(results, status) {
+      if (status === 'OK') {
+        // console.log(results[0]);
+        // map.setCenter(results[0].geometry.location);
+
+        requested_location_marker = new google.maps.Marker({
+          position: {
+            lat: parseFloat(results[0].geometry.location.lat()),
+            lng: parseFloat(results[0].geometry.location.lng())
+          },
+          map,
+          title: "Requested Location",
+          animation: google.maps.Animation.DROP,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+        });
+
+        map.setCenter(requested_location_marker.getPosition());
+
+        // attachInfoWindow(requested_location_marker, "Requested Location");
+
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+
+    $.ajax({
+      url: "#{map_markers_tenant_hotels_path(tenant)}",
+      success: function(hotels) {
+        $.each(hotels, function(i, item){
+          marker = new google.maps.Marker({
+            position: {
+              lat: parseFloat(item.lat),
+              lng: parseFloat(item.lng)
+            },
+            map,
+            title: item.name,
+            animation: google.maps.Animation.DROP
+          });
+
+          marker.addListener("click", () => {
+            $(document).trigger('hotel_clicked', [item]);
+          })
+
+          attachInfoWindow(marker, item.name_with_rate);
+        });
+      }
+    });
+
+  }
+
+  function attachInfoWindow(marker, title) {
+    const infowindow = new google.maps.InfoWindow({
+      content: title,
+    });
+    infowindow.open(marker.get("map"), marker);
+  }
+
+  var ready = function() {
+
+  }
+
+  $(document).ready(ready);
+

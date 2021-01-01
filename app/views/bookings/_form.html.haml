@@ -1,9 +1,8 @@
 
-
 = simple_form_for model do |f|
 
   .row.mb-2
-    .col-sm-6
+    .col-sm-12
       - if model.errors.any?
         .alert.alert-danger
           #{model.errors.full_messages.join(', ')}
@@ -12,6 +11,7 @@
       =f.input :hotel_id, as: :select, collection: current_user.tenant.hotels
       =f.input :rate
       =f.input :tax
+      =f.input :confirmation_number
 
   .row.mb-2
     .col-sm-6
@@ -19,6 +19,7 @@
 
 
 :javascript
+
   function load_hotel_rate() {
 
     $.ajax({
@@ -41,3 +42,5 @@
   }
 
   $(document).ready(ready);
+
+

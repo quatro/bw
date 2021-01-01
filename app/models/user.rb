@@ -12,9 +12,10 @@ class User < ApplicationRecord
   belongs_to :client, optional: true
 
   has_many :assigned_booking_requests, foreign_key: 'assignee_id', class_name:'BookingRequest'
+  has_many :requested_booking_requests, foreign_key: 'requestor_id', class_name:'BookingRequest'
 
 
-  has_many :serviced_bookings, foreign_key: 'assignee_id', class_name:'Booking'
+  has_many :assigned_bookings, foreign_key: 'assignee_id', class_name:'Booking'
   has_many :requested_bookings, foreign_key: 'requestor_id', class_name:'Booking'
 
   scope :for_tenant, -> (tenant) { where(tenant: tenant) }

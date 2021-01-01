@@ -44,3 +44,4 @@ import 'css/site.scss'
 
 // This bring images into the application
 const images = require.context('../images', true)
+

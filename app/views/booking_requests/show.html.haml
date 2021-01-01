@@ -5,7 +5,7 @@
   .container-fluid
     / Small boxes (Stat box)
     .row
-      .col-lg-3.col-6
+      .col-lg-6.col-6
         / small box
         .small-box.bg-info
           .inner
@@ -19,4 +19,19 @@
 
 
 %hr
-=render 'application/showview', model: @model
+
+%section.content
+  .container-fluid
+    .row
+      .col-lg-6.col-6
+        =render 'application/showview', model: @model
+
+- if !@model.is_booked?
+
+  %section.content
+    .container-fluid
+      / Small boxes (Stat box)
+      .row
+        .col-lg-6.col-6
+          =link_to "Book this Request", book_booking_request_path(@model), class:'btn btn-success'
+

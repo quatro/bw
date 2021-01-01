@@ -14,13 +14,10 @@ class Booking < ApplicationRecord
     "Booking for #{requestor.full_name} on #{date_nice(booking_request.date_from)}"
   end
 
-  def confirmation_number
-    while true
-      rec = SecureRandom.hex(4)
-      return rec if Booking.find_by_confirmation_number(rec).nil?
-    end
+  def is_booked
+    !confirmation_number.blank? && !rate.blank? && rate > 0
   end
-  persistize :confirmation_number
+  persistize :is_booked
 
   def tenant_id
     booking_request.try(:tenant_id)
@@ -57,7 +54,13 @@ class Booking < ApplicationRecord
     [
         ["total", "Total", Proc.new {|val| val}],
         ["tax", "Tax", Proc.new {|val| val}],
-        ["hotel_id", "Hotel", Proc.new {|val| Hotel.find(val).try(:name)}]
+        ["hotel_id", "Hotel", Proc.new {|val| Hotel.find(val).try(:name)}],
+        ["confirmation_number", "Confirmation #", Proc.new {|val| val}]
     ]
+  end
+
+  def denormalize
+    self.is_booked_will_change!
+    save
   end
 end

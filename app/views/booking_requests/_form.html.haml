@@ -1,7 +1,7 @@
 = simple_form_for model do |f|
 
   .row.mb-2
-    .col-sm-6
+    .col-sm-12
       - if model.errors.any?
         .alert.alert-danger
           #{model.errors.full_messages.join(', ')}
@@ -9,8 +9,8 @@
       =f.input :tenant, as: :hidden
       =f.input :requestor, as: :hidden
       =f.input :client, as: :hidden
-      =f.input :date_from
-      =f.input :date_to
+      =f.input :date_from, as: :string, input_html:{class:'datepicker'}
+      =f.input :date_to, as: :string, input_html:{class:'datepicker'}
       =f.input :city
       =f.input :state
       =f.input :zip
@@ -20,3 +20,13 @@
   .row.mb-2
     .col-sm-6
       =f.submit form_submit_label(model), class: 'btn btn-success'
+
+
+:javascript
+  var ready = function() {
+  $('.datepicker').datepicker({
+    dateFormat:"yy-mm-dd"
+    });
+  }
+
+  $(document).ready(ready);

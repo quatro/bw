@@ -1,6 +1,8 @@
 class BookingRequest < ApplicationRecord
   include ApplicationHelper
 
+  default_scope { order(created_at: :desc) }
+
   audited
 
   belongs_to :tenant
@@ -9,9 +11,22 @@ class BookingRequest < ApplicationRecord
   belongs_to :assignee, class_name: 'User', foreign_key: 'assignee_id', optional: true
   has_one :booking
 
-  scope :outstanding,    -> { joins("LEFT OUTER JOIN bookings on bookings.booking_request_id = booking_requests.id").where("bookings.id IS NULL") }
+  scope :outstanding,    -> { joins("LEFT OUTER JOIN bookings on bookings.booking_request_id = booking_requests.id").where("bookings.id IS NULL AND (bookings.is_booked IS NULL OR bookings.is_booked = false)") }
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
   scope :unassigned, -> { where(assignee: nil) }
+
+  def nights
+    date_to.to_date - date_from.to_date if date_from.present? && date_to.present?
+  end
+  persistize :nights
+
+  def is_booked?
+    booking.present? && booking.is_booked?
+  end
+
+  def geocode_address
+    location_formatted
+  end
 
   def name
     ["Request for", location_formatted, "on", dates_formatted, "by", requestor.full_name].join(" ")
@@ -19,6 +34,14 @@ class BookingRequest < ApplicationRecord
 
   def location_formatted
     [city, state].join(', ')
+  end
+
+  def date_and_nights
+    [date_from, nights_formatted]. join(': ')
+  end
+
+  def nights_formatted
+    [nights, "night(s)"].join(' ')
   end
 
   def dates_formatted
@@ -35,10 +58,12 @@ class BookingRequest < ApplicationRecord
 
   def show_map
     [
-        ["date_from", "From", Proc.new {|val| date_nice(val)}],
-        ["date_to", "To", Proc.new {|val| date_nice(val)}],
-        ["city", "City", Proc.new {|val| val}],
-        ["state", "State", Proc.new {|val| val}],
+        ["location_formatted", "Location", Proc.new{|val| val}],
+        ["date_and_nights", "Stay", Proc.new{|val| val}],
+        # ["date_from", "From", Proc.new {|val| date_nice(val)}],
+        # ["date_to", "To", Proc.new {|val| date_nice(val)}],
+        # ["city", "City", Proc.new {|val| val}],
+        # ["state", "State", Proc.new {|val| val}],
         ["reason", "Reason", Proc.new {|val| val}],
         ["job_identifier", "Job Identifier", Proc.new {|val| val}],
     ]

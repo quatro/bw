@@ -3,14 +3,18 @@
 
 =render 'application/pageheader', title: title
 
-- show_view_models.each do |a|
-  =render 'application/showview', model: a
-  %hr
 
 %section.content
   .container-fluid
     .row
-      .col-lg-12
+      - if show_view_models.any?
+        .col-lg-6
+          - show_view_models.each do |a|
+            =render 'application/showview', model: a
+            %hr
+
+
+      .col-lg-6
         =render form_partial, model: model
 
 

@@ -13,6 +13,14 @@
     .row.mb-2
       .col-sm-6
         %h1.m-0.text-dark #{title}
+
+        - if local_assigns[:subtitle].present?
+          %p.m-0.text-muted #{subtitle}
+
+        - if local_assigns[:subsubtitle].present?
+          %p.m-0.text-muted #{subsubtitle}
+
+
       / /.col
       .col-sm-6
         %ol.breadcrumb.float-sm-right

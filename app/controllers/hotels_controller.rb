@@ -38,6 +38,10 @@ class HotelsController < ApplicationController
 
   end
 
+  def map_markers
+    return render json: Hotel.all
+  end
+
   private
   def set_model
     @model = Hotel.where(id: params[:id]).first if params[:id]
