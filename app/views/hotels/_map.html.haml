@@ -11,7 +11,7 @@
 
 :javascript
 
-  let map;
+  var map;
   var markers = [];
 
   function initMap() {
@@ -82,8 +82,9 @@
   }
 
   var ready = function() {
-
+    initMap();
   }
 
-  $(document).ready(ready);
+  $( document ).off('turbolinks:load');
+  $( document ).on('turbolinks:load', ready);
 

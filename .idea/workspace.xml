@@ -2,46 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8372e9e-fb6a-4d18-b202-3e1a7a0cacee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.envrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/jquery-ui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/commands/authenticate_user.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/commands/authorize_api_request.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/api/application_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/api/v1/authentication_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/api/v1/booking_requests_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/api/v1/users_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/serializers/client_serializer.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hotels/_map.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/google.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/geocoder.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/json_web_token.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/booking-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/booking-web.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/hotels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/hotels_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/booking.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/booking.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/booking_request.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/booking_request.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/hotel.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/hotel.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/application/_formview.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/application/_formview.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/application/_pageheader.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/application/_pageheader.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/application/_showview.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/application/_showview.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/booking_requests/_form.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/booking_requests/_form.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/booking_requests/book.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/booking_requests/book.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/booking_requests/show.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/booking_requests/show.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/bookings/_form.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/_form.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/bookings/show.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/show.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/clients/show.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/clients/show.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/hotels/show.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/show.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/_dashboard_view.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_dashboard_view.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/_list.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/_list.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/show.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/show.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/_map.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/_map.html.haml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -115,7 +76,7 @@
           <entry key="css" value="129" />
           <entry key="envrc" value="14" />
           <entry key="erb" value="5" />
-          <entry key="haml" value="9939" />
+          <entry key="haml" value="9984" />
           <entry key="js" value="461" />
           <entry key="json" value="22" />
           <entry key="rake" value="2292" />
@@ -127,9 +88,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="129" />
-          <entry key="Haml" value="9623" />
+          <entry key="Haml" value="9666" />
           <entry key="JSON" value="22" />
-          <entry key="JavaScript" value="583" />
+          <entry key="JavaScript" value="585" />
           <entry key="PLAIN_TEXT" value="208" />
           <entry key="RHTML" value="5" />
           <entry key="Ruby" value="14192" />
@@ -153,8 +114,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/hotels/_map.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="688">
+              <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -515,12 +476,12 @@
       <workItem from="1607201252030" duration="353000" />
       <workItem from="1608754475521" duration="5037000" />
       <workItem from="1609507839983" duration="928000" />
-      <workItem from="1609508967086" duration="5316000" />
+      <workItem from="1609508967086" duration="5773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87432000" />
+    <option name="totallyTimeSpent" value="87889000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -899,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/hotels/_map.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="688">
+          <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
         </state>
       </provider>
     </entry>
