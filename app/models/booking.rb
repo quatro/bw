@@ -16,7 +16,7 @@ class Booking < ApplicationRecord
   end
 
   def annual_booking_number
-    Booking.for_tenant(self.tenant).where("created_at < ?", self.created_at).count + 1
+    Booking.for_tenant(self.tenant).where("created_at >= ? AND created_at <= ? AND annual_booking_number IS NOT NULL", created_at.strftime("%Y-01-01"), created_at.strftime("%Y-12-31")).count + 1
   end
   persistize :annual_booking_number
 
