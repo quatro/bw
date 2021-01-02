@@ -36,8 +36,12 @@ class BookingRequest < ApplicationRecord
     [city, state].join(', ')
   end
 
+  def date_from_human
+    date_human(date_from)
+  end
+
   def date_and_nights
-    [date_from, nights_formatted]. join(': ')
+    [date_from_human, nights_formatted]. join(': ')
   end
 
   def nights_formatted

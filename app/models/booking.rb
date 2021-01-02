@@ -8,11 +8,22 @@ class Booking < ApplicationRecord
   belongs_to :assignee, class_name: 'User', foreign_key: 'assignee_id', optional: true
   belongs_to :hotel
 
-  scope :for_tenant,      ->(tenant) { where(tenant: tenant) }
+  scope :for_tenant,      ->(tenant) { where(tenant: tenant).order(:created_at) }
+  scope :last_months,     ->(months_count) { where("created_at >= ?", months_count.months.ago)}
 
   def title
     "Booking for #{requestor.full_name} on #{date_nice(booking_request.date_from)}"
   end
+
+  def annual_booking_number
+    Booking.for_tenant(self.tenant).where("created_at < ?", self.created_at).count + 1
+  end
+  persistize :annual_booking_number
+
+  def license_fee
+    license_fee_calculator.calculate(self)
+  end
+  persistize :license_fee
 
   def is_booked
     !confirmation_number.blank? && !rate.blank? && rate > 0
@@ -62,5 +73,10 @@ class Booking < ApplicationRecord
   def denormalize
     self.is_booked_will_change!
     save
+  end
+
+  private
+  def license_fee_calculator
+    @license_fee_calculator ||= LicenseFeeCalculator.new
   end
 end

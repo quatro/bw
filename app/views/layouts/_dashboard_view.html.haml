@@ -62,45 +62,56 @@
 
             %li.nav-item
               %a.nav-link{href: my_booking_requests_path}
-                %i.nav-icon.fas.fa-th
+                %i.nav-icon.fas.fa-list-ol
                 %p
                   My Queue
                   %span.right.badge.badge-danger #{my_queue_count}
 
             %li.nav-item
               %a.nav-link{href: outstanding_booking_requests_path}
-                %i.nav-icon.fas.fa-th
+                %i.nav-icon.fas.fa-exclamation-triangle
                 %p
-                  Unassigned Requests
+                  Unassigned
                   %span.right.badge.badge-danger #{outstanding_booking_request_count(current_user.active_tenant)}
 
             %li.nav-item
               %a.nav-link{href: completed_bookings_path}
-                %i.nav-icon.fas.fa-th
+                %i.nav-icon.fas.fa-check
                 %p
-                  Completed Bookings
+                  Completed
                   %span.right.badge.badge-success #{completed_booking_count(current_user.active_tenant)}
 
 
             %li.nav-header #{[current_user.active_tenant.try(:name), 'ADMIN'].join(' ')}
             %li.nav-item
               %a.nav-link{href: tenant_clients_path(current_user.active_tenant)}
-                %i.nav-icon.far.fa-calendar-alt
+                %i.nav-icon.fas.fa-building
                 %p
                   Clients
                   %span.right.badge.badge-info #{tenant_client_count(current_user.active_tenant)}
             %li.nav-item
               %a.nav-link{href: tenant_hotels_path(current_user.active_tenant)}
-                %i.nav-icon.far.fa-calendar-alt
+                %i.nav-icon.fas.fa-hotel
                 %p
                   Hotels
                   %span.right.badge.badge-info #{tenant_hotel_count(current_user.active_tenant)}
             %li.nav-item
               %a.nav-link{href: staff_users_path}
-                %i.nav-icon.far.fa-calendar-alt
+                %i.nav-icon.fas.fa-users
                 %p
                   Staff
                   %span.badge.badge-info.right #{tenant_staff_count(current_user.active_tenant)}
+            %li.nav-item.has-treeview
+              %a.nav-link{href: staff_users_path}
+                %i.nav-icon.fas.fa-chart-bar
+                %p
+                  Reports
+                  %i.fas.fa-angle-left.right
+              %ul.nav.nav-treeview
+                %li.nav-item
+                  %a.nav-link{href: report_tenant_path(current_user.active_tenant)}
+                    %i.nav-icon.fa.fa-circle-o
+                    %p Monthly Report
 
 
 

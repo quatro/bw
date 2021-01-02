@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   resources :tenants do
     member do
       get :hotel
+      get :report
+      get :monthly_sales_data
+      get :monthly_license_cost_data
     end
     resources :hotels do
       collection do

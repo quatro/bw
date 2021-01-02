@@ -8,7 +8,7 @@
           #{model.errors.full_messages.join(', ')}
 
       =f.input :booking_request_id, as: :hidden
-      =f.input :hotel_id, as: :select, collection: current_user.tenant.hotels
+      =f.input :hotel_id, as: :select, collection: current_user.tenant.hotels.order(:name)
       =f.input :rate
       =f.input :tax
       =f.input :confirmation_number

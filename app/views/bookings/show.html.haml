@@ -36,4 +36,6 @@
   .container-fluid
     .row
       .col-lg-6.col-6
-        =render 'application/showview', model: @model
+        =render 'application/showview', model: @model, show_edit: false, title: 'Booking'
+      .col-lg-6.col-6
+        =render 'application/showview', model: @model.booking_request, title: 'Booking Request'

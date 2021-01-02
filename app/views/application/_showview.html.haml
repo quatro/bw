@@ -1,11 +1,18 @@
+- show_edit = local_assigns[:show_edit].nil? ? true : show_edit
+- title = local_assigns[:title].nil? ? '' : title
+- show_header = [show_edit, !title.blank?].select{|a| a}.any?
 
 %section.content
   .container-fluid
     .row
       .col-lg-12
         .card
-          .card-header
-            =link_to "Edit", model.edit_path
+          - if show_header
+            .card-header
+              - if !title.blank?
+                %h2 #{title}
+              - if show_edit
+                =link_to "Edit", model.edit_path
           .card-body
             %ul.todo-list
               - model.show_map.each do |a|

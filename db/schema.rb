@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_135259) do
+ActiveRecord::Schema.define(version: 2021_01_02_184441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2021_01_01_135259) do
     t.decimal "tax", precision: 8, scale: 2
     t.decimal "total", precision: 8, scale: 2
     t.boolean "is_booked", default: false
+    t.decimal "license_fee"
+    t.integer "annual_booking_number"
     t.index ["assignee_id"], name: "index_bookings_on_assignee_id"
     t.index ["booking_request_id"], name: "index_bookings_on_booking_request_id"
     t.index ["client_id"], name: "index_bookings_on_client_id"

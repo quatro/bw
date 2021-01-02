@@ -36,6 +36,14 @@ module ApplicationHelper
     end
   end
 
+  def date_human(date)
+    unless date.nil?
+      date.strftime("%A, %B %d")
+    else
+      ""
+    end
+  end
+
   def datetime_nice(date)
     unless date.nil?
       date.strftime("%Y-%m-%d %H:%M %p")
