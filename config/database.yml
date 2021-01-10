@@ -80,10 +80,10 @@ test:
 #
 production:
   <<: *default
-    adapter: postgresql
-    encoding: unicode
-    database: <%= ENV['RDS_DB_NAME_OVERRIDE'] %>
-    username: <%= ENV['RDS_USERNAME'] %>
-    password: <%= ENV['RDS_PASSWORD'] %>
-    host: <%= ENV['RDS_HOSTNAME_OVERRIDE'] %>
-    port: <%= ENV['RDS_PORT'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['RDS_DB_NAME_OVERRIDE'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME_OVERRIDE'] %>
+  port: <%= ENV['RDS_PORT'] %>
