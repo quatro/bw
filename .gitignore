@@ -41,3 +41,5 @@ yarn-debug.log*
 !.elasticbeanstalk/*.global.yml
 
 dump.rdb
+
+.idea/
