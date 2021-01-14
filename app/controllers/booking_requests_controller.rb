@@ -4,7 +4,7 @@ class BookingRequestsController < ApplicationController
 
   def index; end
   def outstanding
-    @models = BookingRequest.outstanding_for_tenant(current_user.active_tenant).unassigned
+    @models = BookingRequest.outstanding_for_tenant(current_user.active_tenant).unassigned.order(id: :asc).limit(100)
   end
 
   def edit; end

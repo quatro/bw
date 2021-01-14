@@ -187,7 +187,16 @@
           stacked: true,
         }],
         yAxes: [{
-          stacked: true
+          stacked: true,
+          ticks: {
+            callback: function(label, index, labels) {
+              return '$'+label/1000+'k';
+            }
+          },
+          scaleLabel: {
+            display: true,
+            labelString: '1k = $1,000'
+          }
         }]
       }
     }
@@ -215,18 +224,27 @@
         // Get context with jQuery - using jQuery's .get() method.
         var chartCanvas = $('#licenseFeesChart')[0].getContext('2d')
 
-      var chartOptions = {
-        responsive              : true,
-        maintainAspectRatio     : false,
-        scales: {
-          xAxes: [{
-            stacked: true,
-          }],
-          yAxes: [{
-            stacked: true
-          }]
+        var chartOptions = {
+          responsive              : true,
+          maintainAspectRatio     : false,
+          scales: {
+            xAxes: [{
+              stacked: true,
+            }],
+            yAxes: [{
+              stacked: true,
+              ticks: {
+                callback: function(label, index, labels) {
+                  return '$'+label/1000+'k';
+                }
+              },
+              scaleLabel: {
+                display: true,
+                labelString: '1k = $1,000'
+              }
+            }]
+          }
         }
-      }
 
         // This will get the first returned node in the jQuery collection.
         var chart       = new Chart(chartCanvas, {

@@ -42,8 +42,8 @@ class TenantsController < ApplicationController
         labels: months,
         datasets: [
             {
-                label: 'Sales',
-                backgroundColor: 'rgba(60,141,188,0.9)',
+                label: 'License Fees',
+                backgroundColor: '#ff6384',
                 borderColor: 'rgba(60,141,188,0.8)',
                 pointRadius: false,
                 pointColor: '#3b8bba',

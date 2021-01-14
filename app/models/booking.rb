@@ -15,10 +15,46 @@ class Booking < ApplicationRecord
     "Booking for #{requestor.full_name} on #{date_nice(booking_request.date_from)}"
   end
 
-  def annual_booking_number
-    Booking.for_tenant(self.tenant).where("created_at >= ? AND created_at <= ? AND annual_booking_number IS NOT NULL", created_at.strftime("%Y-01-01"), created_at.strftime("%Y-12-31")).count + 1
+  # This method should be run nightly (for the current  year) to ensure all booking license data is updated properly
+  # Chris Walker
+  # 1/14/2021
+  def self.assign_booking_numbers_for_year(year, tenant)
+    date_from = Date.parse("#{year}-01-01")
+    date_to = Date.parse("#{year.to_i+1}-01-01")
+
+    license_fee_calculator = LicenseFeeCalculator.new
+
+    total = 1
+    Booking.for_tenant(tenant).where("created_at >= ? AND created_at < ?", date_from.strftime("%Y-01-01"), date_to.strftime("%Y-01-01")).order(id: :asc).each do |b|
+      b.update({
+        annual_booking_number: total,
+        license_fee_percentage: license_fee_calculator.percentage_rate(total)
+      })
+
+      b.reload
+
+      b.update({
+        license_fee: license_fee_calculator.calculate(b)
+      })
+
+      total += b.nights
+    end
   end
-  persistize :annual_booking_number
+
+  def nights
+    booking_request.try(:nights)
+  end
+
+  # def annual_booking_number
+  #   # created_at = DateTime.now if created_at.nil?
+  #   # Booking.for_tenant(self.tenant).where("created_at >= ? AND created_at <= ? AND annual_booking_number IS NOT NULL", created_at.strftime("%Y-01-01"), created_at.strftime("%Y-12-31")).count + 1
+  # end
+  # persistize :annual_booking_number
+
+  def license_fee_percentage
+    license_fee_calculator.percentage_rate(annual_booking_number)
+  end
+  persistize :license_fee_percentage
 
   def license_fee
     license_fee_calculator.calculate(self)
