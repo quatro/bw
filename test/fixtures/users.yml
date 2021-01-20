@@ -1,0 +1,15 @@
+chris:
+  first: Chris
+  last: Ken
+  is_super_user: false
+  email: chris@eag-web.com
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+  initials: CK
+
+super_chris:
+  first: Don
+  last: Walker
+  is_super_user: true
+  email: super_chris@eag-web.com
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+  initials: CW
