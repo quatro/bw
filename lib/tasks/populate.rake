@@ -101,7 +101,7 @@ namespace :db do
     end
 
     # Create a few requests
-    10000.times.each do |a|
+    100.times.each do |a|
       i = rand(0..city_states.length-1)
       i2 = rand(0..city_states.length-1)
       i3 = rand(0..city_states.length-1)
@@ -120,6 +120,16 @@ namespace :db do
         assignee = User.find_by_email(staff[rand(0..2)][2])
         br.update({assignee: assignee})
         hotel = Hotel.find_by_name(hotel[0])
+
+        Booking.create({
+          confirmation_number: confirmation_number,
+          booking_request: br,
+          client: user.client,
+          hotel: hotel,
+          assignee: assignee,
+          rate: hotel.rate,
+          tax: hotel.rate * 0.15
+        })
       end
     end
 

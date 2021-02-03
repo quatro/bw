@@ -1,7 +1,7 @@
 class BookingRequest < ApplicationRecord
   include ApplicationHelper
 
-  default_scope { order(created_at: :desc) }
+  default_scope { order(date_from: :desc) }
 
   audited
 

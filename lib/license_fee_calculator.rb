@@ -8,6 +8,8 @@ class LicenseFeeCalculator
   end
 
   def percentage_rate(annual_booking_number)
+    return 0 if annual_booking_number.nil?
+
     if annual_booking_number < 10000
       return 0.1
     elsif annual_booking_number < 20000

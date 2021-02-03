@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8372e9e-fb6a-4d18-b202-3e1a7a0cacee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/fixtures/users.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/booking-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/booking-web.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/booking.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/booking.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/booking_request.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/booking_request.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/license_fee_calculator.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/license_fee_calculator.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/populate.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/populate.rake" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -28,7 +27,7 @@
     <session id="927294658">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
@@ -37,14 +36,15 @@
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.4" value="2" />
+          <entry key="project.open.time.4" value="3" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Gemfile" value="13" />
+          <entry key="Gemfile" value="14" />
           <entry key="bak" value="1" />
           <entry key="css" value="8" />
           <entry key="envrc" value="3" />
@@ -56,8 +56,8 @@
           <entry key="lock" value="6" />
           <entry key="md" value="1" />
           <entry key="nvmrc" value="1" />
-          <entry key="rake" value="12" />
-          <entry key="rb" value="245" />
+          <entry key="rake" value="13" />
+          <entry key="rb" value="251" />
           <entry key="rspec" value="1" />
           <entry key="ruby-version" value="2" />
           <entry key="scss" value="3" />
@@ -74,7 +74,7 @@
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="25" />
           <entry key="RHTML" value="13" />
-          <entry key="Ruby" value="271" />
+          <entry key="Ruby" value="279" />
           <entry key="SCSS" value="3" />
           <entry key="YAML" value="14" />
           <entry key="yarn.lock" value="3" />
@@ -90,8 +90,8 @@
           <entry key="haml" value="11472" />
           <entry key="js" value="462" />
           <entry key="json" value="22" />
-          <entry key="rake" value="2392" />
-          <entry key="rb" value="14183" />
+          <entry key="rake" value="2626" />
+          <entry key="rb" value="14282" />
           <entry key="ruby-version" value="1" />
           <entry key="scss" value="9" />
           <entry key="yml" value="288" />
@@ -105,7 +105,7 @@
           <entry key="JavaScript" value="619" />
           <entry key="PLAIN_TEXT" value="255" />
           <entry key="RHTML" value="5" />
-          <entry key="Ruby" value="16725" />
+          <entry key="Ruby" value="17058" />
           <entry key="SCSS" value="9" />
           <entry key="YAML" value="288" />
         </counts>
@@ -115,70 +115,82 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/tenants_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="735">
               <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.rspec">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/rails_helper.rb">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.ruby-version">
+        <entry file="file://$USER_HOME$/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/rspec-core-3.10.1/lib/rspec/core/metadata.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" selection-end-line="1" />
+            <state relative-caret-position="291">
+              <caret line="142" column="12" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_helper.rb">
+        <entry file="file://$PROJECT_DIR$/test/fixtures/users.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+            <state relative-caret-position="210">
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/authentication_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/serializers/booking_request_serializer.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/booking_request.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="20" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/fixtures/users.yml">
+        <entry file="file://$PROJECT_DIR$/lib/tasks/populate.rake">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state relative-caret-position="715">
+              <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20210114142854_add_license_fee_percentage.rb">
+        <entry file="file://$PROJECT_DIR$/app/models/booking.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="71" selection-start-line="2" selection-start-column="71" selection-end-line="2" selection-end-column="71" />
+            <state relative-caret-position="275">
+              <caret line="63" column="15" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/license_fee_calculator.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -196,10 +208,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Staff</find>
-      <find>dashboard</find>
-      <find>My Queue</find>
-      <find>fontawesome</find>
       <find>Client</find>
       <find>section</find>
       <find>content_for</find>
@@ -224,8 +232,12 @@
       <find>rooms</find>
       <find>Secure</find>
       <find>created_at</find>
-      <find>is_booked</find>
       <find>rspec</find>
+      <find>requestor</find>
+      <find>rate</find>
+      <find>clients</find>
+      <find>client</find>
+      <find>is_booked</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -251,7 +263,6 @@
         <option value="$PROJECT_DIR$/app/views/booking_requests/book.html.haml" />
         <option value="$PROJECT_DIR$/app/views/hotels/_map.html.haml" />
         <option value="$PROJECT_DIR$/app/views/bookings/_form.html.haml" />
-        <option value="$PROJECT_DIR$/app/models/booking_request.rb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/app/views/application/_showview.html.haml" />
         <option value="$PROJECT_DIR$/app/views/bookings/show.html.haml" />
@@ -263,7 +274,6 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/adminlte.css" />
         <option value="$PROJECT_DIR$/app/views/application/_pageheader.html.haml" />
         <option value="$PROJECT_DIR$/db/migrate/20210102184441_add_license_fee_to_booking.rb" />
-        <option value="$PROJECT_DIR$/lib/license_fee_calculator.rb" />
         <option value="$PROJECT_DIR$/app/controllers/api/v1/authentication_controller.rb" />
         <option value="$PROJECT_DIR$/app/commands/authenticate_user.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20210105141839_make_confirmation_number_empty_string_by_default.rb" />
@@ -278,13 +288,15 @@
         <option value="$PROJECT_DIR$/config/initializers/google.rb" />
         <option value="$PROJECT_DIR$/app/controllers/booking_requests_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20210114142854_add_license_fee_percentage.rb" />
-        <option value="$PROJECT_DIR$/lib/tasks/populate.rake" />
-        <option value="$PROJECT_DIR$/app/models/booking.rb" />
         <option value="$PROJECT_DIR$/app/views/tenants/report.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/tenants_controller.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/test/test_helper.rb" />
         <option value="$PROJECT_DIR$/test/fixtures/users.yml" />
+        <option value="$PROJECT_DIR$/app/models/booking_request.rb" />
+        <option value="$PROJECT_DIR$/app/models/booking.rb" />
+        <option value="$PROJECT_DIR$/lib/license_fee_calculator.rb" />
+        <option value="$PROJECT_DIR$/lib/tasks/populate.rake" />
       </list>
     </option>
   </component>
@@ -309,7 +321,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="840" />
     <option name="y" value="23" />
     <option name="width" value="840" />
@@ -334,6 +346,44 @@
             <path>
               <item name="booking-web" type="b2602c69:ProjectViewProjectNode" />
               <item name="booking-web" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="booking-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="booking-web" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="booking-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="booking-web" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="booking-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="booking-web" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="booking-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="booking-web" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="booking-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="booking-web" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="serializers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="booking-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="booking-web" type="462c0819:PsiDirectoryNode" />
               <item name="spec" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -349,7 +399,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Gemfile&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/Gemfile&#10;tenants_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/tenants_controller.rb&#10;populate.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;popula&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;booking.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;20210114142854_add_license_fee_percentage.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20210114142854_add_license_fee_percentage.rb&#10;schema.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/schema.rb&#10;booking_requests_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;book&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;popul&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;google.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/initializers/google.rb&#10;google&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/initializers/google.rb&#10;application.js&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/javascript/packs/application.js&#10;secrets&#9;FILE&#9;file:///Users/chris.walker/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.4/lib/rails/secrets.rb&#10;database.yml&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/database.yml&#10;.giti&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/.gitignore&#10;webpack&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;20210105141839_make_confirmation_number_empty_string_by_default.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20210105141839_make_confirmation_number_empty_string_by_default.rb&#10;popu&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;booking&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;20210102184441_add_license_fee_to_booking.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20210102184441_add_license_fee_to_booking.rb&#10;routes.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/routes.rb&#10;populate&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;chart&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/assets/plugins/chart.js/Chart.js&#10;routes&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/routes.rb&#10;booking_req&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;hotel.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/hotel.rb&#10;hotels_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/hotels_controller.rb&#10;hotel.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/hotel.rb&#10;20210101135259_add_lat_lon_to_hotel.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20210101135259_add_lat_lon_to_hotel.rb&#10;booking_reques.&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;20201231224719_add_is_booked.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20201231224719_add_is_booked.rb&#10;booking_re&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;20201127041301_add_days_to_booking_request.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20201127041301_add_days_to_booking_request.rb&#10;user.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/user.rb&#10;users_c&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/api/v1/users_controller.rb&#10;user.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/user.rb&#10;applica&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/application.rb&#10;application.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/application.rb&#10;boo&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;clients&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/clients_controller.rb&#10;booking_request.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;clients_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/clients_controller.rb&#10;client.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/client.rb&#10;users_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/users_controller.rb&#10;application_hel&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;clien&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/client.rb&#10;bookings_c&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/bookings_controller.rb&#10;bookings_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/bookings_controller.rb&#10;booking_request_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb" />
+    <property name="SearchEverywhereHistoryKey" value="booking.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;popu&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;popull&#9;null&#9;null&#10;Gemfile&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/Gemfile&#10;populate&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;booking_re&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;tenants_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/tenants_controller.rb&#10;populate.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;popula&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;20210114142854_add_license_fee_percentage.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20210114142854_add_license_fee_percentage.rb&#10;schema.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/schema.rb&#10;booking_requests_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;book&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;popul&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/lib/tasks/populate.rake&#10;google.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/initializers/google.rb&#10;google&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/initializers/google.rb&#10;application.js&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/javascript/packs/application.js&#10;secrets&#9;FILE&#9;file:///Users/chris.walker/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.4/lib/rails/secrets.rb&#10;database.yml&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/database.yml&#10;.giti&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/.gitignore&#10;webpack&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/webpacker.yml&#10;20210105141839_make_confirmation_number_empty_string_by_default.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20210105141839_make_confirmation_number_empty_string_by_default.rb&#10;booking&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking.rb&#10;20210102184441_add_license_fee_to_booking.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20210102184441_add_license_fee_to_booking.rb&#10;routes.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/routes.rb&#10;chart&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/assets/plugins/chart.js/Chart.js&#10;routes&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/routes.rb&#10;booking_req&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;hotel.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/hotel.rb&#10;hotels_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/hotels_controller.rb&#10;hotel.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/hotel.rb&#10;20210101135259_add_lat_lon_to_hotel.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20210101135259_add_lat_lon_to_hotel.rb&#10;booking_reques.&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;20201231224719_add_is_booked.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20201231224719_add_is_booked.rb&#10;20201127041301_add_days_to_booking_request.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/db/migrate/20201127041301_add_days_to_booking_request.rb&#10;user.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/user.rb&#10;users_c&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/api/v1/users_controller.rb&#10;user.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/user.rb&#10;applica&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/application.rb&#10;application.rb&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/config/application.rb&#10;boo&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/booking_requests_controller.rb&#10;clients&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/clients_controller.rb&#10;booking_request.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/booking_request.rb&#10;clients_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/clients_controller.rb&#10;client.r&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/client.rb&#10;users_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/users_controller.rb&#10;application_hel&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/helpers/application_helper.rb&#10;clien&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/models/client.rb&#10;bookings_c&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/bookings_controller.rb&#10;bookings_con&#9;FILE&#9;file:///Users/chris.walker/RubymineProjects/booking-web/app/controllers/bookings_controller.rb" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -501,18 +551,20 @@
       <workItem from="1610371398125" duration="4236000" />
       <workItem from="1610553176858" duration="8853000" />
       <workItem from="1611024061242" duration="38000" />
-      <workItem from="1611169128604" duration="1879000" />
+      <workItem from="1611169128604" duration="2227000" />
+      <workItem from="1611245226986" duration="675000" />
+      <workItem from="1611756964301" duration="3695000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132107000" />
+    <option name="totallyTimeSpent" value="136825000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="840" y="23" width="840" height="1027" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.5877193" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3009768" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -541,12 +593,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/test.html.haml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/dashboard.html.haml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/plugins/chart.js/Chart.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
@@ -632,13 +678,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/webpack/environment.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/authentication_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/commands/authenticate_user.rb">
       <provider selected="true" editor-type-id="text-editor">
@@ -755,38 +794,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/license_fee_calculator.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/populate.rake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="122" selection-start-line="122" selection-end-line="122" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/booking_requests_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="105" selection-start-line="6" selection-start-column="105" selection-end-line="6" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/booking_request.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/booking.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -804,6 +815,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.rspec">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/rails_helper.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.ruby-version">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20210114142854_add_license_fee_percentage.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -818,40 +852,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.ruby-version">
+    <entry file="file://$PROJECT_DIR$/test/fixtures/users.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-end-line="1" />
+        <state relative-caret-position="210">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/authentication_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/serializers/booking_request_serializer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
+        <state relative-caret-position="735">
           <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.rspec">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/rails_helper.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_helper.rb">
+    <entry file="file://$USER_HOME$/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/rspec-core-3.10.1/lib/rspec/core/metadata.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+        <state relative-caret-position="291">
+          <caret line="142" column="12" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/users.yml">
+    <entry file="file://$PROJECT_DIR$/lib/license_fee_calculator.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/booking_request.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/booking.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="63" column="15" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tasks/populate.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="715">
+          <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
         </state>
       </provider>
     </entry>

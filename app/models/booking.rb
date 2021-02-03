@@ -87,7 +87,7 @@ class Booking < ApplicationRecord
   persistize :client_id
 
   def total
-    rate + tax
+    rate.present? && tax.present? ? rate + tax : 0
   end
   persistize :total
 
