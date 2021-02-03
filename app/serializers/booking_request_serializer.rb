@@ -1,6 +1,6 @@
 class BookingRequestSerializer < ActiveModel::Serializer
 
-  attributes :id, :date_from, :date_to, :city, :state, :zip, :reason, :job_identifier, :created_at, :location_formatted, :nights, :nights_formatted, :date_from_formatted, :booking,
+  attributes :id, :date_from, :date_to, :city, :state, :zip, :reason, :job_identifier, :created_at, :location_formatted, :nights, :nights_formatted, :date_from_formatted, :is_booked, :booking,
 
   def booking
     BookingSerializer.new(object.booking) if object.booking.present?
@@ -17,5 +17,9 @@ class BookingRequestSerializer < ActiveModel::Serializer
 
   def location_formatted
     [object.city, object.state].join(', ')
+  end
+
+  def is_booked
+    object.is_booked?
   end
 end
