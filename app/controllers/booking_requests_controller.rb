@@ -3,11 +3,26 @@ class BookingRequestsController < ApplicationController
   before_action :set_model
 
   def index; end
+
+  def new
+    @model = BookingRequest.new({tenant_id: current_user.active_tenant.try(:id)})
+  end
+
   def outstanding
     @models = BookingRequest.outstanding_for_tenant(current_user.active_tenant).unassigned.order(id: :asc).limit(100)
   end
 
   def edit; end
+
+  def create
+    @model = BookingRequest.new(booking_request_params)
+
+    if @model.save
+      redirect_to book_booking_request_path(@model)
+    else
+      render "new"
+    end
+  end
 
   def update
     if @model.update(booking_request_params)
@@ -40,6 +55,6 @@ class BookingRequestsController < ApplicationController
   end
 
   def booking_request_params
-    params.require(:booking_request).permit(:date_from, :date_to, :city, :state, :zip, :reason, :job_identifier)
+    params.require(:booking_request).permit(:tenant_id, :requestor_id, :client_id, :date_from, :date_to, :city, :state, :zip, :reason, :job_identifier)
   end
 end

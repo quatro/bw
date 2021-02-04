@@ -6,13 +6,21 @@
         .alert.alert-danger
           #{model.errors.full_messages.join(', ')}
 
-      =f.input :tenant, as: :hidden
-      =f.input :requestor, as: :hidden
-      =f.input :client, as: :hidden
+
+      =f.input :tenant_id, as: :hidden
+
+      - if model.new_record?
+        =f.input :client_id, as: :select, collection: current_user.active_tenant.clients, include_blank: false
+        =f.input :requestor_id, as: :select, collection: []
+
+      - else
+        =f.input :requestor_id, as: :hidden
+        =f.input :client_id, as: :hidden
+
       =f.input :date_from, as: :string, input_html:{class:'datepicker'}
       =f.input :date_to, as: :string, input_html:{class:'datepicker'}
       =f.input :city
-      =f.input :state
+      =f.input :state, collection: states
       =f.input :zip
       =f.input :reason
       =f.input :job_identifier
@@ -23,9 +31,38 @@
 
 
 :javascript
+
+
+  function refresh_user_list() {
+
+    // Identify users for the client
+    $.ajax({
+      url: "#{client_users_users_path}",
+      data: {
+        client_id: $('#booking_request_client_id').val()
+      },
+      success: function(data) {
+
+        html = '';
+
+        $.each(data, function(item,i){
+          html += "<option value='" + i.id + "'>" + i.email + "</option>";
+        });
+
+        $('#booking_request_requestor_id').html(html);
+      }
+    });
+  }
+
   var ready = function() {
   $('.datepicker').datepicker({
     dateFormat:"yy-mm-dd"
+    });
+
+    refresh_user_list();
+
+    $('#booking_request_client_id').on('change', function(e){
+      refresh_user_list();
     });
   }
 

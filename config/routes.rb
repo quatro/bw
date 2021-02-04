@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     collection do
       get :staff
       post :create_staff
+      get :client_users
     end
 
     member do

@@ -18,6 +18,12 @@ class UsersController < ApplicationController
 
   end
 
+  def client_users
+    client = Client.where(id: params[:client_id]).first if params[:client_id]
+
+    render json: client.present? ? client.try(:users) : []
+  end
+
   def new
     @model = User.new({tenant_id: params[:tenant_id], client_id: params[:client_id]})
   end
