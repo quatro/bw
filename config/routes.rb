@@ -58,6 +58,13 @@ Rails.application.routes.draw do
   resources :bookings do
     collection do
       get :completed
+      get :list_cancelled
+      get :list_no_show
+    end
+
+    member do
+      post :cancel
+      post :no_show
     end
   end
 

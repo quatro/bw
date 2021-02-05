@@ -20,7 +20,7 @@
         %td
           =link_to br.client_formatted, tenant_client_path(current_user.active_tenant, br.client)
         %td
-          =link_to br.assignee.full_name, user_path(br.assignee)
+          =link_to br.assignee.try(:full_name), user_path(br.assignee)
         %td
           =link_to datetime_nice(booking.created_at), booking_path(booking)
         %td

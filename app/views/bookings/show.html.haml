@@ -36,6 +36,18 @@
   .container-fluid
     .row
       .col-lg-6.col-6
+        - if @model.is_cancelled
+          .alert.alert-danger
+            Cancelled
+        -if @model.is_no_show
+          .alert.alert-danger
+            No Show
+
         =render 'application/showview', model: @model, show_edit: false, title: 'Booking'
+
+        - if @model.can_cancel
+          =link_to 'Cancel', cancel_booking_path(@model), method: :post, class:'btn btn-danger'
+        - if @model.can_no_show
+          =link_to 'Assign as No Show', no_show_booking_path(@model), method: :post, class:'btn btn-danger'
       .col-lg-6.col-6
         =render 'application/showview', model: @model.booking_request, title: 'Booking Request'

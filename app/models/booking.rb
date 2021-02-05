@@ -7,9 +7,13 @@ class Booking < ApplicationRecord
   belongs_to :requestor, class_name: 'User', foreign_key: 'requestor_id', optional: true
   belongs_to :assignee, class_name: 'User', foreign_key: 'assignee_id', optional: true
   belongs_to :hotel
+  belongs_to :cancelled_by_user, class_name: 'User', foreign_key: 'cancelled_by_user_id', optional: true
 
   scope :for_tenant,      ->(tenant) { where(tenant: tenant).order(:created_at) }
   scope :last_months,     ->(months_count) { where("created_at >= ?", months_count.months.ago)}
+  scope :completed,       -> { where(is_cancelled: false, is_no_show: false)}
+  scope :cancelled,       -> { where(is_cancelled: true, is_no_show: false)}
+  scope :no_show,         -> { where(is_cancelled: false, is_no_show: true)}
 
   def title
     "Booking for #{requestor.full_name} on #{date_nice(booking_request.date_from)}"
@@ -96,14 +100,34 @@ class Booking < ApplicationRecord
     Rails.application.routes.url_helpers.edit_booking_path(self)
   end
 
+  def cancel
+    self.update({is_cancelled: true})
+  end
+
+  def no_show
+    self.update({is_no_show: true})
+  end
+
 
   def show_map
-    [
+    vals = [
         ["total", "Total", Proc.new {|val| val}],
         ["tax", "Tax", Proc.new {|val| val}],
         ["hotel_id", "Hotel", Proc.new {|val| Hotel.find(val).try(:name)}],
         ["confirmation_number", "Confirmation #", Proc.new {|val| val}]
     ]
+
+    # vals << ["is_cancelled", "Cancelled?", Proc.new{|val| "Yes"}] if is_cancelled
+
+    vals
+  end
+
+  def can_cancel
+    !is_cancelled && !is_no_show
+  end
+
+  def can_no_show
+    !is_cancelled && !is_no_show
   end
 
   def denormalize

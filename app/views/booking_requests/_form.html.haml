@@ -8,6 +8,7 @@
 
 
       =f.input :tenant_id, as: :hidden
+      =f.input :assignee_id, as: :hidden
 
       - if model.new_record?
         =f.input :client_id, as: :select, collection: current_user.active_tenant.clients, include_blank: false

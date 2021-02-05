@@ -84,8 +84,22 @@
               %a.nav-link{href: completed_bookings_path}
                 %i.nav-icon.fas.fa-check
                 %p
-                  Completed
+                  Booked
                   %span.right.badge.badge-success #{completed_booking_count(current_user.active_tenant)}
+
+            %li.nav-item
+              %a.nav-link{href: list_cancelled_bookings_path}
+                %i.nav-icon.fas.fa-times
+                %p
+                  Cancelled
+                  %span.right.badge.badge-warning #{cancelled_booking_count(current_user.active_tenant)}
+
+            %li.nav-item
+              %a.nav-link{href: list_no_show_bookings_path}
+                %i.nav-icon.fas.fa-user-slash
+                %p
+                  No Show
+                  %span.right.badge.badge-warning #{no_show_booking_count(current_user.active_tenant)}
 
 
             %li.nav-header #{[current_user.active_tenant.try(:name), 'ADMIN'].join(' ')}

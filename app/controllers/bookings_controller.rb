@@ -6,7 +6,17 @@ class BookingsController < ApplicationController
   def index; end
 
   def completed
-    @q = Booking.ransack(params[:q])
+    @q = Booking.for_tenant(current_user.active_tenant).completed.ransack(params[:q])
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page]).to_a.uniq
+  end
+
+  def list_cancelled
+    @q = Booking.for_tenant(current_user.active_tenant).cancelled.ransack(params[:q])
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page]).to_a.uniq
+  end
+
+  def list_no_show
+    @q = Booking.for_tenant(current_user.active_tenant).no_show.ransack(params[:q])
     @models = @q.result(distinct: true).includes(:booking_request).page(params[:page]).to_a.uniq
   end
 
@@ -24,12 +34,30 @@ class BookingsController < ApplicationController
 
   end
 
+  def cancel
+    if @model.cancel
+      redirect_to @model, notice: 'Successfully cancelled this booking'
+    else
+      flash[:alert] = "Unable to cancel this booking: #{@model.errors.full_messages}"
+      redirect_to_back
+    end
+  end
+
+  def no_show
+    if @model.no_show
+      redirect_to @model, notice: 'Successfully set this booking as a no-show'
+    else
+      flash[:alert] = "Unable to set this booking as a no-show: #{@model.errors.full_messages}"
+      redirect_to_back
+    end
+  end
+
   private
   def set_model
     @model = Booking.where(id: params[:id]).first if params[:id]
   end
 
   def booking_params
-    params.require(:booking).permit(:rate, :tax, :hotel_id, :booking_request_id, :requestor_id, :client_id, :assignee_id)
+    params.require(:booking).permit(:rate, :tax, :assignee_id, :hotel_id, :booking_request_id, :requestor_id, :client_id, :assignee_id)
   end
 end

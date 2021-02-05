@@ -8,8 +8,16 @@ module ApplicationHelper
     human_number(BookingRequest.outstanding_for_tenant(tenant).unassigned.count)
   end
 
+  def no_show_booking_count(tenant)
+    human_number(Booking.for_tenant(tenant).no_show.count)
+  end
+
+  def cancelled_booking_count(tenant)
+    human_number(Booking.for_tenant(tenant).cancelled.count)
+  end
+
   def completed_booking_count(tenant)
-    human_number(Booking.for_tenant(tenant).count)
+    human_number(Booking.for_tenant(tenant).completed.count)
   end
 
   def tenant_hotel_count(tenant)
