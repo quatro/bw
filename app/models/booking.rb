@@ -29,7 +29,7 @@ class Booking < ApplicationRecord
     license_fee_calculator = LicenseFeeCalculator.new
 
     total = 1
-    Booking.for_tenant(tenant).where("created_at >= ? AND created_at < ?", date_from.strftime("%Y-01-01"), date_to.strftime("%Y-01-01")).order(id: :asc).each do |b|
+    Booking.for_tenant(tenant).completed.where("created_at >= ? AND created_at < ?", date_from.strftime("%Y-01-01"), date_to.strftime("%Y-01-01")).order(id: :asc).each do |b|
       b.update({
         annual_booking_number: total,
         license_fee_percentage: license_fee_calculator.percentage_rate(total)

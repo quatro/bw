@@ -7,7 +7,7 @@ class TenantsController < ApplicationController
   def monthly_sales_data
     months_count = 12
 
-    bookings_by_month = Booking.for_tenant(current_user.active_tenant).last_months(months_count).order(:created_at).group_by { |a| a.created_at.beginning_of_month }
+    bookings_by_month = Booking.for_tenant(current_user.active_tenant).completed.last_months(months_count).order(:created_at).group_by { |a| a.created_at.beginning_of_month }
 
     # Last months_count of months
     months = months_count.times.map{|a| a.months.ago.strftime("%b %y")}.reverse
@@ -33,7 +33,7 @@ class TenantsController < ApplicationController
   def monthly_license_cost_data
     months_count = 12
 
-    bookings_by_month = Booking.for_tenant(current_user.active_tenant).last_months(months_count).order(:created_at).group_by { |a| a.created_at.beginning_of_month }
+    bookings_by_month = Booking.for_tenant(current_user.active_tenant).completed.last_months(months_count).order(:created_at).group_by { |a| a.created_at.beginning_of_month }
 
     # Last months_count of months
     months = months_count.times.map{|a| a.months.ago.strftime("%b %y")}.reverse
