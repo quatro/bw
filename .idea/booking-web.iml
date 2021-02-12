@@ -68,7 +68,7 @@
     <orderEntry type="library" scope="PROVIDED" name="haml (v5.2.0, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="haml-rails (v2.0.1, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hashie (v3.6.0, rbenv: 2.6.6) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="honeybadger (v2.7.2, rbenv: 2.6.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="honeybadger (v4.7.2, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="html2haml (v2.2.0, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="httparty (v0.18.1, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="httpclient (v2.8.3, rbenv: 2.6.6) [gem]" level="application" />
@@ -98,7 +98,7 @@
     <orderEntry type="library" scope="PROVIDED" name="pg (v1.2.3, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyamorous (v2.3.2, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v4.0.6, rbenv: 2.6.6) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="puma (v5.2.1, rbenv: 2.6.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="puma (v5.2.0, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v2.2.3, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-mini-profiler (v2.1.0, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-proxy (v0.6.5, rbenv: 2.6.6) [gem]" level="application" />

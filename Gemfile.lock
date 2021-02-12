@@ -132,7 +132,7 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 5.1)
     hashie (3.6.0)
-    honeybadger (2.7.2)
+    honeybadger (4.7.3)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -329,7 +329,7 @@ DEPENDENCIES
   factory_bot_rails
   google-maps
   haml-rails
-  honeybadger (~> 2.0)
+  honeybadger (~> 4.0)
   html2haml
   httparty
   jbuilder (~> 2.7)

@@ -63,6 +63,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  def render_error(status, exception)
+    respond_to do |format|
+      format.html { render template: "errors/error_#{status}", layout: 'layouts/application', status: status }
+      format.all { render nothing: true, status: status }
+    end
+  end
+
   def redirect_to_back(opts={})
     redirect_back(fallback_location: fallback_location)
   end
