@@ -23,10 +23,13 @@ namespace :db do
 
     itg = Tenant.create({name: 'ITG'})
 
+    # clients = [
+    #     ["Elliott"],
+    #     ["Another Client"],
+    #     ["Pike Energy"],
+    # ]
     clients = [
-        ["Elliott"],
-        ["Another Client"],
-        ["Pike Energy"],
+        ["Elliott"]
     ]
 
     hotels = [
@@ -87,7 +90,7 @@ namespace :db do
     users.each do |u|
       user_email = u[2]
       user = User.find_by_email(user_email)
-      User.create({first: u[0], last: u[1], email: user_email, password:'123123123', password_confirmation: '123123123', client: Client.find_by_name(clients[rand(0..2)])}) if user.nil?
+      User.create({first: u[0], last: u[1], email: user_email, password:'123123123', password_confirmation: '123123123', client: Client.find_by_name(clients[rand(0..clients.length-1)])}) if user.nil?
     end
 
     staff.each do |u|

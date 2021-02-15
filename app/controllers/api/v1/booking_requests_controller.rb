@@ -2,7 +2,7 @@ class Api::V1::BookingRequestsController < Api::ApplicationController
 
   def create
 
-    hash = params.permit(:date_from, :to_date, :city, :state, :reason, :zip, :job_identifier).to_hash
+    hash = params.permit(:date_from, :date_to, :city, :state, :reason, :zip, :job_identifier).to_hash
     @model = BookingRequest.new(hash)
     @model.requestor = @current_api_user
     @model.client = @current_api_user.client

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       # get :bookings, param: :user_id
       get :user, to: 'users#show'
       post :booking_request, to: 'booking_requests#create'
+      post :cancel_booking, to: 'bookings#cancel'
     end
   end
 
