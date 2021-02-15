@@ -34,6 +34,15 @@ class BookingsController < ApplicationController
 
   end
 
+  def resend_email
+
+    # TODO - send email
+    @model.send_confirmation_email
+
+    flash[:info] = "Successfully re-sent email"
+    redirect_to_back
+  end
+
   def cancel
     if @model.cancel
       redirect_to @model, notice: 'Successfully cancelled this booking'

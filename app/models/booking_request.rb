@@ -9,7 +9,7 @@ class BookingRequest < ApplicationRecord
   belongs_to :client
   belongs_to :requestor, class_name: 'User', foreign_key: 'requestor_id'
   belongs_to :assignee, class_name: 'User', foreign_key: 'assignee_id', optional: true
-  has_one :booking
+  has_one :booking, dependent: :destroy
 
   scope :outstanding,    -> { joins("LEFT OUTER JOIN bookings on bookings.booking_request_id = booking_requests.id").where("bookings.id IS NULL AND (bookings.is_booked IS NULL OR bookings.is_booked = false)") }
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
@@ -60,6 +60,11 @@ class BookingRequest < ApplicationRecord
     Rails.application.routes.url_helpers.edit_booking_request_path(self)
   end
 
+  def requestor_name
+    requestor.present? ? requestor.try(:full_name) : attributes[:requestor_name]
+  end
+  persistize :requestor_name
+
   def show_map
     [
         ["location_formatted", "Location", Proc.new{|val| val}],
@@ -71,5 +76,11 @@ class BookingRequest < ApplicationRecord
         ["reason", "Reason", Proc.new {|val| val}],
         ["job_identifier", "Job Identifier", Proc.new {|val| val}],
     ]
+  end
+
+
+  def denormalize
+    self.requestor_name_will_change!
+    save
   end
 end

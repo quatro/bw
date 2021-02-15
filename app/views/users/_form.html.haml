@@ -7,7 +7,8 @@
         .alert.alert-danger
           #{model.errors.full_messages.join(', ')}
 
-      =f.input :tenant, as: :hidden
+      =f.input :tenant_id, as: :hidden
+      =f.input :client_id, as: :hidden
       =f.input :first
       =f.input :last
       =f.input :email

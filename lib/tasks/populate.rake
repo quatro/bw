@@ -21,7 +21,7 @@ namespace :db do
       end
     end
 
-    itg = Tenant.create({name: 'ITG'})
+    itg = Tenant.create({name: 'ITG', from_email: 'ch.walker@gmail.com'})
 
     # clients = [
     #     ["Elliott"],

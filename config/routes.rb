@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       get :staff
       post :create_staff
       get :client_users
+      get :new_staff
+      get :new_client_user
     end
 
     member do
@@ -66,6 +68,7 @@ Rails.application.routes.draw do
     member do
       post :cancel
       post :no_show
+      post :resend_email
     end
   end
 

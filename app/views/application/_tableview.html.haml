@@ -3,8 +3,9 @@
 - has_filter = local_assigns[:has_filter].nil? ? false : has_filter
 - new_link = local_assigns[:new_link].nil? ? nil : new_link
 - should_display_new_link = new_link.present?
+- should_show_breadcrumbs = local_assigns[:should_show_breadcrumbs].nil? ? true : should_show_breadcrumbs
 
-=render 'application/pageheader', title: title
+=render 'application/pageheader', title: title, should_show_breadcrumbs: should_show_breadcrumbs
 
 %section.content
   .container-fluid
@@ -14,7 +15,7 @@
           - if should_display_new_link
             =link_to "New", new_link, class:'btn btn-success'
             %hr
-          =render list_partial, models: @models
+          =render list_partial, models: models
 
         .col-lg-4
           =render filter_partial, q: @q
@@ -24,7 +25,7 @@
           - if should_display_new_link
             =link_to "New", new_link, class:'btn btn-success'
             %hr
-          =render list_partial, models: @models
+          =render list_partial, models: models
 
 
 

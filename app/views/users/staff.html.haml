@@ -1,2 +1,2 @@
 
-=render 'application/tableview', title: "Staff", key: :users, new_link: new_user_path({tenant_id: current_user.active_tenant.try(:id)})
+=render 'application/tableview', models: @models, title: "Staff", key: :users, new_link: new_staff_users_path
