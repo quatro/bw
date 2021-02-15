@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sed -E -n 's/[^#]+/export &/ p' /opt/elasticbeanstalk/deployment/custom_env_var
+
+#see ../.platform/hooks/postdeploy/01_set_env.sh 
+#    ../.platform/confighooks/postdeploy/01_set_env.sh
+#
+#  capture the output of this script and execute it by surrounding
+#  the invocation with tic marks:
+#
+#  $ `./env-eval-my-output`
