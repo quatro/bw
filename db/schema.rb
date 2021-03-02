@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_195931) do
+ActiveRecord::Schema.define(version: 2021_03_02_210625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_02_15_195931) do
     t.bigint "client_id"
     t.integer "nights"
     t.string "requestor_name"
+    t.string "address"
     t.index ["assignee_id"], name: "index_booking_requests_on_assignee_id"
     t.index ["client_id"], name: "index_booking_requests_on_client_id"
     t.index ["requestor_id"], name: "index_booking_requests_on_requestor_id"
@@ -108,6 +109,9 @@ ActiveRecord::Schema.define(version: 2021_02_15_195931) do
     t.decimal "rate", precision: 8, scale: 2
     t.string "lat"
     t.string "lng"
+    t.string "phone_number"
+    t.date "contract_start_date"
+    t.date "contract_end_date"
     t.index ["tenant_id"], name: "index_hotels_on_tenant_id"
   end
 
@@ -140,6 +144,7 @@ ActiveRecord::Schema.define(version: 2021_02_15_195931) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tenant_id"
     t.bigint "client_id"
+    t.boolean "is_foreman"
     t.index ["client_id"], name: "index_users_on_client_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
