@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_210625) do
+ActiveRecord::Schema.define(version: 2021_03_02_212804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 2021_03_02_210625) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
+  create_table "booking_request_rooms", force: :cascade do |t|
+    t.integer "booking_request_id"
+    t.integer "guest1_id"
+    t.integer "gues2_id"
+  end
+
   create_table "booking_requests", force: :cascade do |t|
     t.bigint "tenant_id"
     t.bigint "requestor_id"
@@ -54,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_210625) do
     t.integer "nights"
     t.string "requestor_name"
     t.string "address"
+    t.integer "number_of_rooms"
     t.index ["assignee_id"], name: "index_booking_requests_on_assignee_id"
     t.index ["client_id"], name: "index_booking_requests_on_client_id"
     t.index ["requestor_id"], name: "index_booking_requests_on_requestor_id"
