@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_212804) do
+ActiveRecord::Schema.define(version: 2021_03_02_213403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_212804) do
     t.string "requestor_name"
     t.string "address"
     t.integer "number_of_rooms"
+    t.integer "customer_id"
     t.index ["assignee_id"], name: "index_booking_requests_on_assignee_id"
     t.index ["client_id"], name: "index_booking_requests_on_client_id"
     t.index ["requestor_id"], name: "index_booking_requests_on_requestor_id"
@@ -102,6 +103,11 @@ ActiveRecord::Schema.define(version: 2021_03_02_212804) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tenant_id"], name: "index_clients_on_tenant_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.integer "client_id"
   end
 
   create_table "hotels", force: :cascade do |t|
