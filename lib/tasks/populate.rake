@@ -95,7 +95,7 @@ namespace :db do
     # customers.each do |c|
     #   Customer.create({c[0], client: Client.find_by_name('Elliott')})
     # end
-    Customer.create({name: 'Test Customer 1', client: Client.find_by_name('Elliot')})
+    Customer.create({name: 'Test Customer 1', client: Client.find_by_name('Elliott')})
 
 
     users.each do |u|

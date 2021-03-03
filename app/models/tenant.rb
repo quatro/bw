@@ -15,4 +15,13 @@ class Tenant < ApplicationRecord
     Client.first
   end
 
+  def customers
+    Client.first.customers
+  end
+
+  def customer_names
+    customers.map {|customer| customer.name }
+    # array.map { |string| string.upcase }
+  end
+
 end
