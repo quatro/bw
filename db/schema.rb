@@ -107,7 +107,10 @@ ActiveRecord::Schema.define(version: 2021_03_02_213403) do
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
-    t.integer "client_id"
+    t.bigint "client_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_customers_on_client_id"
   end
 
   create_table "hotels", force: :cascade do |t|

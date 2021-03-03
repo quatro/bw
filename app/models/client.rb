@@ -4,6 +4,7 @@ class Client < ApplicationRecord
   has_many :booking_requests, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :users, dependent: :destroy
+  has_many :customers, dependent: :destroy
 
   scope :for_tenant,      ->(tenant) { where(tenant: tenant) }
 

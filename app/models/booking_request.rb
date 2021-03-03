@@ -7,6 +7,7 @@ class BookingRequest < ApplicationRecord
 
   belongs_to :tenant
   belongs_to :client
+  belongs_to :customer
   belongs_to :requestor, class_name: 'User', foreign_key: 'requestor_id'
   belongs_to :assignee, class_name: 'User', foreign_key: 'assignee_id', optional: true
   has_one :booking, dependent: :destroy
@@ -14,6 +15,7 @@ class BookingRequest < ApplicationRecord
   scope :outstanding,    -> { joins("LEFT OUTER JOIN bookings on bookings.booking_request_id = booking_requests.id").where("bookings.id IS NULL AND (bookings.is_booked IS NULL OR bookings.is_booked = false)") }
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
   scope :unassigned, -> { where(assignee: nil) }
+  # scope :foreman, 
 
   def nights
     date_to.to_date - date_from.to_date if date_from.present? && date_to.present?

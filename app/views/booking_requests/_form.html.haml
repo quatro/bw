@@ -22,9 +22,12 @@
       =f.input :date_to, as: :string, input_html:{class:'datepicker'}
       =f.input :city
       =f.input :state, collection: states
-      =f.input :zip
-      =f.input :reason
+      -# =f.input :zip
+      =f.input :address
+      =f.input :reason, collection: ['Regular', 'Storm']
       =f.input :job_identifier
+      =f.input :number_of_rooms
+      =f.input :customer_id, collection: current_user.active_tenant.customers
 
   .row.mb-2
     .col-sm-6
