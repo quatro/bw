@@ -27,7 +27,7 @@
       =f.input :reason, collection: ['Regular', 'Storm']
       =f.input :job_identifier
       =f.input :number_of_rooms
-      =f.input :customer_id, collection: current_user.active_tenant.customer_names
+      =f.input :customer_id, collection: current_user.active_tenant.customer_names.concat(['New Customer']), include_blank: false
       -# =f.input :customer_id, collection: current_user.customers
       -# =f.input :customer_id, collection: [current_user.active_tenant.clients.first.customers.name]
 
