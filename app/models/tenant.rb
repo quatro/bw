@@ -6,4 +6,13 @@ class Tenant < ApplicationRecord
   has_many :hotels
   has_many :clients
 
+
+  # def active_client
+  #   is_super_user? ? Client.first : client
+  # end
+
+  def first_client
+    Client.first
+  end
+
 end

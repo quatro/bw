@@ -110,10 +110,15 @@ namespace :db do
       User.create({first: u[0], last: u[1], email: user_email, password:'123123123', password_confirmation: '123123123', tenant: itg, confirmed_at: DateTime.now}) if user.nil?
     end
 
+    grace = User.find_by_email('grace@gmail.com')
+    grace.is_foreman = true
+    grace.save
+
     chris = User.find_by_email('ch.walker@gmail.com')
     chris.is_foreman = true
+    chris.client_id = grace.client_id
     chris.save
-    
+
 
     # User.create({first: u[0], last: u[1], email: user_email, password:'123123123', password_confirmation: '123123123', tenant: itg, confirmed_at: DateTime.now}) if user.nil?
     hotels.each do |h|

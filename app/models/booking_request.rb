@@ -17,6 +17,7 @@ class BookingRequest < ApplicationRecord
   scope :unassigned, -> { where(assignee: nil) }
   # scope :foreman, 
 
+  
   def nights
     date_to.to_date - date_from.to_date if date_from.present? && date_to.present?
   end
