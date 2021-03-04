@@ -17,11 +17,12 @@ class BookingRequestsController < ApplicationController
   def create
     @model = BookingRequest.new(booking_request_params)
 
-    if @model.save
-      redirect_to book_booking_request_path(@model)
-    else
-      render "new"
-    end
+    byebug
+    # if @model.save
+    #   redirect_to book_booking_request_path(@model)
+    # else
+    #   render "new"
+    # end
   end
 
   def update
