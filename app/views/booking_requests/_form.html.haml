@@ -25,11 +25,12 @@
       =f.input :state, collection: states
       -# =f.input :zip
       =f.input :address
-      =f.input :reason, collection: ['Regular', 'Storm']
+      =f.input :reason, collection: ['Regular', 'Storm'], include_blank: false
       =f.input :job_identifier
       =f.input :number_of_rooms
-      =f.input :customer_id, as: :select, collection: current_user.active_tenant.customer_names.concat(['New Customer']), include_blank: false
+      -# =f.input :customer_id, as: :select, collection: current_user.active_tenant.customer_names.concat(['New Customer']), include_blank: false
       -# =f.input :customer_id, as: :select, collection: current_user.active_tenant.clients
+      =f.input :customer_id, as: :select, collection: current_user.active_tenant.customers.concat([Customer.new({name: 'New Customer', client: Client.find_by_name('Elliott')})]), include_blank: false
       =f.input :new_customer_name
       -# =f.input :customer_id, collection: current_user.customers
       -# =f.input :customer_id, collection: [current_user.active_tenant.clients.first.customers.name]

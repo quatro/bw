@@ -21,11 +21,11 @@ class BookingRequestsController < ApplicationController
     @cust_id = @model.customer_id
 
     byebug
-    # if @model.save
-    #   redirect_to book_booking_request_path(@model)
-    # else
-    #   render "new"
-    # end
+    if @model.save
+      redirect_to book_booking_request_path(@model)
+    else
+      render "new"
+    end
   end
 
   def update

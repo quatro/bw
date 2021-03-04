@@ -24,24 +24,24 @@ class BookingRequest < ApplicationRecord
   persistize :nights
 
   def customer_id
-    byebug
-    cust_id = self.attributes[:customer_id]
-    new_name = self.attributes[:new_customer_name]
+    # byebug
+    cust_id = self.attributes["customer_id"]
+    new_name = self.attributes["new_customer_name"]
+    id_cust = Customer.find_by_id(cust_id)
     name_cust = Customer.find_by_name(new_name)
-    id_cust = Customer.find_by_name(cust_id)
 
-    byebug
+    # byebug
     if id_cust.present?
-      byebug
+      # byebug
       return id_cust.id
     elsif name_cust.present?
       return name_cust.id
     elsif new_name.present?
-      byebug
-      new_cust = Cutomer.create({name: self.attributes[:new_customer_name], client_id: 39})
+      # byebug
+      new_cust = Cutomer.create({name: new_name, client_id: 39})
       return new_cust.id
     else
-      byebug
+      # byebug
       return nil
     end
   end
@@ -102,6 +102,7 @@ class BookingRequest < ApplicationRecord
         # ["state", "State", Proc.new {|val| val}],
         ["reason", "Reason", Proc.new {|val| val}],
         ["job_identifier", "Job Identifier", Proc.new {|val| val}],
+        ["customer_id", "Customer", Proc.new{|val| Customer.find_by_id(val).name}]
     ]
   end
 
