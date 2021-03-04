@@ -28,6 +28,7 @@
       =f.input :job_identifier
       =f.input :number_of_rooms
       =f.input :customer_id, collection: current_user.active_tenant.customer_names.concat(['New Customer']), include_blank: false
+      =f.input :new_customer_name
       -# =f.input :customer_id, collection: current_user.customers
       -# =f.input :customer_id, collection: [current_user.active_tenant.clients.first.customers.name]
 
@@ -69,6 +70,11 @@
 
     $('#booking_request_client_id').on('change', function(e){
       refresh_user_list();
+    });
+
+    $('#customer_id').on('change', function(e){
+      alert('here')
+
     });
   }
 
