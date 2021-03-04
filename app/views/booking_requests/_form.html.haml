@@ -11,6 +11,7 @@
       =f.input :assignee_id, as: :hidden
 
       - if model.new_record?
+        -# =f.input :client_id, as: :select, collection: current_user.active_tenant.clients
         =f.input :client_id, as: :select, collection: current_user.active_tenant.clients, include_blank: false
         =f.input :requestor_id, as: :select, collection: []
 
@@ -27,7 +28,8 @@
       =f.input :reason, collection: ['Regular', 'Storm']
       =f.input :job_identifier
       =f.input :number_of_rooms
-      =f.input :customer_id, collection: current_user.active_tenant.customer_names.concat(['New Customer']), include_blank: false
+      =f.input :customer_id, as: :select, collection: current_user.active_tenant.customer_names.concat(['New Customer']), include_blank: false
+      -# =f.input :customer_id, as: :select, collection: current_user.active_tenant.clients
       =f.input :new_customer_name
       -# =f.input :customer_id, collection: current_user.customers
       -# =f.input :customer_id, collection: [current_user.active_tenant.clients.first.customers.name]
@@ -62,19 +64,26 @@
   }
 
   var ready = function() {
-  $('.datepicker').datepicker({
+    $('#booking_request_new_customer_name').hide()
+
+    $('.datepicker').datepicker({
     dateFormat:"yy-mm-dd"
     });
 
     refresh_user_list();
 
     $('#booking_request_client_id').on('change', function(e){
+      alert("test")
       refresh_user_list();
     });
 
-    $('#customer_id').on('change', function(e){
-      alert('here')
-
+    $('#booking_request_customer_id').on('change', function(e){
+      if(this.value === "New Customer"){
+        $('#booking_request_new_customer_name').show()
+      }
+      else{
+        $('#booking_request_new_customer_name').hide()
+      }
     });
   }
 
