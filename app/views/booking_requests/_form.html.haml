@@ -65,7 +65,10 @@
   }
 
   var ready = function() {
+    var new_name_id = "booking_request_new_customer_name"
+    var $new_name_label = $("label[for='" + new_name_id + "']")
     $('#booking_request_new_customer_name').hide()
+    $new_name_label.hide()
 
     $('.datepicker').datepicker({
     dateFormat:"yy-mm-dd"
@@ -80,6 +83,7 @@
     $('#booking_request_customer_id').on('change', function(e){
       if(this.value === "New Customer"){
         $('#booking_request_new_customer_name').show()
+        $new_name_label.show()
       }
       else{
         $('#booking_request_new_customer_name').hide()
