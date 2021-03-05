@@ -17,9 +17,6 @@ class BookingRequestsController < ApplicationController
   def create
     @model = BookingRequest.new(booking_request_params)
 
-    @cust_name = @model.new_customer_name
-    @cust_id = @model.customer_id
-
     byebug
     if @model.save
       redirect_to book_booking_request_path(@model)

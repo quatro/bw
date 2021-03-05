@@ -59,7 +59,18 @@ Rails.application.configure do
   config.assets.quiet = true
 
   # Deliver to browser
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
+
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+      :user_name => ENV.fetch('SENDGRID_API_KEY'),
+      :password => ENV.fetch('SENDGRID_API_KEY'),
+      :domain => 'heatbooking.com',
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
 
 
   # Raises error for missing translations.

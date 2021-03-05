@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :customers, only:[:for_client] do
+    collection do
+      get :for_client
+    end
+  end
+
   resources :home, only:[:index, :dashboard] do
     collection do
       get :dashboard

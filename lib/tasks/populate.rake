@@ -33,8 +33,8 @@ namespace :db do
     ]
 
     customers = [
-      ["Test Customer 1"], 
-      ["Test Customer 2"]
+      "Test Customer 1",
+      "Test Customer 2"
     ]
 
     hotels = [
@@ -92,11 +92,11 @@ namespace :db do
       Client.create({name: c[0], tenant: itg})
     end
 
-    # customers.each do |c|
-    #   Customer.create({c[0], client: Client.find_by_name('Elliott')})
-    # end
-    Customer.create({name: 'Best Electric', client: Client.find_by_name('Elliott')})
-    Customer.create({name: 'GOAT Banking', client: Client.find_by_name('Elliott')})
+    customers.each do |c|
+      Customer.create({name: c, client: Client.find_by_name('Elliott')})
+    end
+    # Customer.create({name: 'Best Electric', client: Client.find_by_name('Elliott')})
+    # Customer.create({name: 'GOAT Banking', client: Client.find_by_name('Elliott')})
 
 
     users.each do |u|
@@ -131,6 +131,7 @@ namespace :db do
       i = rand(0..city_states.length-1)
       i2 = rand(0..city_states.length-1)
       i3 = rand(0..city_states.length-1)
+      customer_rand = rand(0..customers.length-1)
 
       dates = date_ranges[i]
       city_state = city_states[i2]
@@ -139,7 +140,7 @@ namespace :db do
 
       user = User.find_by_email(user_hash[2])
 
-      br = BookingRequest.create({tenant: itg, requestor: user, client: user.client, date_from: dates[0], date_to: dates[1], city: city_state[0], state: city_state[1], customer: Customer.find_by_name('Test Customer 1')})
+      br = BookingRequest.create({tenant: itg, requestor: user, client: user.client, date_from: dates[0], date_to: dates[1], city: city_state[0], state: city_state[1], customer: Customer.find_by_name(customers[customer_rand])})
 
       if i < city_states.length-2
         confirmation_number = '123'

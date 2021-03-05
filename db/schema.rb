@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_213403) do
+ActiveRecord::Schema.define(version: 2021_03_05_150557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,11 +59,13 @@ ActiveRecord::Schema.define(version: 2021_03_02_213403) do
     t.bigint "client_id"
     t.integer "nights"
     t.string "requestor_name"
-    t.string "address"
     t.integer "number_of_rooms"
-    t.integer "customer_id"
+    t.bigint "customer_id"
+    t.string "address"
+    t.string "new_customer_name"
     t.index ["assignee_id"], name: "index_booking_requests_on_assignee_id"
     t.index ["client_id"], name: "index_booking_requests_on_client_id"
+    t.index ["customer_id"], name: "index_booking_requests_on_customer_id"
     t.index ["requestor_id"], name: "index_booking_requests_on_requestor_id"
     t.index ["tenant_id"], name: "index_booking_requests_on_tenant_id"
   end
@@ -125,9 +127,6 @@ ActiveRecord::Schema.define(version: 2021_03_02_213403) do
     t.decimal "rate", precision: 8, scale: 2
     t.string "lat"
     t.string "lng"
-    t.string "phone_number"
-    t.date "contract_start_date"
-    t.date "contract_end_date"
     t.index ["tenant_id"], name: "index_hotels_on_tenant_id"
   end
 

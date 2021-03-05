@@ -7,7 +7,7 @@ class BookingRequest < ApplicationRecord
 
   belongs_to :tenant
   belongs_to :client
-  belongs_to :customer
+  belongs_to :customer, optional: true
   belongs_to :requestor, class_name: 'User', foreign_key: 'requestor_id'
   belongs_to :assignee, class_name: 'User', foreign_key: 'assignee_id', optional: true
   has_one :booking, dependent: :destroy
@@ -15,8 +15,7 @@ class BookingRequest < ApplicationRecord
   scope :outstanding,    -> { joins("LEFT OUTER JOIN bookings on bookings.booking_request_id = booking_requests.id").where("bookings.id IS NULL AND (bookings.is_booked IS NULL OR bookings.is_booked = false)") }
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
   scope :unassigned, -> { where(assignee: nil) }
-  # scope :foreman, 
-
+  # scope :foreman,
   
   def nights
     date_to.to_date - date_from.to_date if date_from.present? && date_to.present?
@@ -24,25 +23,27 @@ class BookingRequest < ApplicationRecord
   persistize :nights
 
   def customer_id
-    # byebug
+
     cust_id = self.attributes["customer_id"]
     new_name = self.attributes["new_customer_name"]
     id_cust = Customer.find_by_id(cust_id)
     name_cust = Customer.find_by_name(new_name)
 
-    # byebug
+    byebug
+
     if id_cust.present?
-      # byebug
       return id_cust.id
+
     elsif name_cust.present?
       return name_cust.id
+
     elsif new_name.present?
-      # byebug
-      new_cust = Cutomer.create({name: new_name, client_id: 39})
-      return new_cust.id
+      new_cust = Customer.create({name: new_name, client_id: self.client_id})
+      return new_cust.try(:id)
+
     else
-      # byebug
       return nil
+
     end
   end
   persistize :customer_id
@@ -102,7 +103,7 @@ class BookingRequest < ApplicationRecord
         # ["state", "State", Proc.new {|val| val}],
         ["reason", "Reason", Proc.new {|val| val}],
         ["job_identifier", "Job Identifier", Proc.new {|val| val}],
-        ["customer_id", "Customer", Proc.new{|val| Customer.find_by_id(val).name}]
+        ["customer_id", "Customer", Proc.new{|val| Customer.find_by_id(val).try(:name)}]
     ]
   end
 
