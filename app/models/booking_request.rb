@@ -29,8 +29,6 @@ class BookingRequest < ApplicationRecord
     id_cust = Customer.find_by_id(cust_id)
     name_cust = Customer.find_by_name(new_name)
 
-    byebug
-
     if id_cust.present?
       return id_cust.id
 
