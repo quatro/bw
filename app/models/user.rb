@@ -60,4 +60,8 @@ class User < ApplicationRecord
   def edit_path
     Rails.application.routes.url_helpers.edit_tenant_hotel_path(tenant, self)
   end
+
+  def can_create_booking_request?
+    tenant.present?
+  end
 end

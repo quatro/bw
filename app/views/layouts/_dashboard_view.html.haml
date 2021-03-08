@@ -75,7 +75,7 @@
         %nav.mt-2
           %ul.nav.nav-pills.nav-sidebar.flex-column{"data-accordion" => "false", "data-widget" => "treeview", :role => "menu"}
 
-            - if current_user.is_foreman
+            - if current_user.can_create_booking_request?
               %li.nav-item
                 %a.nav-link{href: new_booking_request_path}
                   %i.nav-icon.fas.fa-plus
