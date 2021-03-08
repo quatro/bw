@@ -127,6 +127,9 @@ ActiveRecord::Schema.define(version: 2021_03_05_150557) do
     t.decimal "rate", precision: 8, scale: 2
     t.string "lat"
     t.string "lng"
+    t.string "phone_number"
+    t.date "contract_start_date"
+    t.date "contract_end_date"
     t.index ["tenant_id"], name: "index_hotels_on_tenant_id"
   end
 
