@@ -27,6 +27,7 @@ class Hotel < ApplicationRecord
   def show_map
     [
         ["name", "Name", Proc.new {|val| val}],
+        ["phone_number", "Phone Number", Proc.new {|val| val}],
         ["address", "Address", Proc.new {|val| val}],
         ["city", "City", Proc.new {|val| val}],
         ["state", "State", Proc.new {|val| val}],
