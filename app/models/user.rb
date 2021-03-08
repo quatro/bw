@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def is_super_user?
-    email == 'ch.walker@gmail.com'
+    email == 'ch.walker@gmail.com' || email == 'richardnew12511@gmail.com'
   end
 
   def active_tenant
