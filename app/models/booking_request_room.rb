@@ -1,4 +1,4 @@
 class BookingRequestRoom < ApplicationRecord
     belongs_to :booking_request
-    validates :guest1_id, :prescense => true
+    validates :guest1_id, presence: true
 end
