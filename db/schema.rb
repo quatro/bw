@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(version: 2021_03_05_150557) do
 
   create_table "booking_request_rooms", force: :cascade do |t|
     t.integer "booking_request_id"
-    t.integer "guest1_id"
-    t.integer "gues2_id"
+    t.bigint "guest1_id"
+    t.bigint "guest2_id"
+    t.index ["guest1_id"], name: "index_booking_request_rooms_on_guest1_id"
+    t.index ["guest2_id"], name: "index_booking_request_rooms_on_guest2_id"
   end
 
   create_table "booking_requests", force: :cascade do |t|

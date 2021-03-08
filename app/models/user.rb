@@ -40,10 +40,6 @@ class User < ApplicationRecord
     is_super_user? ? Tenant.first : tenant
   end
 
-  def customers
-    Client.first.customers
-  end
-
   def dashboard_header_name
     active_tenant.try(:name)
   end
