@@ -1,1 +1,9 @@
-Confirming booking
+Your booking request has been confirmed
+
+Confirmation Number: #{@model.confirmation_number}
+Requestor Name: #{@model.booking_request.requestor_name}
+Dates: #{@model.booking_request.dates_formatted}
+Address: #{@model.booking_request.location_formatted} 
+Hotel: #{@model.hotel.name}
+Hotel Address: #{@model.hotel.geocode_address}
+Total Fee: $#{@model.total}
