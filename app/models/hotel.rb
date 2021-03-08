@@ -28,6 +28,8 @@ class Hotel < ApplicationRecord
     [
         ["name", "Name", Proc.new {|val| val}],
         ["phone_number", "Phone Number", Proc.new {|val| val}],
+        ["contract_start_date", "Contract Start Date", Proc.new {|val| val}],
+        ["contract_end_date", "Contract End Date", Proc.new {|val| val}],
         ["address", "Address", Proc.new {|val| val}],
         ["city", "City", Proc.new {|val| val}],
         ["state", "State", Proc.new {|val| val}],
