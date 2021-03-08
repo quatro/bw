@@ -79,7 +79,7 @@ namespace :db do
         ["Don","Walker","don@gmail.com"],
         ["Carol","Walker","carol@gmail.com"],
         ["Cade","Walker","cade@gmail.com"],
-        ["Richard","schmidt","richardnew12511@gmail.com"]
+        ["Richard","Schmidt","richardnew12511@gmail.com"]
     ]
 
     staff = [
