@@ -59,7 +59,7 @@ class BookingRequest < ApplicationRecord
   end
 
   def location_formatted
-    [city, state].join(', ')
+    [address, city, state].join(', ')
   end
 
   def date_from_human
