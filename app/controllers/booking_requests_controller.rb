@@ -17,7 +17,6 @@ class BookingRequestsController < ApplicationController
   def create
     @model = BookingRequest.new(booking_request_params)
 
-    byebug
     if @model.save
       redirect_to book_booking_request_path(@model)
     else

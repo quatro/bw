@@ -24,18 +24,13 @@
       =f.input :address
       =f.input :city
       =f.input :state, collection: states
-      -# =f.input :zip
-      =f.input :reason, collection: ['Regular', 'Storm'], include_blank: false
+      =f.input :reason, collection: reason_select, include_blank: false
       =f.input :job_identifier
       =f.input :number_of_rooms
-      -# =f.input :customer_id, as: :select, collection: current_user.active_tenant.customer_names.concat(['New Customer']), include_blank: false
-      -# =f.input :customer_id, as: :select, collection: current_user.active_tenant.clients
       =f.input :customer_id, as: :select, collection: customer_select_for_client(f.object.client)
 
       #new_customer_data
         =f.input :new_customer_name
-      -# =f.input :customer_id, collection: current_user.customers
-      -# =f.input :customer_id, collection: [current_user.active_tenant.clients.first.customers.name]
 
   .row.mb-2
     .col-sm-6
