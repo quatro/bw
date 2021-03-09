@@ -1,16 +1,17 @@
 .row.mb-2
     .col-sm-12
-        Your booking request has been confirmed
-.hr 
+        %h2 Your booking request has been confirmed
+%hr 
 .row 
     .col-sm-12
-        Confirmation Number: #{@model.confirmation_number}
+        %h3 Confirmation Number: #{@model.confirmation_number}
 .row         
     .col-sm-12
-        Requestor Name: #{@model.booking_request.requestor_name}
+        %h3 Dates: #{@model.booking_request.dates_formatted},  #{@model.booking_request.nights_formatted}
 .row         
     .col-sm-12
-        Dates: #{@model.booking_request.dates_formatted}
+        Requestor Name: 
+        %strong #{@model.booking_request.requestor_name}
 .row         
     .col-sm-12
         Address: #{@model.booking_request.location_formatted} 
