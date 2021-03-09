@@ -75,11 +75,12 @@
         %nav.mt-2
           %ul.nav.nav-pills.nav-sidebar.flex-column{"data-accordion" => "false", "data-widget" => "treeview", :role => "menu"}
 
-            %li.nav-item
-              %a.nav-link{href: new_booking_request_path}
-                %i.nav-icon.fas.fa-plus
-                %p
-                  Add Booking Request
+            - if current_user.can_create_booking_request?
+              %li.nav-item
+                %a.nav-link{href: new_booking_request_path}
+                  %i.nav-icon.fas.fa-plus
+                  %p
+                    Add Booking Request
 
             %li.nav-item
               %a.nav-link{href: my_booking_requests_path}

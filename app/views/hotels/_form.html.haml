@@ -8,6 +8,9 @@
 
       =f.input :tenant, as: :hidden
       =f.input :name
+      =f.input :phone_number
+      =f.input :contract_start_date, as: :string, input_html:{class:'datepicker'}
+      =f.input :contract_end_date, as: :string, input_html:{class:'datepicker'}
       =f.input :address
       =f.input :city
       =f.input :state, as: :select, collection: states
@@ -17,3 +20,16 @@
   .row.mb-2
     .col-sm-6
       =f.submit form_submit_label(model), class: 'btn btn-success'
+
+
+:javascript
+
+    var ready = function() {
+
+    $('.datepicker').datepicker({
+      dateFormat:"yy-mm-dd"
+    });
+    
+  }
+
+  $(document).ready(ready);
