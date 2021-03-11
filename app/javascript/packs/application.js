@@ -3,7 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import 'cocoon';
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -40,7 +40,7 @@ require("../../assets/dist/js/demo.js")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
+import 'cocoon';
 import 'css/site.scss'
 
 // This bring images into the application
