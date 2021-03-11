@@ -1,9 +1,7 @@
 %h4 Room 1
 .nested-fields
   .field
-    = f.label :guest1_id
-    = f.text_field :guest1_id
-    = f.label :gues2_id
-    = f.text_field :gues2_id
+    = f.input :guest1_id
+    = f.input :gues2_id
     = link_to_remove_association "Remove Room", f
 %hr    
