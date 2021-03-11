@@ -33,7 +33,6 @@
         =f.input :new_customer_name
 
     .col-sm-4
-      %h3 Rooms
       = f.fields_for :booking_request_rooms do |booking_request_room|
         = render 'booking_request_room_fields', form: booking_request_room
       .links
