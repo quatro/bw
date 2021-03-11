@@ -19,6 +19,10 @@ class BookingRequest < ApplicationRecord
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
   scope :unassigned, -> { where(assignee: nil) }
   # scope :foreman,
+
+  def booking_request_params
+    params.require(:booking_request).permit(booking_request_rooms_attributes:[:id, :guest1_id, :guest2_id, :_destroy])
+  end
   
   def nights
     date_to.to_date - date_from.to_date if date_from.present? && date_to.present?
