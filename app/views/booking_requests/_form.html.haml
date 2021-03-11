@@ -35,8 +35,8 @@
       %h3 Rooms
       = f.fields_for :booking_request_rooms do |booking_request_room|
         = render 'booking_request_room_fields', form: booking_request_room
-
-      -# = link_to_add_association "Add Room", f, :booking_request_rooms  
+      .links
+        = link_to_add_association "Add Room", f, :booking_request_rooms  
 
   .row.mb-2
     .col-sm-6
