@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :set_model
-  before_action :force_json, only: :guests
+  before_action :force_json, only: :autocomplete
 
   def index
     @models = User.for_tenant(current_user.active_tenant)
   end
 
-  def guests
+  def autocomplete
     @models = User.for_tenant(current_user.active_tenant)
     render json: { users: @models}
   end
