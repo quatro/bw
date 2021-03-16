@@ -13,38 +13,14 @@ class BookingRequest < ApplicationRecord
   has_one :booking, dependent: :destroy
   has_many :booking_request_rooms, dependent: :destroy
 
-  accepts_nested_attributes_for :booking_request_rooms, reject_if: :all_blank, allow_destroy: true
+  # accepts_nested_attributes_for :booking_request_rooms, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :booking_request_rooms, allow_destroy: true
 
   scope :outstanding,    -> { joins("LEFT OUTER JOIN bookings on bookings.booking_request_id = booking_requests.id").where("bookings.id IS NULL AND (bookings.is_booked IS NULL OR bookings.is_booked = false)") }
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
   scope :unassigned, -> { where(assignee: nil) }
   # scope :foreman,
 
-  def booking_request_params
-    params
-      .require(:booking_request)
-      .permit(
-        :tenant_id,
-        :assignee_id,
-        :client_id,
-        :requestor_id,
-        :date_from,
-        :date_to,
-        :address,
-        :city,
-        :state,
-        :reason,
-        :job_identifier,
-        :number_of_rooms,
-        :new_customer_name,
-        booking_request_rooms_attributes:[:id, :guest1_id, :guest2_id, :_destroy])
-
-    # params
-    #   .require(:booking_request)
-    #   .permit(
-    #     booking_request_rooms_attributes:[:id, :guest1_id, :guest2_id, :_destroy])
-  end
-  
   def nights
     date_to.to_date - date_from.to_date if date_from.present? && date_to.present?
   end

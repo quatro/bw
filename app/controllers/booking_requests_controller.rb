@@ -16,7 +16,7 @@ class BookingRequestsController < ApplicationController
 
   def create
     @model = BookingRequest.new(booking_request_params)
-    byebug
+    render "new"
     if @model.save
       redirect_to book_booking_request_path(@model)
     else
@@ -55,6 +55,24 @@ class BookingRequestsController < ApplicationController
   end
 
   def booking_request_params
-    params.require(:booking_request).permit(:assignee_id, :tenant_id, :requestor_id, :client_id, :date_from, :date_to, :city, :state, :zip, :reason, :job_identifier, :address, :number_of_rooms,  :customer_id, :new_customer_name)
+    params
+      .require(:booking_request)
+      .permit(
+        :assignee_id, 
+        :tenant_id, 
+        :requestor_id, 
+        :client_id, 
+        :date_from, 
+        :date_to, 
+        :city, 
+        :state, 
+        :zip, 
+        :reason, 
+        :job_identifier, 
+        :address, 
+        :number_of_rooms,  
+        :customer_id, 
+        :new_customer_name,
+        booking_request_rooms_attributes:[:id, :guest1_id, :guest2_id, :_destroy])
   end
 end
