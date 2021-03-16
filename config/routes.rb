@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       get :client_users
       get :new_staff
       get :new_client_user
-      get :index_json
+      get :guests
     end
 
     member do

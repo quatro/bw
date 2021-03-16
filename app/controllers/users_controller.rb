@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :set_model
+  before_action :force_json, only: :guests
 
   def index
     @models = User.for_tenant(current_user.active_tenant)
   end
 
-  def index_json
+  def guests
     @models = User.for_tenant(current_user.active_tenant)
     render json: { users: @models}
   end
@@ -68,6 +69,10 @@ class UsersController < ApplicationController
   private
   def set_model
     @model = User.where(id: params[:id]).first if params[:id]
+  end
+
+  def force_json
+    request.format = :json
   end
 
   def user_params
