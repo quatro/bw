@@ -13,8 +13,7 @@ class BookingRequest < ApplicationRecord
   has_one :booking, dependent: :destroy
   has_many :booking_request_rooms, dependent: :destroy
 
-  # accepts_nested_attributes_for :booking_request_rooms, reject_if: :all_blank, allow_destroy: true
-  accepts_nested_attributes_for :booking_request_rooms, allow_destroy: true
+  accepts_nested_attributes_for :booking_request_rooms, reject_if: :all_blank, allow_destroy: true
 
   scope :outstanding,    -> { joins("LEFT OUTER JOIN bookings on bookings.booking_request_id = booking_requests.id").where("bookings.id IS NULL AND (bookings.is_booked IS NULL OR bookings.is_booked = false)") }
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
