@@ -30,9 +30,7 @@
       =f.input :customer_id, as: :select, collection: customer_select_for_client(f.object.client)
 
       #new_customer_data
-        =f.input :new_customer_name, input_html: { id: 'new_customer_name'}
-
-        -# =f.input :new_customer_name
+        =f.input :new_customer_name, url: autocomplete_users_path, as: :autocomplete, 
 
     .col-sm-4
       = f.fields_for :booking_request_rooms do |booking_request_room|
@@ -47,11 +45,16 @@
 
 :javascript
 
-  var options = {
-      url: function(phrase) {
-        return "/users/autocomplete?q=" + phrase;
-      },
-      getValue: "name",
+   var options = {
+       url: function(phrase) {
+         return "/users/autocomplete?q=" + phrase;
+       },
+       getValue: "name",
+       list: {
+         onChooseEvent: function(){
+           console.log($(this))
+         }
+       }
     };
 
   function refresh_customer_list() {
@@ -101,7 +104,7 @@
 
   var ready = function() {
 
-    $("#new_customer_name").easyAutocomplete(options)
+    //$("#new_customer_name").easyAutocomplete(options)
 
     $('#add_room').trigger('click')
 
@@ -121,11 +124,9 @@
     handle_new_customer_visibility();
     $('#booking_request_customer_id').on('change', handle_new_customer_visibility);
 
-    //$('.guest_1_full_name').each(function(index){
-    //  console.log("options = " + options)
-     // $(this).easyAutocomplete(options)
-      //console.log("here")
-    //})
+    $('.guest_1_full_name').each(function(index){
+      $(this).easyAutocomplete(options)
+    })
   }
 
   $(document).ready(ready);
