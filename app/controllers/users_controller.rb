@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   def autocomplete
-    byebug
     @models = User.for_tenant(current_user.active_tenant)
-    render json: { users: @models}
+    @results = @models.map { |u| {id: u.id, name: u.full_name}}
+    render json: { users: @results }
   end
 
   def staff
