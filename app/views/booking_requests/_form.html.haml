@@ -92,6 +92,16 @@
   }
 
   var ready = function() {
+    var options = {
+      url: "/users/autocomplete.json",
+      getValue: "id",
+      list: {
+        match: {
+          enabled: true
+        }
+      }
+    };
+
     $('#add_room').trigger('click')
 
     $('.datepicker').datepicker({
@@ -110,6 +120,11 @@
 
     handle_new_customer_visibility();
     $('#booking_request_customer_id').on('change', handle_new_customer_visibility);
+
+    $('.guest_1_id').each(function(index){
+      console.log("options = " + options)
+      $(this).easyAutocomplete(options)
+    })
   }
 
   $(document).ready(ready);

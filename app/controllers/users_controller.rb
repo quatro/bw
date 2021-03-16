@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def autocomplete
+    byebug
     @models = User.for_tenant(current_user.active_tenant)
     render json: { users: @models}
   end
