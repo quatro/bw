@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
 
   def create
     @model = Booking.new(booking_params)
-
+    byebug
     if @model.save
       @model.send_confirmation_email
 

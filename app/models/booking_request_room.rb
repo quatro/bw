@@ -1,5 +1,5 @@
 class BookingRequestRoom < ApplicationRecord
-  belongs_to :booking_request
+  belongs_to :booking_request, optional: true
 
   belongs_to :guest1, class_name:'User', foreign_key: 'guest1_id'
   belongs_to :guest2, class_name:'User', foreign_key: 'guest2_id'

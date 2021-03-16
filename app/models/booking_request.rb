@@ -21,7 +21,28 @@ class BookingRequest < ApplicationRecord
   # scope :foreman,
 
   def booking_request_params
-    params.require(:booking_request).permit(booking_request_rooms_attributes:[:id, :guest1_id, :guest2_id, :_destroy])
+    params
+      .require(:booking_request)
+      .permit(
+        :tenant_id,
+        :assignee_id,
+        :client_id,
+        :requestor_id,
+        :date_from,
+        :date_to,
+        :address,
+        :city,
+        :state,
+        :reason,
+        :job_identifier,
+        :number_of_rooms,
+        :new_customer_name,
+        booking_request_rooms_attributes:[:id, :guest1_id, :guest2_id, :_destroy])
+
+    # params
+    #   .require(:booking_request)
+    #   .permit(
+    #     booking_request_rooms_attributes:[:id, :guest1_id, :guest2_id, :_destroy])
   end
   
   def nights
@@ -30,7 +51,6 @@ class BookingRequest < ApplicationRecord
   persistize :nights
 
   def customer_id
-
     cust_id = self.attributes["customer_id"]
     new_name = self.attributes["new_customer_name"]
     id_cust = Customer.find_by_id(cust_id)
