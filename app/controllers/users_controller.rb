@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     @models = User.for_tenant(current_user.active_tenant)
   end
 
+  def index_json
+    @models = User.for_tenant(current_user.active_tenant)
+    render json: { users: @models}
+  end
+
   def staff
     @models = User.for_tenant(current_user.active_tenant)
   end
@@ -13,7 +18,6 @@ class UsersController < ApplicationController
   def bookings
     @models = @model.bookings
   end
-
   def show
 
   end
