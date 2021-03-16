@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   def autocomplete
-    @models = User.for_tenant(current_user.active_tenant)
+    @models = User.for_tenant(current_user.active_tenant).where("first like ?", "%#{params[:q]}%")
     @results = @models.map { |u| {id: u.id, name: u.full_name}}
-    render json: { users: @results }
+    render json: @results 
   end
 
   def staff

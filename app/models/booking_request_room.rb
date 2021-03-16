@@ -12,11 +12,19 @@ class BookingRequestRoom < ApplicationRecord
 
   def guest_1_full_name
     user = User.find_by_id(self.guest1_id)
-    return user.full_name
+    if(user != nil)
+      return user.full_name
+    else
+      return ""
+    end 
   end
 
   def guest_2_full_name
     user = User.find_by_id(self.guest2_id)
-    return user.full_name
+    if(user != nil)
+      return user.full_name
+    else
+      return ""
+    end 
   end
 end
