@@ -36,7 +36,7 @@
       = f.fields_for :booking_request_rooms do |booking_request_room|
         = render 'booking_request_room_fields', form: booking_request_room
       .links
-        = link_to_add_association "Add Room", f, :booking_request_rooms    
+        = link_to_add_association "Add Room", f, :booking_request_rooms, class: 'btn btn-primary', id: 'add_room'    
 
   .row.mb-2
     .col-sm-6
@@ -89,10 +89,10 @@
     else{
       $('#new_customer_data').hide()
     }
-
   }
 
   var ready = function() {
+    $('#add_room').trigger('click')
 
     $('.datepicker').datepicker({
       dateFormat:"yy-mm-dd"
