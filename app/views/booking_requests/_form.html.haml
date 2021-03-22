@@ -30,7 +30,8 @@
       =f.input :customer_id, as: :select, collection: customer_select_for_client(f.object.client)
 
       #new_customer_data
-        =f.input :new_customer_name, url: autocomplete_users_path, as: :autocomplete, 
+        =f.input :new_customer_name
+        -# =f.input :new_customer_name, url: autocomplete_users_path, as: :autocomplete, 
 
     .col-sm-4
       = f.fields_for :booking_request_rooms do |booking_request_room|
@@ -105,6 +106,13 @@
   var ready = function() {
 
     //$("#new_customer_name").easyAutocomplete(options)
+
+    $("#booking_request_new_customer_name").autocomplete({
+      serviceUrl: '/users/autocomplete',
+      onSelect: function (suggestion) {
+        $('#selected_option').html(suggestion.value);
+      }
+    });
 
     $('#add_room').trigger('click')
 
