@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def is_super_user?
-    email == 'ch.walker@gmail.com'
+    email == 'ch.walker@gmail.com' || email == 'richardnew12511@gmail.com'
   end
 
   def active_tenant
@@ -55,5 +55,9 @@ class User < ApplicationRecord
 
   def edit_path
     Rails.application.routes.url_helpers.edit_tenant_hotel_path(tenant, self)
+  end
+
+  def can_create_booking_request?
+    tenant.present?
   end
 end

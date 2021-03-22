@@ -87,4 +87,13 @@ module ApplicationHelper
   def url_for_user_model(model)
     model.new_record? ? create_staff_users_path : user_path(model)
   end
+
+  def customer_select_for_client(client)
+    [[0, "--- New Customer ---"]].concat(Customer.where(client: client).map{|c| [c.id, c.name]})
+  end
+
+  def reason_select
+    ['Regular', 'Storm']
+  end
+
 end

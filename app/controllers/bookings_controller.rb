@@ -24,6 +24,8 @@ class BookingsController < ApplicationController
     @model = Booking.new(booking_params)
 
     if @model.save
+      @model.send_confirmation_email
+
       redirect_to @model
     end
   end

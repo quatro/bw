@@ -1,1 +1,26 @@
-Confirming booking
+.row.mb-2
+    .col-sm-12
+        %h2 Your booking request has been confirmed
+%hr 
+.row 
+    .col-sm-12
+        %h3 Confirmation Number: #{@model.confirmation_number}
+.row         
+    .col-sm-12
+        %h3 Dates: #{@model.booking_request.dates_formatted},  #{@model.booking_request.nights_formatted}
+.row         
+    .col-sm-12
+        Requestor Name: 
+        %strong #{@model.booking_request.requestor_name}
+.row         
+    .col-sm-12
+        Address: #{@model.booking_request.location_formatted} 
+.row         
+    .col-sm-12
+        Hotel: #{@model.hotel.name}
+.row         
+    .col-sm-12
+        Hotel Address: #{@model.hotel.geocode_address}
+.row         
+    .col-sm-12
+        Total Fee: $#{@model.total}
