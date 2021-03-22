@@ -10,6 +10,12 @@ class BookingRequestRoom < ApplicationRecord
     [guest1, guest2].compact
   end
 
+  def guest_1_name
+  end
+
+  def guest_2_name
+  end
+
   def guest_1_full_name
     user = User.find_by_id(self.guest1_id)
     if(user != nil)
