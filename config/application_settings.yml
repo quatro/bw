@@ -1,0 +1,10 @@
+# application_settings.yml
+# ========================
+# This file is used to setup an application wide hash that can
+# easily enable or disable specific feature sets. Any settings declared
+# in this YAML file should be directly available in the AS class.
+
+all:
+  default_page_title:                             Heat Booking
+
+development:

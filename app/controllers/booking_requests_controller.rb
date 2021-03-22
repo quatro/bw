@@ -55,6 +55,6 @@ class BookingRequestsController < ApplicationController
   end
 
   def booking_request_params
-    params.require(:booking_request).permit(:assignee_id, :tenant_id, :requestor_id, :client_id, :date_from, :date_to, :city, :state, :zip, :reason, :job_identifier)
+    params.require(:booking_request).permit(:assignee_id, :tenant_id, :requestor_id, :client_id, :date_from, :date_to, :city, :state, :zip, :reason, :job_identifier, :address, :number_of_rooms,  :customer_id, :new_customer_name)
   end
 end

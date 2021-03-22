@@ -9,12 +9,12 @@
         / small box
         .small-box.bg-info
           .inner
-            %h3 #{number_to_currency(@model.total)}
-            %p Total
+            %h3 #{@model.confirmation_number}
+            %p Confirmation #
           .icon
             %i.ion.ion-bag
-          -#%a.small-box-footer{:href => "#"}
-            More info
+          =link_to resend_email_booking_path(@model), class:'small-box-footer', method: :post do
+            Re-send email
             %i.fas.fa-arrow-circle-right
 
       .col-lg-6.col-6
@@ -22,7 +22,7 @@
         .small-box.bg-warning
           .inner
             %h3 #{@model.hotel.name}
-            %p Hotel
+            %p #{@model.hotel.address}
           .icon
             %i.ion.ion-bag
           %a.small-box-footer{href: tenant_hotel_path(@model.tenant, @model.hotel)}

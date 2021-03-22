@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_023837) do
+ActiveRecord::Schema.define(version: 2021_03_05_150557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 2021_02_05_023837) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
+  create_table "booking_request_rooms", force: :cascade do |t|
+    t.integer "booking_request_id"
+    t.bigint "guest1_id"
+    t.bigint "guest2_id"
+    t.index ["guest1_id"], name: "index_booking_request_rooms_on_guest1_id"
+    t.index ["guest2_id"], name: "index_booking_request_rooms_on_guest2_id"
+  end
+
   create_table "booking_requests", force: :cascade do |t|
     t.bigint "tenant_id"
     t.bigint "requestor_id"
@@ -52,8 +60,14 @@ ActiveRecord::Schema.define(version: 2021_02_05_023837) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "client_id"
     t.integer "nights"
+    t.string "requestor_name"
+    t.integer "number_of_rooms"
+    t.bigint "customer_id"
+    t.string "address"
+    t.string "new_customer_name"
     t.index ["assignee_id"], name: "index_booking_requests_on_assignee_id"
     t.index ["client_id"], name: "index_booking_requests_on_client_id"
+    t.index ["customer_id"], name: "index_booking_requests_on_customer_id"
     t.index ["requestor_id"], name: "index_booking_requests_on_requestor_id"
     t.index ["tenant_id"], name: "index_booking_requests_on_tenant_id"
   end
@@ -95,6 +109,14 @@ ActiveRecord::Schema.define(version: 2021_02_05_023837) do
     t.index ["tenant_id"], name: "index_clients_on_tenant_id"
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.bigint "client_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_customers_on_client_id"
+  end
+
   create_table "hotels", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -107,6 +129,9 @@ ActiveRecord::Schema.define(version: 2021_02_05_023837) do
     t.decimal "rate", precision: 8, scale: 2
     t.string "lat"
     t.string "lng"
+    t.string "phone_number"
+    t.date "contract_start_date"
+    t.date "contract_end_date"
     t.index ["tenant_id"], name: "index_hotels_on_tenant_id"
   end
 
@@ -114,6 +139,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_023837) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "from_email"
   end
 
   create_table "users", force: :cascade do |t|
@@ -138,6 +164,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_023837) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tenant_id"
     t.bigint "client_id"
+    t.boolean "is_foreman"
     t.index ["client_id"], name: "index_users_on_client_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

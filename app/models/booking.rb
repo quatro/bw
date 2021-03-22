@@ -19,6 +19,14 @@ class Booking < ApplicationRecord
     "Booking for #{requestor.full_name} on #{date_nice(booking_request.date_from)}"
   end
 
+  def confirmation_email_subject
+    ["Confirmation: ", title].join(' ')
+  end
+
+  def send_confirmation_email
+    BookingMailer.send_confirmation(self).deliver!
+  end
+
   # This method should be run nightly (for the current  year) to ensure all booking license data is updated properly
   # Chris Walker
   # 1/14/2021

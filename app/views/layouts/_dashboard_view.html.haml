@@ -2,41 +2,61 @@
 %body.hold-transition.sidebar-mini.layout-fixed
   .wrapper
     %nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
-      %ul.navbar-nav
-        %li.nav-item
-          %a.nav-link{"data-widget" => "pushmenu", :href => "#", :role => "button"}
-            %i.fas.fa-bars
-        %li.nav-item.d-none.d-sm-inline-block
-          %a.nav-link{:href => "index3.html"} Home
-      %form.form-inline.ml-3
-        .input-group.input-group-sm
-          %input.form-control.form-control-navbar{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
-          .input-group-append
-            %button.btn.btn-navbar{:type => "submit"}
-              %i.fas.fa-search
+      -#%ul.navbar-nav
+      -#  %li.nav-item
+      -#    %a.nav-link{"data-widget" => "pushmenu", :href => "#", :role => "button"}
+      -#      %i.fas.fa-bars
+      -#  %li.nav-item.d-none.d-sm-inline-block
+      -#    %a.nav-link{:href => "index3.html"} Home
+      -#%form.form-inline.ml-3
+      -#  .input-group.input-group-sm
+      -#    %input.form-control.form-control-navbar{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+      -#    .input-group-append
+      -#      %button.btn.btn-navbar{:type => "submit"}
+      -#        %i.fas.fa-search
       %ul.navbar-nav.ml-auto
 
-        %li.nav-item.dropdown
+        -#%li.nav-item.dropdown
           %a.nav-link{"data-toggle" => "dropdown", :href => "#"}
             %i.far.fa-comments
             %span.badge.badge-danger.navbar-badge 3
 
         %li.nav-item.dropdown
           %a.nav-link{"data-toggle" => "dropdown", :href => "#"}
-            %i.far.fa-bell
-            %span.badge.badge-warning.navbar-badge 15
-          -#.dropdown-menu.dropdown-menu-lg.dropdown-menu-right
-          -#  %span.dropdown-item.dropdown-header 15 Notifications
-          -#  .dropdown-divider
-          -#  %a.dropdown-item{:href => "#"}
-          -#    %i.fas.fa-envelope.mr-2
-          -#    4 new messages
-          -#    %span.float-right.text-muted.text-sm 3 mins
-          -#  .dropdown-divider
+            %i.fas.fa-user{style:'padding-right: 5px;'}
+            %span #{current_user.try(:full_name)}
+          .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+            -#%span.dropdown-item.dropdown-header 15 Notifications
+            -#.dropdown-divider
+            -#%a.dropdown-item{:href => "#"}
+            -#  %i.fas.fa-envelope.mr-2
+            -#  4 new messages
+            -#  %span.float-right.text-muted.text-sm 3 mins
+            -#.dropdown-divider
 
-        %li.nav-item
-          %a.nav-link{"data-slide" => "true", "data-widget" => "control-sidebar", :href => "#", :role => "button"}
-            %i.fas.fa-th-large
+            -#%a.dropdown-item{href: destroy_user_session_path}
+              %i.fa.fa-sign-out-alt.mr-2
+              Sign Out
+
+
+            =link_to destroy_user_session_path, class:"dropdown-item", method: :delete do
+              %i.fa.fa-sign-out-alt.mr-2
+              Sign Out
+              -#%span.float-right.text-muted.text-sm 3 mins
+
+            .dropdown-divider
+
+        -#%li.nav-item
+        -#  %a.nav-link{"data-slide" => "true", "data-widget" => "control-sidebar", :href => "#", :role => "button"}
+        -#    %i.fas.fa-th-large
+        -#  .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+        -#    %span.dropdown-item.dropdown-header 15 Notifications
+        -#    .dropdown-divider
+        -#    %a.dropdown-item{:href => "#"}
+        -#      %i.fas.fa-envelope.mr-2
+        -#      4 new messages
+        -#      %span.float-right.text-muted.text-sm 3 mins
+        -#    .dropdown-divider
 
 
 
@@ -44,27 +64,23 @@
     / Main Sidebar Container
     %aside.main-sidebar.sidebar-dark-primary.elevation-4
       / Brand Logo
-      %a.brand-link{href: root_path}
-        =image_pack_tag("AdminLTELogo.png", class:'brand-image img-circle elevation-3', alt: 'AdminLTE Logo', style:'opacity: .8')
+      %a.brand-link{href: root_path, style:'padding-left: 30px;'}
+        %i.nav-icon.fas.fa-clock
+        -#=image_pack_tag("AdminLTELogo.png", class:'brand-image img-circle elevation-3', alt: 'AdminLTE Logo', style:'opacity: .8')
         -#%img.brand-image.img-circle.elevation-3{:alt => "AdminLTE Logo", :src => image_pack_tag("AdminLTELogo.png"), :style => "opacity: .8"}/
         %span.brand-text.font-weight-light #{current_user.try(:dashboard_header_name)}
       / Sidebar
       .sidebar
-        / Sidebar user panel (optional)
-        .user-panel.mt-3.pb-3.mb-3.d-flex
-          .image
-            -#%img.img-circle.elevation-2{:alt => "User Image", :src => "dist/img/user2-160x160.jpg"}/
-          .info
-            %a.d-block{:href => "#"} #{current_user.try(:full_name)}
         / Sidebar Menu
         %nav.mt-2
           %ul.nav.nav-pills.nav-sidebar.flex-column{"data-accordion" => "false", "data-widget" => "treeview", :role => "menu"}
 
-            %li.nav-item
-              %a.nav-link{href: new_booking_request_path}
-                %i.nav-icon.fas.fa-plus
-                %p
-                  Add Booking Request
+            - if current_user.can_create_booking_request?
+              %li.nav-item
+                %a.nav-link{href: new_booking_request_path}
+                  %i.nav-icon.fas.fa-plus
+                  %p
+                    Add Booking Request
 
             %li.nav-item
               %a.nav-link{href: my_booking_requests_path}
@@ -121,17 +137,13 @@
                 %p
                   Staff
                   %span.badge.badge-info.right #{tenant_staff_count(current_user.active_tenant)}
-            %li.nav-item.has-treeview
-              %a.nav-link{href:'#'}
+
+
+            %li.nav-header REPORTING
+            %li.nav-item
+              %a.nav-link{href: report_tenant_path(current_user.active_tenant)}
                 %i.nav-icon.fas.fa-chart-bar
-                %p
-                  Reports
-                  %i.fas.fa-angle-left.right
-              %ul.nav.nav-treeview
-                %li.nav-item
-                  %a.nav-link{href: report_tenant_path(current_user.active_tenant)}
-                    %i.nav-icon.fa.fa-circle-o
-                    %p Monthly Report
+                %p Monthly Report
 
 
 

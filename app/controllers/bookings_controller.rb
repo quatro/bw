@@ -24,6 +24,8 @@ class BookingsController < ApplicationController
     @model = Booking.new(booking_params)
 
     if @model.save
+      @model.send_confirmation_email
+
       redirect_to @model
     end
   end
@@ -32,6 +34,15 @@ class BookingsController < ApplicationController
 
   def show
 
+  end
+
+  def resend_email
+
+    # TODO - send email
+    @model.send_confirmation_email
+
+    flash[:info] = "Successfully re-sent email"
+    redirect_to_back
   end
 
   def cancel

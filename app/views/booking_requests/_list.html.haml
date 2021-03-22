@@ -21,4 +21,7 @@
           =link_to br.client_formatted, tenant_client_path(current_user.active_tenant, br.client)
         %td #{datetime_nice(br.created_at)}
         %td
-          =link_to "Claim & Book", claim_and_book_booking_request_path(br), method: 'post', class:'btn btn-info'
+          - if !br.is_booked?
+            =link_to "Claim & Book", claim_and_book_booking_request_path(br), method: 'post', class:'btn btn-info'
+          - else
+            =link_to "Booking", booking_path(br.booking), class:'btn btn-success'

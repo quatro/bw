@@ -24,8 +24,12 @@ class UsersController < ApplicationController
     render json: client.present? ? client.try(:users) : []
   end
 
-  def new
-    @model = User.new({tenant_id: params[:tenant_id], client_id: params[:client_id]})
+  def new_staff
+    @model = User.new({tenant_id: current_user.active_tenant.try(:id)})
+  end
+
+  def new_client_user
+    @model = User.new({client_id: params[:client_id]})
   end
 
   def edit; end

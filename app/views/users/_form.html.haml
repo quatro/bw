@@ -7,10 +7,14 @@
         .alert.alert-danger
           #{model.errors.full_messages.join(', ')}
 
-      =f.input :tenant, as: :hidden
+      =f.input :tenant_id, as: :hidden
+      =f.input :client_id, as: :hidden
       =f.input :first
       =f.input :last
       =f.input :email
+
+      - if f.object.is_client_based?
+        =f.input :is_foreman
 
   .row.mb-2
     .col-sm-6

@@ -1,4 +1,5 @@
 - title = local_assigns[:title].nil? ? '' : title
+- should_show_breadcrumbs = local_assigns[:should_show_breadcrumbs].nil? ? true : should_show_breadcrumbs
 
 
 .content-header
@@ -21,10 +22,11 @@
           %p.m-0.text-muted #{subsubtitle}
 
 
-      / /.col
-      .col-sm-6
-        %ol.breadcrumb.float-sm-right
-          %li.breadcrumb-item
-            %a{href: root_path} Dashboard
-          %li.breadcrumb-item.active #{title}
+      - if should_show_breadcrumbs
+        / /.col
+        .col-sm-6
+          %ol.breadcrumb.float-sm-right
+            %li.breadcrumb-item
+              %a{href: root_path} Dashboard
+            %li.breadcrumb-item.active #{title}
 %hr
