@@ -42,6 +42,6 @@ yarn-debug.log*
 
 dump.rdb
 
-.idea/
+.idea/*
 
 .envrc
