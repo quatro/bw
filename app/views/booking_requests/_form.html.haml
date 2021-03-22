@@ -34,7 +34,7 @@
 
     .col-sm-4
       = f.fields_for :booking_request_rooms do |booking_request_room|
-        = render 'booking_request_room_fields', form: booking_request_room
+        = render 'booking_request_room_fields', form: booking_request_room, form_name: 'f'
       .links
         = link_to_add_association "Add Room", f, :booking_request_rooms, class: 'btn btn-primary', id: 'add_room'    
 
@@ -92,14 +92,16 @@
 
   $(document).on("click", ".add_fields", function (e){
     $(".guest1_name").autocomplete({
-      serviceUrl: '/users/autocomplete',
+      serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val(),
+      minChars: 3,
       onSelect: function (suggestion) {
         $('#selected_option').html(suggestion.value);
       }
     });
 
     $(".guest2_name").autocomplete({
-      serviceUrl: '/users/autocomplete',
+      serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val(),
+      minChars: 3,
       onSelect: function (suggestion) {
         $('#selected_option').html(suggestion.value);
       }

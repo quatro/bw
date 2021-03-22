@@ -20,6 +20,8 @@ class BookingRequest < ApplicationRecord
   scope :unassigned, -> { where(assignee: nil) }
   # scope :foreman,
 
+  validate :ensure_rooms_have_at_least_one_guest
+
   def nights
     date_to.to_date - date_from.to_date if date_from.present? && date_to.present?
   end
@@ -111,5 +113,11 @@ class BookingRequest < ApplicationRecord
   def denormalize
     self.requestor_name_will_change!
     save
+  end
+
+  def ensure_rooms_have_at_least_one_guest
+    if booking_request_rooms.select{|brr| brr.guest1_name.blank?}.any?
+      errors.add(:rooms, 'You must select a first guest for each room')
+    end
   end
 end

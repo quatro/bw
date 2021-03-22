@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
 
   def autocomplete
-    @models = User.for_tenant(current_user.active_tenant).where("first like ?", "%#{params[:q]}%")
+    @client = Client.where(id: params[:client_id]) if params[:client_id]
+    @models = Searchers::UserSearcher.new.search(User.for_client(@client), params[:query])
     @results = @models.map { |u| {value: u.full_name, data: u.full_name}}
     @suggestions = { suggestions: @results }
     render json: @suggestions
