@@ -11,14 +11,12 @@ class BookingRequestRoom < ApplicationRecord
   end
 
   def guest1_id
-    byebug
     name = self.attributes["guest1_name"]
     firstAndLast = name.split(" ")
     first = firstAndLast[0]
     last = firstAndLast[1]
     
     if User.where(first: first).exists?(conditions = :none)
-      byebug
       user = User.where(first: first).where(last: last)
       if user != nil
         return user.id
