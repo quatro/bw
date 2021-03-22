@@ -20,6 +20,7 @@ class BookingRequestsController < ApplicationController
     if @model.save
       redirect_to book_booking_request_path(@model)
     else
+      byebug
       render "new"
     end
   end

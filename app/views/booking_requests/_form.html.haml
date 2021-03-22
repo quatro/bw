@@ -91,7 +91,7 @@
   }
 
   $(document).on("click", ".add_fields", function (e){
-     $(".guest1_name").autocomplete({
+    $(".guest1_name").autocomplete({
       serviceUrl: '/users/autocomplete',
       onSelect: function (suggestion) {
         $('#selected_option').html(suggestion.value);

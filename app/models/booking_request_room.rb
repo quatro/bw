@@ -10,49 +10,88 @@ class BookingRequestRoom < ApplicationRecord
     [guest1, guest2].compact
   end
 
-  def guest1_id
+  def guest1
     name = self.attributes["guest1_name"]
-    firstAndLast = name.split(" ")
-    first = firstAndLast[0]
-    last = firstAndLast[1]
-    
-    if User.where(first: first).exists?(conditions = :none)
-      user = User.where(first: first).where(last: last)
-      if user != nil
-        return user.id
+    if name.present?
+      firstAndLast = name.split(" ")
+      first = firstAndLast[0]
+      last = firstAndLast[1]
+      
+      if User.where(first: first).exists?(conditions = :none)
+        user = User.where(first: first).where(last: last)
+        return user
       else
         return nil
       end
     else
       return nil
-    end
+    end  
   end
-  persistize :guest1_id
 
-  def guest2_id
-    byebug
+  def guest2
     name = self.attributes["guest2_name"]
-    firstAndLast = name.split(" ")
-    first = firstAndLast[0]
-    last = firstAndLast[1]
-    
-    if User.where(first: first).exists?(conditions = :none)
-      user = User.where(first: first).where(last: last)
-      if user != nil
-        return user.id
+    if name.present?
+      firstAndLast = name.split(" ")
+      first = firstAndLast[0]
+      last = firstAndLast[1]
+      
+      if User.where(first: first).exists?(conditions = :none)
+        user = User.where(first: first).where(last: last)
+        return user
       else
         return nil
       end
     else
       return nil
-    end
+    end  
   end
-  persistize :guest2_id
 
-  # def guest1_name
+  # def guest1_id
+  #   name = self.attributes["guest1_name"]
+
+  #   byebug
+  #   if name.present?
+  #     firstAndLast = name.split(" ")
+  #     first = firstAndLast[0]
+  #     last = firstAndLast[1]
+      
+  #     if User.where(first: first).exists?(conditions = :none)
+  #       user = User.where(first: first).where(last: last)
+  #       if user != nil
+  #         return user.id
+  #       else
+  #         return nil
+  #       end
+  #     else
+  #       return nil
+  #     end
+  #   else
+  #     return nil
+  #   end  
   # end
+  # persistize :guest1_id
 
-  # def guest2_name
+  # def guest2_id
+  #   name = self.attributes["guest2_name"]
+
+  #   if name.present?
+  #     firstAndLast = name.split(" ")
+  #     first = firstAndLast[0]
+  #     last = firstAndLast[1]
+      
+  #     if User.where(first: first).exists?(conditions = :none)
+  #       user = User.where(first: first).where(last: last)
+  #       if user != nil
+  #         return user.id
+  #       else
+  #         return nil
+  #       end
+  #     else
+  #       return nil
+  #     end
+  #   else
+  #     return nil
+  #   end  
   # end
-
+  # persistize :guest2_id
 end
