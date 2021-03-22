@@ -91,14 +91,14 @@
   }
 
   $(document).on("click", ".add_fields", function (e){
-     $(".guest_1_name").autocomplete({
+     $(".guest1_name").autocomplete({
       serviceUrl: '/users/autocomplete',
       onSelect: function (suggestion) {
         $('#selected_option').html(suggestion.value);
       }
     });
 
-    $(".guest_2_name").autocomplete({
+    $(".guest2_name").autocomplete({
       serviceUrl: '/users/autocomplete',
       onSelect: function (suggestion) {
         $('#selected_option').html(suggestion.value);

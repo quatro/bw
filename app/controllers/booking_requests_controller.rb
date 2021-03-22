@@ -73,6 +73,6 @@ class BookingRequestsController < ApplicationController
         :number_of_rooms,  
         :customer_id, 
         :new_customer_name,
-        booking_request_rooms_attributes:[:id, :guest_1_name, :guest_2_name, :_destroy])
+        booking_request_rooms_attributes:[:id, :guest1_name, :guest2_name, :_destroy])
   end
 end

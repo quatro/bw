@@ -12,7 +12,7 @@ class BookingRequestRoom < ApplicationRecord
 
   def guest1_id
     byebug
-    name = self.attributes["guest_1_name"]
+    name = self.attributes["guest1_name"]
     firstAndLast = name.split(" ")
     first = firstAndLast[0]
     last = firstAndLast[1]
@@ -33,7 +33,7 @@ class BookingRequestRoom < ApplicationRecord
 
   def guest2_id
     byebug
-    name = self.attributes["guest_2_name"]
+    name = self.attributes["guest2_name"]
     firstAndLast = name.split(" ")
     first = firstAndLast[0]
     last = firstAndLast[1]
@@ -51,10 +51,10 @@ class BookingRequestRoom < ApplicationRecord
   end
   persistize :guest2_id
 
-  def guest_1_name
-  end
+  # def guest1_name
+  # end
 
-  def guest_2_name
-  end
+  # def guest2_name
+  # end
 
 end

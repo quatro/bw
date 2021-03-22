@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_174653) do
+ActiveRecord::Schema.define(version: 2021_03_22_174830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2021_03_22_174653) do
     t.integer "booking_request_id"
     t.bigint "guest1_id"
     t.bigint "guest2_id"
+    t.string "guest1_name"
+    t.string "guest2_name"
     t.index ["guest1_id"], name: "index_booking_request_rooms_on_guest1_id"
     t.index ["guest2_id"], name: "index_booking_request_rooms_on_guest2_id"
   end
