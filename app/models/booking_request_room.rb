@@ -10,27 +10,51 @@ class BookingRequestRoom < ApplicationRecord
     [guest1, guest2].compact
   end
 
+  def guest1_id
+    byebug
+    name = self.attributes["guest_1_name"]
+    firstAndLast = name.split(" ")
+    first = firstAndLast[0]
+    last = firstAndLast[1]
+    
+    if User.where(first: first).exists?(conditions = :none)
+      byebug
+      user = User.where(first: first).where(last: last)
+      if user != nil
+        return user.id
+      else
+        return nil
+      end
+    else
+      return nil
+    end
+  end
+  persistize :guest1_id
+
+  def guest2_id
+    byebug
+    name = self.attributes["guest_2_name"]
+    firstAndLast = name.split(" ")
+    first = firstAndLast[0]
+    last = firstAndLast[1]
+    
+    if User.where(first: first).exists?(conditions = :none)
+      user = User.where(first: first).where(last: last)
+      if user != nil
+        return user.id
+      else
+        return nil
+      end
+    else
+      return nil
+    end
+  end
+  persistize :guest2_id
+
   def guest_1_name
   end
 
   def guest_2_name
   end
 
-  def guest_1_full_name
-    user = User.find_by_id(self.guest1_id)
-    if(user != nil)
-      return user.full_name
-    else
-      return ""
-    end 
-  end
-
-  def guest_2_full_name
-    user = User.find_by_id(self.guest2_id)
-    if(user != nil)
-      return user.full_name
-    else
-      return ""
-    end 
-  end
 end

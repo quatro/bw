@@ -16,6 +16,7 @@ class BookingRequestsController < ApplicationController
 
   def create
     @model = BookingRequest.new(booking_request_params)
+    byebug
     if @model.save
       redirect_to book_booking_request_path(@model)
     else
@@ -72,6 +73,6 @@ class BookingRequestsController < ApplicationController
         :number_of_rooms,  
         :customer_id, 
         :new_customer_name,
-        booking_request_rooms_attributes:[:id, :guest1_id, :guest2_id, :_destroy])
+        booking_request_rooms_attributes:[:id, :guest_1_name, :guest_2_name, :_destroy])
   end
 end
