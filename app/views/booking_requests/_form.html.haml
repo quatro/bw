@@ -35,8 +35,9 @@
         =f.input :new_customer_name
 
     .col-sm-4
-      = f.fields_for :booking_request_rooms do |booking_request_room|
-        = render 'booking_request_room_fields', form: booking_request_room, form_name: 'f'
+      .some{ style: 'padding-top: 16px;'}
+        = f.fields_for :booking_request_rooms do |booking_request_room|
+          = render 'booking_request_room_fields', form: booking_request_room, form_name: 'f'
       .links
         = link_to_add_association "Add Room", f, :booking_request_rooms, class: 'btn btn-primary', id: 'add_room'    
 

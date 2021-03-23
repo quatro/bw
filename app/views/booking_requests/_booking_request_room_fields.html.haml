@@ -1,18 +1,6 @@
 - f = !local_assigns[:f].nil? ? f : local_assigns[:form]
-
-.some{ style: 'padding-top: 16px;'}
-  .nested-fields
-  .field
-    = f.input :guest1_name, input_html: { class: 'guest1_name'}
-    = f.input :guest2_name, input_html: { class: 'guest2_name'}
-    = link_to_remove_association "Remove Room", f
-%hr
-
-
--# .some{ style: 'padding-top: 16px;'}
--#     .nested-fields
--#     .field
--#         = f.input :guest1_id
--#         = f.input :guest2_id
--#         = link_to_remove_association "Remove Room", f
--# %hr  
+.nested-fields
+  = f.input :guest1_name, input_html: { class: 'guest1_name'}
+  = f.input :guest2_name, input_html: { class: 'guest2_name'}
+  = link_to_remove_association "Remove Room", f
+  %hr
