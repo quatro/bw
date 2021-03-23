@@ -26,6 +26,10 @@ class User < ApplicationRecord
   end
   persistize :full_name
 
+  def select_name
+    "#{full_name} (#{email})"
+  end
+
   def is_tenant_based?
     tenant.present?
   end

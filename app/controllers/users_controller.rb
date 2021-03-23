@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def client_users
     client = Client.where(id: params[:client_id]).first if params[:client_id]
 
-    render json: client.present? ? client.try(:users) : []
+    render partial: 'requestors_list', locals:{users: client.try(:users).sort_by{|u| u.full_name}}
   end
 
   def new_staff

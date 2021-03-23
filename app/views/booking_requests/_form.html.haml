@@ -73,14 +73,7 @@
         client_id: $('#booking_request_client_id').val()
       },
       success: function(data) {
-
-        html = '';
-
-        $.each(data, function(item,i){
-          html += "<option value='" + i.id + "'>" + i.email + "</option>";
-        });
-
-        $('#booking_request_requestor_id').html(html);
+        $('#booking_request_requestor_id').html(data);
       }
     });
   }
@@ -132,6 +125,7 @@
     $('#booking_request_customer_id').val("#{model.customer_id.to_s}");
 
     // When client changes refresh the customer list
+    refresh_customer_list();
     $('#booking_request_client_id').on('change', refresh_customer_list);
 
 
