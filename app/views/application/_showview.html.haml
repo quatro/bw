@@ -19,4 +19,4 @@
                 %li
                   %dl.row
                     %dt.col-sm-3 #{a[1]}
-                    %dd.coll-sm-9 #{a[2].call(model.send(a[0]))}
+                    %dd.coll-sm-9 #{raw(a[2].call(model.send(a[0])))}

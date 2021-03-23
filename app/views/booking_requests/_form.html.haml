@@ -34,7 +34,7 @@
       #new_customer_data
         =f.input :new_customer_name
 
-    .offset-3.col-3 
+    .offset-1.col-5
       .some{ style: 'padding-top: 16px;'}
         = f.fields_for :booking_request_rooms do |booking_request_room|
           = render 'booking_request_room_fields', form: booking_request_room, form_name: 'f'

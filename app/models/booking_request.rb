@@ -105,8 +105,13 @@ class BookingRequest < ApplicationRecord
         # ["state", "State", Proc.new {|val| val}],
         ["reason", "Reason", Proc.new {|val| val}],
         ["job_identifier", "Job Identifier", Proc.new {|val| val}],
-        ["customer_id", "Customer", Proc.new{|val| Customer.find_by_id(val).try(:name)}]
+        ["customer_id", "Customer", Proc.new{|val| Customer.find_by_id(val).try(:name)}],
+        ["booking_request_rooms", "Rooms", Proc.new {|val| val.each_with_index.map{|r, i| format_room(r, i+1)}.join("<br />")}]
     ]
+  end
+
+  def format_room(room, index)
+    "Room #{index}: #{room.guests.map{|u| u.full_name}.join(', ')}"
   end
 
 
