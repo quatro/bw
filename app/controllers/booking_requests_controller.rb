@@ -6,6 +6,7 @@ class BookingRequestsController < ApplicationController
 
   def new
     @model = BookingRequest.new({tenant_id: current_user.active_tenant.try(:id), assignee_id: current_user.try(:id)})
+    @model.booking_request_rooms.build
   end
 
   def outstanding
@@ -20,7 +21,6 @@ class BookingRequestsController < ApplicationController
     if @model.save
       redirect_to book_booking_request_path(@model)
     else
-      byebug
       render "new"
     end
   end

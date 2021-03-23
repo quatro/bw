@@ -27,6 +27,8 @@
       =f.input :reason, collection: reason_select, include_blank: false
       =f.input :job_identifier
       -# =f.input :number_of_rooms, as: :select, collection: (1..10).to_a, include_blank: false
+
+
       =f.input :customer_id, as: :select, collection: customer_select_for_client(f.object.client)
 
       #new_customer_data
@@ -46,9 +48,13 @@
 :javascript
 
   function refresh_customer_list() {
+
+    var prior_customer_id = $('#booking_request_customer_id').val();
+
     $.ajax({
       url: "#{for_client_customers_path}",
       data: {
+        customer_id: prior_customer_id,
         client_id: $('#booking_request_client_id').val()
       },
       success: function(data) {
@@ -90,7 +96,7 @@
     }
   }
 
-  $(document).on("click", ".add_fields", function (e){
+  function make_fields_autocompletable() {
     $(".guest1_name").autocomplete({
       serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val(),
       minChars: 3,
@@ -106,11 +112,11 @@
         $('#selected_option').html(suggestion.value);
       }
     });
-  })
+  }
 
   var ready = function() {
 
-    $('#add_room').trigger('click')
+    // $('#add_room').trigger('click')
 
     $('.datepicker').datepicker({
       dateFormat:"yy-mm-dd"
@@ -121,13 +127,18 @@
       refresh_user_list();
     });
 
-    refresh_customer_list();
+    // Set the proper customer
+    $('#booking_request_customer_id').val("#{model.customer_id.to_s}");
+
+    // When client changes refresh the customer list
     $('#booking_request_client_id').on('change', refresh_customer_list);
 
 
+    make_fields_autocompletable();
+    $(document).on("click", ".add_fields", make_fields_autocompletable);
+
     handle_new_customer_visibility();
     $('#booking_request_customer_id').on('change', handle_new_customer_visibility);
-
   }
 
   $(document).ready(ready);

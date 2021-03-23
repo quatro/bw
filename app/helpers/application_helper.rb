@@ -89,7 +89,7 @@ module ApplicationHelper
   end
 
   def customer_select_for_client(client)
-    [[0, "--- New Customer ---"]].concat(Customer.where(client: client).map{|c| [c.id, c.name]})
+    [["--- New Customer ---", 0]].concat(Customer.where(client: client).map{|c| [c.name, c.id]})
   end
 
   def reason_select
