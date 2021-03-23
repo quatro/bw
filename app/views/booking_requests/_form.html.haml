@@ -1,7 +1,7 @@
 = simple_form_for model do |f|
 
   .row.mb-2
-    .col-sm-8
+    .col-sm-6
       - if model.errors.any?
         .alert.alert-danger
           #{model.errors.full_messages.join(', ')}
@@ -34,7 +34,7 @@
       #new_customer_data
         =f.input :new_customer_name
 
-    .col-sm-4
+    .offset-3.col-3 
       .some{ style: 'padding-top: 16px;'}
         = f.fields_for :booking_request_rooms do |booking_request_room|
           = render 'booking_request_room_fields', form: booking_request_room, form_name: 'f'
@@ -140,6 +140,7 @@
 
     handle_new_customer_visibility();
     $('#booking_request_customer_id').on('change', handle_new_customer_visibility);
+
   }
 
   $(document).ready(ready);
