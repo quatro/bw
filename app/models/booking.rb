@@ -9,11 +9,17 @@ class Booking < ApplicationRecord
   belongs_to :hotel
   belongs_to :cancelled_by_user, class_name: 'User', foreign_key: 'cancelled_by_user_id', optional: true
 
+  has_many :booking_rooms
+
   scope :for_tenant,      ->(tenant) { where(tenant: tenant).order(:created_at) }
   scope :last_months,     ->(months_count) { where("created_at >= ?", months_count.months.ago)}
   scope :completed,       -> { where(is_cancelled: false, is_no_show: false)}
   scope :cancelled,       -> { where(is_cancelled: true, is_no_show: false)}
   scope :no_show,         -> { where(is_cancelled: false, is_no_show: true)}
+
+  validates_presence_of :rate, :tax, :hotel
+
+  accepts_nested_attributes_for :booking_rooms
 
   def title
     "Booking for #{requestor.full_name} on #{date_nice(booking_request.date_from)}"
@@ -74,7 +80,9 @@ class Booking < ApplicationRecord
   persistize :license_fee
 
   def is_booked
-    !confirmation_number.blank? && !rate.blank? && rate > 0
+    booking_rooms.select{|br| !br.confirmation_number.blank?}.count == booking_request.booking_request_rooms.count &&
+    !rate.blank? &&
+    rate > 0
   end
   persistize :is_booked
 
@@ -116,18 +124,27 @@ class Booking < ApplicationRecord
     self.update({is_no_show: true})
   end
 
+  def confirmation_numbers
+    booking_rooms.each_with_index.map{|br, i| format_room(br, i+1)}.join("<br />")
+  end
+
 
   def show_map
     vals = [
         ["total", "Total", Proc.new {|val| val}],
         ["tax", "Tax", Proc.new {|val| val}],
         ["hotel_id", "Hotel", Proc.new {|val| Hotel.find(val).try(:name)}],
-        ["confirmation_number", "Confirmation #", Proc.new {|val| val}]
+        # ["confirmation_number", "Confirmation #", Proc.new {|val| val}],
+        ["booking_rooms", "Confirmation Number(s)", Proc.new {|val| val.each_with_index.map{|r, i| format_room(r, i+1)}.join("<br />")}]
     ]
 
     # vals << ["is_cancelled", "Cancelled?", Proc.new{|val| "Yes"}] if is_cancelled
 
     vals
+  end
+
+  def format_room(room, index)
+    "Room #{index}: #{room.confirmation_number}"
   end
 
   def can_cancel

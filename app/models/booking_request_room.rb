@@ -1,10 +1,19 @@
 class BookingRequestRoom < ApplicationRecord
-  belongs_to :booking_request, optional: true
+  belongs_to :booking_request
 
   belongs_to :guest1, class_name:'User', foreign_key: 'guest1_id', optional: true
   belongs_to :guest2, class_name:'User', foreign_key: 'guest2_id', optional: true
 
   # validates :guest1, presence: true
+  #
+
+  def to_s
+    guest_names
+  end
+
+  def guest_names
+    guests.map{|u| u.full_name}.join(', ')
+  end
 
   def guests
     [guest1, guest2].compact

@@ -13,7 +13,12 @@ class BookingRequestsController < ApplicationController
     @models = BookingRequest.outstanding_for_tenant(current_user.active_tenant).unassigned.order(id: :asc).limit(100)
   end
 
-  def edit; end
+  def edit
+    if @model.is_booked?
+      return redirect_to root_path, alert: 'This request has already been booked and cannot be edited'
+    end
+
+  end
 
   def create
     @model = BookingRequest.new(booking_request_params)
@@ -41,7 +46,15 @@ class BookingRequestsController < ApplicationController
 
   def book
     br = @model
+
+    # If it's already booked we don't want to book again
+    return redirect_to root_path, alert: 'This request has already been booked and cannot be edited' if br.is_booked?
+
     @model = Booking.new({booking_request: br})
+
+    br.booking_request_rooms.each do |brr|
+      @model.booking_rooms.build({booking_request_room: brr}) if !@model.booking_rooms.select{|br| br.booking_request_room_id == brr.try(:id)}.any?
+    end
   end
 
   def claim_and_book
