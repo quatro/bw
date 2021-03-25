@@ -21,6 +21,7 @@ class BookingRequest < ApplicationRecord
   # scope :foreman,
 
   validate :ensure_rooms_have_at_least_one_guest
+  validate :ensure_guests_exist
 
   def nights
     date_to.to_date - date_from.to_date if date_from.present? && date_to.present?
@@ -123,6 +124,18 @@ class BookingRequest < ApplicationRecord
   def ensure_rooms_have_at_least_one_guest
     if booking_request_rooms.select{|brr| brr.guest1_name.blank?}.any?
       errors.add(:rooms, 'You must select a first guest for each room')
+    end
+  end
+
+  def ensure_guests_exist
+    booking_request_rooms.each do |brr|
+      if !brr.guest1_name.blank? && !User.where(full_name: brr.guest1_name).any?
+        errors.add(:rooms, 'Guest 1 name was not found, please enter in a valid name')
+      end
+
+      if !brr.guest2_name.blank? && !User.where(full_name: brr.guest2_name).any?
+        errors.add(:rooms, 'Guest 2 name was not found, please enter in a valid name')
+      end
     end
   end
 end

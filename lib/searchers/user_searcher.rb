@@ -29,15 +29,14 @@ class Searchers::UserSearcher
           query_content += operator
         end
         real_str = str.gsub(/\s+/, "")
-        query_content += "(to_tsvector('english', users.first) @@ to_tsquery('english', '#{real_str}:*')
-                        OR to_tsvector('english', users.last) @@ to_tsquery('english', '#{real_str}:*'))"
+        query_content += "(LEVENSHTEIN(users.first,'#{real_str}') < 3 OR LEVENSHTEIN(last,'#{real_str}') < 3)"
 
         count += 1
       end
     else
       real_query = query.gsub(/\s+/, "")
-      query_content = "to_tsvector('english', users.first) @@ to_tsquery('english', '#{real_query}:*')
-            OR to_tsvector('english', users.last) @@ to_tsquery('english', '#{real_query}:*')"
+
+      query_content = "(LEVENSHTEIN(users.first,'#{real_query}') < 3 OR LEVENSHTEIN(last,'#{real_query}') < 3)"
     end
 
     users_relation.where(query_content)
