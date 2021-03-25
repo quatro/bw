@@ -42,7 +42,6 @@ require("../../assets/dist/js/demo.js")
 // const imagePath = (name) => images(name, true)
 import 'cocoon';
 import 'css/site.scss'
-import 'easy-autocomplete/dist/jquery.easy-autocomplete'
 
 // This bring images into the application
 const images = require.context('../images', true)
