@@ -13,7 +13,13 @@
       =f.input :hotel_id, as: :select, collection: current_user.tenant.hotels.order(:name)
       =f.input :rate
       =f.input :tax
-      =f.input :confirmation_number
+      -#=f.input :confirmation_number
+
+      - count = 0
+      = f.fields_for :booking_rooms do |room_form|
+        - count += 1
+        =room_form.input :booking_request_room_id, as: :hidden
+        =room_form.input :confirmation_number, label: "Room #{count}: (#{room_form.object.booking_request_room.guest_names}) Confirmation Number"
 
   .row.mb-2
     .col-sm-6

@@ -19,9 +19,15 @@ class User < ApplicationRecord
   has_many :requested_bookings, foreign_key: 'requestor_id', class_name:'Booking'
 
   scope :for_tenant, -> (tenant) { where(tenant: tenant) }
+  scope :for_client, -> (client) { where(client: client) }
 
   def full_name
     [first, last].join(' ')
+  end
+  persistize :full_name
+
+  def select_name
+    "#{full_name} (#{email})"
   end
 
   def is_tenant_based?
@@ -59,5 +65,10 @@ class User < ApplicationRecord
 
   def can_create_booking_request?
     tenant.present?
+  end
+
+  def denormalize
+    self.full_name_will_change!
+    save
   end
 end

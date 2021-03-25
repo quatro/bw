@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_150557) do
+ActiveRecord::Schema.define(version: 2021_03_24_162529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2021_03_05_150557) do
     t.integer "booking_request_id"
     t.bigint "guest1_id"
     t.bigint "guest2_id"
+    t.string "guest1_name"
+    t.string "guest2_name"
     t.index ["guest1_id"], name: "index_booking_request_rooms_on_guest1_id"
     t.index ["guest2_id"], name: "index_booking_request_rooms_on_guest2_id"
   end
@@ -70,6 +72,20 @@ ActiveRecord::Schema.define(version: 2021_03_05_150557) do
     t.index ["customer_id"], name: "index_booking_requests_on_customer_id"
     t.index ["requestor_id"], name: "index_booking_requests_on_requestor_id"
     t.index ["tenant_id"], name: "index_booking_requests_on_tenant_id"
+  end
+
+  create_table "booking_rooms", force: :cascade do |t|
+    t.bigint "booking_id"
+    t.bigint "booking_request_room_id"
+    t.string "confirmation_number"
+    t.bigint "tenant_id"
+    t.bigint "client_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_booking_rooms_on_booking_id"
+    t.index ["booking_request_room_id"], name: "index_booking_rooms_on_booking_request_room_id"
+    t.index ["client_id"], name: "index_booking_rooms_on_client_id"
+    t.index ["tenant_id"], name: "index_booking_rooms_on_tenant_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -165,6 +181,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_150557) do
     t.bigint "tenant_id"
     t.bigint "client_id"
     t.boolean "is_foreman"
+    t.string "full_name"
     t.index ["client_id"], name: "index_users_on_client_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

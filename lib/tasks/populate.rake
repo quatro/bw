@@ -143,13 +143,15 @@ namespace :db do
 
       br = BookingRequest.create({tenant: itg, requestor: user, client: user.client, date_from: dates[0], date_to: dates[1], city: city_state[0], state: city_state[1], customer: Customer.find_by_name(customers[customer_rand])})
 
+      brr = br.booking_request_rooms.create({guest1_name: 'Casey Walker'})
+
       if i < city_states.length-2
         confirmation_number = '123'
         assignee = User.find_by_email(staff[rand(0..2)][2])
         br.update({assignee: assignee})
         hotel = Hotel.find_by_name(hotel[0])
 
-        Booking.create({
+        b = Booking.create({
           confirmation_number: confirmation_number,
           booking_request: br,
           client: user.client,
@@ -158,6 +160,9 @@ namespace :db do
           rate: hotel.rate,
           tax: hotel.rate * 0.15
         })
+
+        b.booking_rooms.create({booking_request_room: brr, confirmation_number:'123ABC'})
+
       end
     end
 

@@ -21,12 +21,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @model = Booking.new(booking_params)
 
+    @model = Booking.new(booking_params)
     if @model.save
       @model.send_confirmation_email
 
       redirect_to @model
+    else
+      render 'new'
     end
   end
 
@@ -69,6 +71,19 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:rate, :tax, :assignee_id, :hotel_id, :booking_request_id, :requestor_id, :client_id, :assignee_id, :confirmation_number)
+    params.require(:booking).permit(
+        :rate,
+        :tax,
+        :assignee_id,
+        :hotel_id,
+        :booking_request_id,
+        :requestor_id,
+        :client_id,
+        :assignee_id,
+        booking_rooms_attributes: [
+            :confirmation_number,
+            :booking_request_room_id
+        ]
+    )
   end
 end

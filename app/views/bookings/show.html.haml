@@ -9,8 +9,8 @@
         / small box
         .small-box.bg-info
           .inner
-            %h3 #{@model.confirmation_number}
-            %p Confirmation #
+            %h3 Confirmation #s
+            %p #{raw(@model.confirmation_numbers)}
           .icon
             %i.ion.ion-bag
           =link_to resend_email_booking_path(@model), class:'small-box-footer', method: :post do

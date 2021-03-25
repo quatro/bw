@@ -1,7 +1,7 @@
 = simple_form_for model do |f|
 
   .row.mb-2
-    .col-sm-12
+    .col-sm-6
       - if model.errors.any?
         .alert.alert-danger
           #{model.errors.full_messages.join(', ')}
@@ -10,14 +10,9 @@
       =f.input :tenant_id, as: :hidden
       =f.input :assignee_id, as: :hidden
 
-      - if model.new_record?
-        -# =f.input :client_id, as: :select, collection: current_user.active_tenant.clients
-        =f.input :client_id, as: :select, collection: current_user.active_tenant.clients, include_blank: false
-        =f.input :requestor_id, as: :select, collection: []
 
-      - else
-        =f.input :requestor_id, as: :hidden
-        =f.input :client_id, as: :hidden
+      =f.input :client_id, as: :select, collection: current_user.active_tenant.clients, include_blank: false
+      =f.input :requestor_id, as: :select, collection: []
 
       =f.input :date_from, as: :string, input_html:{class:'datepicker'}
       =f.input :date_to, as: :string, input_html:{class:'datepicker'}
@@ -26,11 +21,20 @@
       =f.input :state, collection: states
       =f.input :reason, collection: reason_select, include_blank: false
       =f.input :job_identifier
-      =f.input :number_of_rooms
+      -# =f.input :number_of_rooms, as: :select, collection: (1..10).to_a, include_blank: false
+
+
       =f.input :customer_id, as: :select, collection: customer_select_for_client(f.object.client)
 
       #new_customer_data
         =f.input :new_customer_name
+
+    .offset-1.col-5
+      .some{ style: 'padding-top: 16px;'}
+        = f.fields_for :booking_request_rooms do |booking_request_room|
+          = render 'booking_request_room_fields', form: booking_request_room, form_name: 'f'
+      .links
+        = link_to_add_association "Add Room", f, :booking_request_rooms, class: 'btn btn-primary', id: 'add_room'    
 
   .row.mb-2
     .col-sm-6
@@ -40,9 +44,13 @@
 :javascript
 
   function refresh_customer_list() {
+
+    var prior_customer_id = $('#booking_request_customer_id').val();
+
     $.ajax({
       url: "#{for_client_customers_path}",
       data: {
+        customer_id: prior_customer_id,
         client_id: $('#booking_request_client_id').val()
       },
       success: function(data) {
@@ -50,7 +58,6 @@
       }
     });
   }
-
 
   function refresh_user_list() {
 
@@ -61,14 +68,7 @@
         client_id: $('#booking_request_client_id').val()
       },
       success: function(data) {
-
-        html = '';
-
-        $.each(data, function(item,i){
-          html += "<option value='" + i.id + "'>" + i.email + "</option>";
-        });
-
-        $('#booking_request_requestor_id').html(html);
+        $('#booking_request_requestor_id').html(data);
       }
     });
   }
@@ -83,10 +83,29 @@
     else{
       $('#new_customer_data').hide()
     }
+  }
 
+  function make_fields_autocompletable() {
+    $(".guest1_name").autocomplete({
+      serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val(),
+      minChars: 3,
+      onSelect: function (suggestion) {
+        $('#selected_option').html(suggestion.value);
+      }
+    });
+
+    $(".guest2_name").autocomplete({
+      serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val(),
+      minChars: 3,
+      onSelect: function (suggestion) {
+        $('#selected_option').html(suggestion.value);
+      }
+    });
   }
 
   var ready = function() {
+
+    // $('#add_room').trigger('click')
 
     $('.datepicker').datepicker({
       dateFormat:"yy-mm-dd"
@@ -97,13 +116,20 @@
       refresh_user_list();
     });
 
+    // Set the proper customer
+    $('#booking_request_customer_id').val("#{model.customer_id.to_s}");
 
+    // When client changes refresh the customer list
     refresh_customer_list();
     $('#booking_request_client_id').on('change', refresh_customer_list);
 
 
+    make_fields_autocompletable();
+    $(document).on("click", ".add_fields", make_fields_autocompletable);
+
     handle_new_customer_visibility();
     $('#booking_request_customer_id').on('change', handle_new_customer_visibility);
+
   }
 
   $(document).ready(ready);

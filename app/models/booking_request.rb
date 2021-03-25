@@ -11,19 +11,23 @@ class BookingRequest < ApplicationRecord
   belongs_to :requestor, class_name: 'User', foreign_key: 'requestor_id'
   belongs_to :assignee, class_name: 'User', foreign_key: 'assignee_id', optional: true
   has_one :booking, dependent: :destroy
+  has_many :booking_request_rooms, dependent: :destroy
+
+  accepts_nested_attributes_for :booking_request_rooms, reject_if: :all_blank, allow_destroy: true
 
   scope :outstanding,    -> { joins("LEFT OUTER JOIN bookings on bookings.booking_request_id = booking_requests.id").where("bookings.id IS NULL AND (bookings.is_booked IS NULL OR bookings.is_booked = false)") }
   scope :outstanding_for_tenant, ->(tenant) { outstanding.where(tenant: tenant) }
   scope :unassigned, -> { where(assignee: nil) }
   # scope :foreman,
-  
+
+  validate :ensure_rooms_have_at_least_one_guest
+
   def nights
     date_to.to_date - date_from.to_date if date_from.present? && date_to.present?
   end
   persistize :nights
 
   def customer_id
-
     cust_id = self.attributes["customer_id"]
     new_name = self.attributes["new_customer_name"]
     id_cust = Customer.find_by_id(cust_id)
@@ -101,13 +105,24 @@ class BookingRequest < ApplicationRecord
         # ["state", "State", Proc.new {|val| val}],
         ["reason", "Reason", Proc.new {|val| val}],
         ["job_identifier", "Job Identifier", Proc.new {|val| val}],
-        ["customer_id", "Customer", Proc.new{|val| Customer.find_by_id(val).try(:name)}]
+        ["customer_id", "Customer", Proc.new{|val| Customer.find_by_id(val).try(:name)}],
+        ["booking_request_rooms", "Rooms", Proc.new {|val| val.each_with_index.map{|r, i| format_room(r, i+1)}.join("<br />")}]
     ]
+  end
+
+  def format_room(room, index)
+    "Room #{index}: #{room.guests.map{|u| u.full_name}.join(', ')}"
   end
 
 
   def denormalize
     self.requestor_name_will_change!
     save
+  end
+
+  def ensure_rooms_have_at_least_one_guest
+    if booking_request_rooms.select{|brr| brr.guest1_name.blank?}.any?
+      errors.add(:rooms, 'You must select a first guest for each room')
+    end
   end
 end

@@ -8,6 +8,8 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag '//cdn.datatables.net/w/dt/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/b-print-1.5.6/fc-3.2.5/fh-3.1.4/r-2.2.2/rr-1.2.4/sc-2.0.0/datatables.min.css'
     = stylesheet_link_tag "https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    = stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css'
+
 
 
     - if content_for?(:js_before)
@@ -19,6 +21,7 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
     = javascript_include_tag 'https://cdn.datatables.net/w/dt/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/r-2.2.2/rr-1.2.4/datatables.min.js'
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js'
 
   - if user_signed_in?
     =render layout: 'layouts/dashboard_view' do
