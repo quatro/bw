@@ -29,7 +29,6 @@ gem 'rails-jquery-autocomplete'
 
 # Reduces boot times through caching; required in config/boot.rb
 # gem 'bootsnap', '>= 1.4.2', require: false
-gem 'devise'
 gem 'cocoon'
 
 group :development, :test do
@@ -79,5 +78,5 @@ gem 'simple_command'
 gem 'google-maps'
 gem 'letter_opener'
 # gem 'mimemagic', '~> 0.4.0'
-gem 'mimemagic'
+gem 'mimemagic', '~> 0.3.7'
 gem 'active_model_serializers', '~> 0.10.12'
