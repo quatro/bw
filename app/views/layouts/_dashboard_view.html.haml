@@ -21,6 +21,9 @@
             %i.far.fa-comments
             %span.badge.badge-danger.navbar-badge 3
 
+        %li.nav-item
+          =link_to "Sign Out", destroy_user_session_path, class:"nav-link", method: :delete
+          
         %li.nav-item.dropdown
           %a.nav-link{"data-toggle" => "dropdown", :href => "#"}
             %i.fas.fa-user{style:'padding-right: 5px;'}
@@ -43,6 +46,7 @@
               %i.fa.fa-sign-out-alt.mr-2
               Sign Out
               -#%span.float-right.text-muted.text-sm 3 mins
+
 
             .dropdown-divider
 
