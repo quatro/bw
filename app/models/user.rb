@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   scope :for_tenant, -> (tenant) { where(tenant: tenant) }
   scope :for_client, -> (client) { where(client: client) }
+  scope :is_foreman, -> { where(is_foreman: true) }
 
   def full_name
     [first, last].join(' ')

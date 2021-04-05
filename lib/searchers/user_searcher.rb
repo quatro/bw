@@ -12,7 +12,7 @@ class Searchers::UserSearcher
     users
   end
 
-  private
+
   def perform_search(users_relation, query, relaxed)
 
     if relaxed
@@ -29,14 +29,14 @@ class Searchers::UserSearcher
           query_content += operator
         end
         real_str = str.gsub(/\s+/, "")
-        query_content += "(LEVENSHTEIN(users.first,'#{real_str}') < 3 OR LEVENSHTEIN(last,'#{real_str}') < 3)"
+        query_content += "(LEVENSHTEIN(users.first,'#{real_str}') < 3 OR LEVENSHTEIN(last,'#{real_str}') < 3) OR (users.first LIKE '%#{real_str}%' OR users.last LIKE '%#{real_str}%')"
 
         count += 1
       end
     else
       real_query = query.gsub(/\s+/, "")
 
-      query_content = "(LEVENSHTEIN(users.first,'#{real_query}') < 3 OR LEVENSHTEIN(last,'#{real_query}') < 3)"
+      query_content = "(LEVENSHTEIN(users.first,'#{real_query}') < 3 OR LEVENSHTEIN(last,'#{real_query}') < 3) OR (users.first LIKE '%#{real_query}%' OR users.last LIKE '%#{real_query}%')"
     end
 
     users_relation.where(query_content)

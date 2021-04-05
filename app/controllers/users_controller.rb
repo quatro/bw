@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def client_users
     client = Client.where(id: params[:client_id]).first if params[:client_id]
 
-    render partial: 'requestors_list', locals:{users: client.try(:users).sort_by{|u| u.full_name}}
+    render partial: 'requestors_list', locals:{users: client.try(:booking_requestable_users).sort_by{|u| u.full_name}}
   end
 
   def new_staff
@@ -79,6 +79,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first, :last, :email, :tenant_id, :client_id)
+    params.require(:user).permit(:first, :last, :email, :tenant_id, :client_id, :is_foreman, :phone, :employee_id)
   end
 end

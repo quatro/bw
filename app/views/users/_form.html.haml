@@ -9,9 +9,11 @@
 
       =f.input :tenant_id, as: :hidden
       =f.input :client_id, as: :hidden
+      =f.input :email
       =f.input :first
       =f.input :last
-      =f.input :email
+      =f.input :phone, label: 'Phone Number'
+      =f.input :employee_id, label: 'Employee ID'
 
       - if f.object.is_client_based?
         =f.input :is_foreman

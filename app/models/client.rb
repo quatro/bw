@@ -8,6 +8,9 @@ class Client < ApplicationRecord
 
   scope :for_tenant,      ->(tenant) { where(tenant: tenant) }
 
+  def booking_requestable_users
+    users.is_foreman
+  end
 
   def show_map
     [

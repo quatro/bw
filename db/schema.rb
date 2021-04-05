@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_124223) do
+ActiveRecord::Schema.define(version: 2021_04_05_204718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -183,6 +183,8 @@ ActiveRecord::Schema.define(version: 2021_03_25_124223) do
     t.bigint "client_id"
     t.boolean "is_foreman"
     t.string "full_name"
+    t.string "phone"
+    t.string "employee_id"
     t.index ["client_id"], name: "index_users_on_client_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
