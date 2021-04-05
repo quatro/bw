@@ -80,8 +80,8 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  config.action_mailer.default_url_options = { host: 'www.heatbooking.com' }
-  Rails.application.routes.default_url_options[:host] = 'www.heatbooking.com'
+  config.action_mailer.default_url_options = { host: 'http://booking-prod-vpc.eba-ynx6k2zp.us-east-1.elasticbeanstalk.com/' }
+  Rails.application.routes.default_url_options[:host] = 'http://booking-prod-vpc.eba-ynx6k2zp.us-east-1.elasticbeanstalk.com/'
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
