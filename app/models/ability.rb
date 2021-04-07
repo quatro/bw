@@ -16,6 +16,10 @@ class Ability
           u.client.try(:tenant).try(:id) == user.tenant_id
         end
 
+        can :manage, Tenant do |t|
+          t.id == user.tenant_id
+        end
+
         tenant_based_models.each do |m|
           can :manage, m do |a|
             a.tenant_id == user.tenant_id

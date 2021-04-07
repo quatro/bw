@@ -1,0 +1,43 @@
+
+
+=render 'application/pageheader', title:'Monthly Detail Report'
+
+%section.content
+  .row
+    .col-md-6
+      .panel.panel-default
+        .panel-heading
+          %h4 Select a Month
+        .panel-body
+          %select.form-control.month-select
+            - 12.times.each do |i|
+              - dt = DateTime.now - (10 - i).months
+              %option{value: dt.strftime("%Y-%m-%d") }
+                #{dt.strftime("%b %y")}
+
+
+
+
+  .row
+    .col-md-12
+      %hr
+      #results
+
+
+:javascript
+
+  var ready = function() {
+    $(document).on('change', '.month-select', function(e){
+      $.ajax({
+        url: "#{run_detail_report_tenant_path}",
+        data: {
+          day_in_month: $(this).val()
+        },
+        success: function(data) {
+          $('#results').html(data);
+        }
+      });
+    });
+  }
+
+  $(document).ready(ready);

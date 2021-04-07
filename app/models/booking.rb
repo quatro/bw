@@ -1,3 +1,5 @@
+require "active_support"
+
 class Booking < ApplicationRecord
   include ApplicationHelper
 
@@ -12,10 +14,11 @@ class Booking < ApplicationRecord
   has_many :booking_rooms
 
   scope :for_tenant,      ->(tenant) { where(tenant: tenant).order(:created_at) }
-  scope :last_months,     ->(months_count) { where("created_at >= ?", months_count.months.ago)}
+  scope :last_months,     ->(months_count) { joins(:booking_request).where("date_from >= ?", months_count.months.ago)}
   scope :completed,       -> { where(is_cancelled: false, is_no_show: false)}
   scope :cancelled,       -> { where(is_cancelled: true, is_no_show: false)}
   scope :no_show,         -> { where(is_cancelled: false, is_no_show: true)}
+  scope :for_month,       -> (date) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", date.at_beginning_of_month, date.at_beginning_of_month.next_month()) }
 
   validates_presence_of :rate, :tax, :hotel
 

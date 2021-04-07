@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     member do
       get :hotel
       get :report
+      get :detail_report
+      get :run_detail_report
       get :monthly_sales_data
       get :monthly_license_cost_data
     end

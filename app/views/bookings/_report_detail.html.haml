@@ -1,0 +1,62 @@
+%table.data-table-bookings.stripe
+  %thead
+    %tr
+      %th Employee ID
+      %th Employee Code
+      %th Guest 1 First Name
+      %th Guest 1 Last Name
+      %th Guest 2 First Name
+      %th Guest 2 Last Name
+      %th Day
+      %th Rate
+      %th Tax
+      %th Total
+      %th Job
+      %th Reason
+      %th Hotel Name
+
+  %tbody
+    - models.each do |model|
+      - br = model.booking_request
+
+      - model.nights.times.each do |i|
+        - model.booking_rooms.each do |room|
+          - day = model.booking_request.date_from + i.days
+          - brr = room.booking_request_room
+
+          %tr
+            %td #{model.requestor.employee_id}
+            %td &nbsp;
+            %td #{brr.guest1.try(:first)}
+            %td #{brr.guest1.try(:last)}
+            %td #{brr.guest2.try(:first)}
+            %td #{brr.guest2.try(:last)}
+            %td #{day.strftime("%Y-%m-%d")}
+            %td #{model.rate}
+            %td #{model.tax}
+            %td #{model.total}
+            %td #{br.job_identifier}
+            %td #{br.reason}
+            %td #{model.hotel.try(:name)}
+
+
+
+
+:javascript
+
+  var ready = function() {
+    $('.data-table-bookings').DataTable({
+        pageLength: 2000,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        paging: false,
+        searching: false,
+        sorting: true,
+        info: false,
+        order:[]
+    });
+  }
+
+  $(document).ready(ready);
