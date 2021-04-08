@@ -11,9 +11,11 @@
       %th Rate
       %th Tax
       %th Total
-      %th Job
+      -#%th Job
       %th Reason
       %th Hotel Name
+      %th City
+      %th State
 
   %tbody
     - models.each do |model|
@@ -35,9 +37,11 @@
             %td #{model.rate}
             %td #{model.tax}
             %td #{model.total}
-            %td #{br.job_identifier}
+            -#%td #{br.job_identifier}
             %td #{br.reason}
             %td #{model.hotel.try(:name)}
+            %td #{br.city}
+            %td #{br.state}
 
 
 
