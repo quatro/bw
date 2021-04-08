@@ -4,7 +4,7 @@
 
 %section.content
   .row
-    .col-md-6
+    .col-md-3
       .panel.panel-default
         .panel-heading
           %h4 Select a Month
@@ -12,7 +12,7 @@
           %select.form-control.month-select
             - 12.times.each do |i|
               - dt = DateTime.now - (10 - i).months
-              %option{value: dt.strftime("%Y-%m-%d") }
+              %option{value: dt.strftime("%Y-%m-%d"), selected: i == 10 }
                 #{dt.strftime("%b %y")}
 
 
@@ -26,18 +26,21 @@
 
 :javascript
 
-  var ready = function() {
-    $(document).on('change', '.month-select', function(e){
-      $.ajax({
-        url: "#{run_detail_report_tenant_path}",
-        data: {
-          day_in_month: $(this).val()
-        },
-        success: function(data) {
-          $('#results').html(data);
-        }
-      });
+  function update_table() {
+    $.ajax({
+      url: "#{run_detail_report_tenant_path}",
+      data: {
+        day_in_month: $('.month-select').first().val()
+      },
+      success: function(data) {
+        $('#results').html(data);
+      }
     });
+  }
+
+  var ready = function() {
+    update_table();
+    $(document).on('change', '.month-select', update_table);
   }
 
   $(document).ready(ready);
