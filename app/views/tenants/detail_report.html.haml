@@ -1,19 +1,24 @@
 
 
-=render 'application/pageheader', title:'Monthly Detail Report'
+=render 'application/pageheader', title:'Detail Report'
 
 %section.content
   .row
     .col-md-3
       .panel.panel-default
         .panel-heading
-          %h4 Select a Month
+          %h4 Select the date range
         .panel-body
-          %select.form-control.month-select
-            - 12.times.each do |i|
-              - dt = DateTime.now - (10 - i).months
-              %option{value: dt.strftime("%Y-%m-%d"), selected: i == 10 }
-                #{dt.strftime("%b %y")}
+          .row
+            .col-md-6
+              %input.form-control.from-date.datepicker
+            .col-md-6
+              %input.form-control.to-date.datepicker
+
+          .row
+            .col-md-12
+              %br
+              =link_to 'Filter', '#', class:'btn btn-success run-report'
 
 
 
@@ -30,7 +35,8 @@
     $.ajax({
       url: "#{run_detail_report_tenant_path}",
       data: {
-        day_in_month: $('.month-select').first().val()
+        from: $('.from-date').first().val(),
+        to: $('.to-date').first().val(),
       },
       success: function(data) {
         $('#results').html(data);
@@ -39,8 +45,15 @@
   }
 
   var ready = function() {
-    update_table();
-    $(document).on('change', '.month-select', update_table);
+
+    $(document).on('click', '.run-report', function(e){
+      e.preventDefault();
+      update_table();
+    });
+
+    $('.datepicker').datepicker({
+      dateFormat:"yy-mm-dd"
+    });
   }
 
   $(document).ready(ready);

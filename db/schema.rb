@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_204718) do
+ActiveRecord::Schema.define(version: 2021_04_08_123004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_204718) do
     t.string "phone_number"
     t.date "contract_start_date"
     t.date "contract_end_date"
+    t.decimal "private_rate", precision: 8, scale: 2
     t.index ["tenant_id"], name: "index_hotels_on_tenant_id"
   end
 

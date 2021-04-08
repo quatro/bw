@@ -34,7 +34,8 @@ class Hotel < ApplicationRecord
         ["city", "City", Proc.new {|val| val}],
         ["state", "State", Proc.new {|val| val}],
         ["zip", "Zip Code", Proc.new {|val| val}],
-        ["rate", "Rate", Proc.new {|val| number_to_currency(val)}],
+        ["rate", "Client Rate", Proc.new {|val| number_to_currency(val)}],
+        ["private_rate", "Hotel LNR", Proc.new {|val| number_to_currency(val)}],
     ]
   end
 

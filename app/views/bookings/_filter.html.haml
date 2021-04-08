@@ -19,3 +19,18 @@
   .row.mb-2
     .col-sm-12
       =f.submit "Search", class: 'btn btn-success'
+      =link_to 'Reset', completed_bookings_path, class:'btn btn-default'
+
+
+
+:javascript
+
+    var ready = function() {
+
+    $('.datepicker').datepicker({
+      dateFormat:"yy-mm-dd"
+    });
+
+  }
+
+  $(document).ready(ready);

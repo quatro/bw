@@ -2,9 +2,10 @@ class LicenseFeeCalculator
 
   def calculate(booking)
     annual_booking_number = booking.annual_booking_number
-    rate = percentage_rate(annual_booking_number)
+    usage_fee_rate = percentage_rate(annual_booking_number)
 
-    return booking.total * rate
+    # Usage fee based off the rate of the hotel, does not include taxes
+    return booking.rate * usage_fee_rate
   end
 
   def percentage_rate(annual_booking_number)

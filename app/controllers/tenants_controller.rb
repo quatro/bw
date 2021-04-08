@@ -6,16 +6,16 @@ class TenantsController < ApplicationController
   def report; end
   def detail_report; end
   def run_detail_report
-    day_in_month = DateTime.parse(params[:day_in_month]) if params[:day_in_month]
-    day_in_month = DateTime.now if day_in_month.nil?
+    from = DateTime.parse(params[:from]) if params[:from]
+    to = DateTime.parse(params[:to]) if params[:to]
 
-    models = Booking.for_tenant(current_user.active_tenant).completed.for_month(day_in_month).order(:created_at)
+    models = Booking.for_tenant(current_user.active_tenant).completed.between_dates(from, to).order(:created_at)
 
     render partial:'bookings/report_detail', locals:{models: models}
   end
 
   def monthly_sales_data
-    return monthly_data(:total, 'rgba(60,141,188,0.9)', 'Sales')
+    return monthly_data(:rate, 'rgba(60,141,188,0.9)', 'Sales')
   end
 
   def monthly_license_cost_data

@@ -15,7 +15,8 @@
       =f.input :city
       =f.input :state, as: :select, collection: states
       =f.input :zip
-      =f.input :rate
+      =f.input :rate, label: "Client Rate"
+      =f.input :private_rate, label: "Hotel LNR"
 
   .row.mb-2
     .col-sm-6

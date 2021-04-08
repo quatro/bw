@@ -19,6 +19,7 @@ class Booking < ApplicationRecord
   scope :cancelled,       -> { where(is_cancelled: true, is_no_show: false)}
   scope :no_show,         -> { where(is_cancelled: false, is_no_show: true)}
   scope :for_month,       -> (date) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", date.at_beginning_of_month, date.at_beginning_of_month.next_month()) }
+  scope :between_dates,   -> (from, to) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", from, to) }
 
   validates_presence_of :rate, :tax, :hotel
 
