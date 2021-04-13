@@ -21,7 +21,7 @@
             %i.far.fa-comments
             %span.badge.badge-danger.navbar-badge 3
 
-        %li.nav-item
+        -#%li.nav-item
           =link_to "Sign Out", destroy_user_session_path, class:"nav-link", method: :delete
           -#= form_with url: destroy_user_session_path, remote: false, method: :delete do |form|
             = form.submit "Sign out", class:'btn btn-default'

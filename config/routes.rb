@@ -40,7 +40,12 @@ Rails.application.routes.draw do
         get :map_markers
       end
     end
-    resources :clients
+    resources :clients do
+      member do
+        get :upload_staff
+        post :do_upload_staff
+      end
+    end
   end
   resources :users do
     collection do

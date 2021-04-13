@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_123004) do
+ActiveRecord::Schema.define(version: 2021_04_13_153011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_123004) do
     t.bigint "client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "room_number"
     t.index ["booking_id"], name: "index_booking_rooms_on_booking_id"
     t.index ["booking_request_room_id"], name: "index_booking_rooms_on_booking_request_room_id"
     t.index ["client_id"], name: "index_booking_rooms_on_client_id"
@@ -186,6 +187,12 @@ ActiveRecord::Schema.define(version: 2021_04_08_123004) do
     t.string "full_name"
     t.string "phone"
     t.string "employee_id"
+    t.string "job_title"
+    t.string "employment_status"
+    t.string "cost_group"
+    t.string "cost_center"
+    t.date "termination_date"
+    t.date "modified_date"
     t.index ["client_id"], name: "index_users_on_client_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

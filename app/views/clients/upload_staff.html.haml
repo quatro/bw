@@ -1,0 +1,19 @@
+
+=render 'application/pageheader', title: "#{@model.name} - Upload Staff", should_show_breadcrumbs: true
+
+
+%section.content
+  .container-fluid
+    / Small boxes (Stat box)
+    .row
+      .col-lg-12.col-12
+        = simple_form_for(:user, method: 'POST', url: do_upload_staff_tenant_client_path(@model.tenant, @model)) do |f|
+
+          .row.mb-2
+            .col-sm-6
+              =f.input :file, as: :file, label: "Staff Xls file"
+
+
+          .row.mb-2
+            .col-sm-6
+              =f.submit "Submit", class: 'btn btn-success'

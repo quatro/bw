@@ -17,7 +17,27 @@
 
       - if f.object.is_client_based?
         =f.input :is_foreman
+        =f.input :job_title
+        =f.input :employment_status
+        =f.input :cost_group
+        =f.input :cost_center
+        =f.input :termination_date, as: :string, input_html:{class:'datepicker'}
+        =f.input :modified_date, as: :string, input_html:{class:'datepicker'}
+
 
   .row.mb-2
     .col-sm-6
       =f.submit form_submit_label(model), class: 'btn btn-success'
+
+
+:javascript
+  var ready = function() {
+
+    $('.datepicker').datepicker({
+      dateFormat:"yy-mm-dd"
+    });
+
+  };
+
+  $(document).ready(ready);
+

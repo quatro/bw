@@ -255,6 +255,7 @@ GEM
     ruby-hmac (0.4.0)
     ruby_parser (3.15.1)
       sexp_processor (~> 4.9)
+    rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -271,6 +272,9 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    simple_xlsx_reader (1.0.4)
+      nokogiri
+      rubyzip
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -351,6 +355,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   simple_command
   simple_form
+  simple_xlsx_reader
   spring
   spring-watcher-listen (~> 2.0.0)
   switch_user

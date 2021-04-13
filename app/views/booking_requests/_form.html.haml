@@ -109,7 +109,7 @@
 
     $('.datepicker').datepicker({
       dateFormat:"yy-mm-dd"
-    });
+    });, as: :string, input_html:{class:'datepicker'}
 
     refresh_user_list();
     $('#booking_request_client_id').on('change', function(e){

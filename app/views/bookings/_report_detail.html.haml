@@ -2,11 +2,13 @@
   %thead
     %tr
       %th Employee ID
-      %th Employee Code
+      %th Employee Cost Center
       %th Guest 1 First Name
       %th Guest 1 Last Name
+      %th Guest 1 Cost Center
       %th Guest 2 First Name
       %th Guest 2 Last Name
+      %th Guest 2 Cost Center
       %th Day
       %th Rate
       %th Tax
@@ -28,11 +30,13 @@
 
           %tr
             %td #{model.requestor.employee_id}
-            %td &nbsp;
+            %td #{model.requestor.cost_center}
             %td #{brr.guest1.try(:first)}
             %td #{brr.guest1.try(:last)}
+            %td #{brr.guest1.try(:cost_center)}
             %td #{brr.guest2.try(:first)}
             %td #{brr.guest2.try(:last)}
+            %td #{brr.guest2.try(:cost_center)}
             %td #{day.strftime("%Y-%m-%d")}
             %td #{model.rate}
             %td #{model.tax}

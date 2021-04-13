@@ -79,6 +79,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first, :last, :email, :tenant_id, :client_id, :is_foreman, :phone, :employee_id)
+    params.require(:user).permit(:first, :last, :email, :tenant_id, :client_id, :is_foreman, :phone, :employee_id, :job_title, :employment_status, :cost_group, :cost_center, :termination_date, :modified_date)
   end
 end

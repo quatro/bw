@@ -2,6 +2,7 @@
 - filter_partial = local_assigns[:filter_partial].nil? ? "#{key}/filter" : filter_partial
 - has_filter = local_assigns[:has_filter].nil? ? false : has_filter
 - new_link = local_assigns[:new_link].nil? ? nil : new_link
+- other_links = local_assigns[:other_links].nil? ? [] : other_links
 - should_display_new_link = new_link.present?
 - should_show_breadcrumbs = local_assigns[:should_show_breadcrumbs].nil? ? true : should_show_breadcrumbs
 
@@ -24,7 +25,10 @@
         .col-lg-12
           - if should_display_new_link
             =link_to "New", new_link, class:'btn btn-success'
-            %hr
+          - other_links.each do |link|
+            =link_to link[0], link[1], class:'btn btn-primary'
+
+          %hr
           =render list_partial, models: models
 
 
