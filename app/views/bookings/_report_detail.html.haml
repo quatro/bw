@@ -3,9 +3,11 @@
     %tr
       %th Employee ID
       %th Employee Cost Center
+      %th Guest 1 ID
       %th Guest 1 First Name
       %th Guest 1 Last Name
       %th Guest 1 Cost Center
+      %th Guest 2 ID
       %th Guest 2 First Name
       %th Guest 2 Last Name
       %th Guest 2 Cost Center
@@ -35,9 +37,11 @@
           %tr
             %td #{model.requestor.employee_id}
             %td #{model.requestor.cost_center}
+            %td #{brr.guest1.try(:employee_id)}
             %td #{brr.guest1.try(:first)}
             %td #{brr.guest1.try(:last)}
             %td #{brr.guest1.try(:cost_center)}
+            %td #{brr.guest2.try(:employee_id)}
             %td #{brr.guest2.try(:first)}
             %td #{brr.guest2.try(:last)}
             %td #{brr.guest2.try(:cost_center)}
@@ -47,7 +51,7 @@
             %td &nbsp;
             %td #{model.tax}
             %td #{model.total}
-            $td #{model.requestor.cost_group}
+            %td #{model.requestor.cost_group}
             -#%td #{br.job_identifier}
             %td #{br.reason}
             %td #{model.hotel.try(:name)}
