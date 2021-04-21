@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
         'Employment_Status',
         'Cost_Group',
         'Cost_Center',
-        'Termination Date',
+        'Termination_Date',
         'ModifiedDate'
     ]
 
