@@ -29,14 +29,16 @@ class Searchers::UserSearcher
           query_content += operator
         end
         real_str = str.gsub(/\s+/, "")
-        query_content += "(LEVENSHTEIN(users.first,'#{real_str}') < 3 OR LEVENSHTEIN(last,'#{real_str}') < 3) OR (users.first LIKE '%#{real_str}%' OR users.last LIKE '%#{real_str}%')"
+        real_str_lower = real_str.downcase
+        query_content += "(LEVENSHTEIN(users.first,'#{real_str}') < 3 OR LEVENSHTEIN(last,'#{real_str}') < 3) OR (lower(users.first) LIKE '%#{real_str_lower}%' OR lower(users.last) LIKE '%#{real_str_lower}%')"
 
         count += 1
       end
     else
       real_query = query.gsub(/\s+/, "")
+      real_query_lower = real_query.downcase
 
-      query_content = "(LEVENSHTEIN(users.first,'#{real_query}') < 3 OR LEVENSHTEIN(last,'#{real_query}') < 3) OR (users.first LIKE '%#{real_query}%' OR users.last LIKE '%#{real_query}%')"
+      query_content = "(LEVENSHTEIN(users.first,'#{real_query}') < 3 OR LEVENSHTEIN(last,'#{real_query}') < 3) OR (lower(users.first) LIKE '%#{real_query_lower}%' OR lower(users.last) LIKE '%#{real_query_lower}%')"
     end
 
     users_relation.where(query_content)
