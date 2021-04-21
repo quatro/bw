@@ -1,8 +1,6 @@
 %table.data-table-bookings.stripe
   %thead
     %tr
-      %th Employee ID
-      %th Employee Cost Center
       %th Guest 1 ID
       %th Guest 1 First Name
       %th Guest 1 Last Name
@@ -11,6 +9,7 @@
       %th Guest 2 First Name
       %th Guest 2 Last Name
       %th Guest 2 Cost Center
+      %th Employee Cost Group
       %th Room #
       %th Night
       %th Rate
@@ -35,8 +34,6 @@
           - brr = room.booking_request_room
 
           %tr
-            %td #{model.requestor.employee_id}
-            %td #{model.requestor.cost_center}
             %td #{brr.guest1.try(:employee_id)}
             %td #{brr.guest1.try(:first)}
             %td #{brr.guest1.try(:last)}
@@ -45,6 +42,7 @@
             %td #{brr.guest2.try(:first)}
             %td #{brr.guest2.try(:last)}
             %td #{brr.guest2.try(:cost_center)}
+            %td #{model.requestor.cost_group}
             %td &nbsp;
             %td #{day.strftime("%Y-%m-%d")}
             %td #{model.rate}

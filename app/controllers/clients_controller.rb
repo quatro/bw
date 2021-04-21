@@ -14,8 +14,8 @@ class ClientsController < ApplicationController
 
     columns = [
         'Employee_Code',
-        'CLS_FName',
-        'CLSLName',
+        'FName',
+        'LName',
         'Job_Title',
         'Phone',
         'Email_Address',
