@@ -129,13 +129,17 @@ class BookingRequest < ApplicationRecord
 
   def ensure_guests_exist
     booking_request_rooms.each do |brr|
-      if !brr.guest1_name.blank? && !User.where(full_name: brr.guest1_name).any?
+      if !brr.guest1_name.blank? && !User.where(full_name: convert_autocomplete_name_to_full_name(brr.guest1_name)).any?
         errors.add(:rooms, 'Guest 1 name was not found, please enter in a valid name')
       end
 
-      if !brr.guest2_name.blank? && !User.where(full_name: brr.guest2_name).any?
+      if !brr.guest2_name.blank? && !User.where(full_name: convert_autocomplete_name_to_full_name(brr.guest2_name)).any?
         errors.add(:rooms, 'Guest 2 name was not found, please enter in a valid name')
       end
     end
+  end
+
+  def convert_autocomplete_name_to_full_name(autocomplete_name)
+    autocomplete_name.present? ? autocomplete_name.split(' / ')[0].strip : ''
   end
 end

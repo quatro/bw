@@ -1,4 +1,6 @@
 
+#hotel_details_destination
+
 = simple_form_for model do |f|
 
   .row.mb-2
@@ -10,16 +12,36 @@
       =f.input :assignee_id, as: :hidden
       =f.input :booking_request_id, as: :hidden
 
-      =f.input :hotel_id, as: :select, collection: current_user.tenant.hotels.order(:name)
-      =f.input :rate
-      =f.input :tax
-      -#=f.input :confirmation_number
+      .row
+        .col-md-11
+          =f.input :hotel_id, as: :select, collection: current_user.tenant.hotels.order(:name)
+        .col-md-1
+          %div
+            %label.select.optional
+              View
+          %div
+            %a#view_hotel_detail{href:'#'}
+              %i.fas.fa-lg.fa-arrow-circle-right
 
+      =f.input :tax
+
+      %br
       - count = 0
       = f.fields_for :booking_rooms do |room_form|
-        - count += 1
-        =room_form.input :booking_request_room_id, as: :hidden
-        =room_form.input :confirmation_number, label: "Room #{count}: (#{room_form.object.booking_request_room.guest_names}) Confirmation Number"
+        .room-div{data:{room_size: room_form.object.booking_request_room.room_size}}
+          .page-header
+            %h4
+              Room #{count+1} (#{room_form.object.booking_request_room.guest_names})
+            %hr
+
+          - count += 1
+          =room_form.input :booking_request_room_id, as: :hidden
+          .row
+            .col-md-8
+              =room_form.input :confirmation_number, label: "Confirmation Number"
+            .col-md-4
+              =room_form.input :rate, label: "Rate", class:'room-rate'
+
 
   .row.mb-2
     .col-sm-6
@@ -36,7 +58,20 @@
         hotel_id: $('#booking_hotel_id').val()
       },
       success: function(data) {
-        $('#booking_rate').val(data.rate);
+
+        $.each($('.room-div'), function(item,i){
+          room_size = $(this).data('room-size');
+
+          if(room_size == 'Double') {
+            $(this).find( "[name$='[rate]'" ).first().val(data.double_rate);
+          } else if(room_size == 'Single') {
+            $(this).find( "[name$='[rate]'" ).first().val(data.rate);
+          }
+
+        });
+
+        // $('#booking_rate').val(data.rate);
+
       }
     });
   }
@@ -46,6 +81,24 @@
 
     $('#booking_hotel_id').on('change', function(e){
       load_hotel_rate();
+    });
+
+    $(document).on('click', '#view_hotel_detail', function(e){
+      e.preventDefault();
+
+      $.ajax({
+        url: "#{detail_tenant_hotels_path(current_user.active_tenant)}",
+        data:{
+          id: $('#booking_hotel_id').val()
+        },
+        success: function(data) {
+          $('#hotel_details_destination').html(data);
+
+          $('#hotel_details').dialog({
+            minWidth: 700
+          });
+        }
+      });
     });
   }
 

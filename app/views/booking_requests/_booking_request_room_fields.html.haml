@@ -1,8 +1,11 @@
 - f = !local_assigns[:f].nil? ? f : local_assigns[:form]
 
-.card.card-default
+.card.card-default.room-card
   .card-body
     .nested-fields
-      = f.input :guest1_name, label: 'Guest 1 Name', input_html: { class: 'guest1_name'}
-      = f.input :guest2_name, label: 'Guest 2 Name', input_html: { class: 'guest2_name'}
+      .guest1
+        = f.input :guest1_name, label: 'Guest 1 Name', input_html: { class: 'guest1_name'}
+      .guest2
+        = f.input :guest2_name, label: 'Guest 2 Name', input_html: { class: 'guest2_name'}
+      = f.input :room_size, label: 'Room Type', collection: room_size_options, input_html:{ class:'room-size-dropdown' }
       = link_to_remove_association "Remove Room", f

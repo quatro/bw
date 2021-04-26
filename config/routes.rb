@@ -38,7 +38,9 @@ Rails.application.routes.draw do
     resources :hotels do
       collection do
         get :map_markers
+        get :detail
       end
+
     end
     resources :clients do
       member do

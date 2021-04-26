@@ -6,7 +6,7 @@ class BookingRoom < ApplicationRecord
   belongs_to :client, optional: true
   belongs_to :booking_request_room
 
-  validates_presence_of :confirmation_number
+  validates_presence_of :confirmation_number, :rate
 
   def client_id
     booking.try(:client_id)

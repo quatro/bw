@@ -36,6 +36,7 @@ class Hotel < ApplicationRecord
         ["zip", "Zip Code", Proc.new {|val| val}],
         ["rate", "Client Rate", Proc.new {|val| number_to_currency(val)}],
         ["private_rate", "Hotel LNR", Proc.new {|val| number_to_currency(val)}],
+        ["notes", "Notes", Proc.new {|val| val}]
     ]
   end
 

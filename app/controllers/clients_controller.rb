@@ -51,15 +51,24 @@ class ClientsController < ApplicationController
           termination_date = row[10]
           modified_date = row[11]
 
+          # Foremen must have an email address
+          raise "Each foreman has to have an email address - #{first_name} / #{last_name}" is_foreman == "Yes" && email.blank?
+
+          # Make up an email
+          if email.blank?
+            email = "#{first_name}.#{last_name}@#{@model.domain}"
+          end
+
+
           # See if we can find the user
           user = User.find_by_email(email)
 
           if user.nil?
             random_password = SecureRandom.uuid
             user = User.new
-            user.email = email
-            user.first = first_name
-            user.last = last_name
+            user.email = email.try(:strip)
+            user.first = first_name.try(:strip)
+            user.last = last_name.try(:strip)
             user.password = random_password
             user.password_confirmation = random_password
             user.skip_confirmation!
@@ -68,18 +77,18 @@ class ClientsController < ApplicationController
           end
 
           user.update({
-            first: first_name,
-            last: last_name,
+            first: first_name.try(:strip),
+            last: last_name.try(:strip),
             client: @model,
             is_foreman: is_foreman == "Yes",
-            employee_id: employee_code,
-            phone: phone,
-            job_title: job_title,
-            employment_status: employment_status,
-            cost_group: cost_group,
-            cost_center: cost_center,
-            termination_date: termination_date,
-            modified_date: modified_date
+            employee_id: employee_code.try(:strip),
+            phone: phone.try(:strip),
+            job_title: job_title.try(:strip),
+            employment_status: employment_status.try(:strip),
+            cost_group: cost_group.try(:strip),
+            cost_center: cost_center.try(:strip),
+            termination_date: termination_date.try(:strip),
+            modified_date: modified_date.try(:strip)
           })
         end
       end
@@ -130,6 +139,6 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:name, :tenant_id)
+    params.require(:client).permit(:name, :tenant_id, :billing_fee, :domain)
   end
 end

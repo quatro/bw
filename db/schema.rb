@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_153011) do
+ActiveRecord::Schema.define(version: 2021_04_24_143854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_153011) do
     t.bigint "guest2_id"
     t.string "guest1_name"
     t.string "guest2_name"
+    t.string "room_size", default: "Double"
     t.index ["guest1_id"], name: "index_booking_request_rooms_on_guest1_id"
     t.index ["guest2_id"], name: "index_booking_request_rooms_on_guest2_id"
   end
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_153011) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "room_number"
+    t.decimal "rate", precision: 8, scale: 2
     t.index ["booking_id"], name: "index_booking_rooms_on_booking_id"
     t.index ["booking_request_room_id"], name: "index_booking_rooms_on_booking_request_room_id"
     t.index ["client_id"], name: "index_booking_rooms_on_client_id"
@@ -100,7 +102,6 @@ ActiveRecord::Schema.define(version: 2021_04_13_153011) do
     t.bigint "client_id"
     t.bigint "hotel_id"
     t.bigint "assignee_id"
-    t.decimal "rate", precision: 8, scale: 2
     t.decimal "tax", precision: 8, scale: 2
     t.decimal "total", precision: 8, scale: 2
     t.boolean "is_booked", default: false
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_153011) do
     t.boolean "is_cancelled", default: false
     t.boolean "is_no_show", default: false
     t.bigint "cancelled_by_user_id"
+    t.decimal "rate_total", precision: 8, scale: 2
     t.index ["assignee_id"], name: "index_bookings_on_assignee_id"
     t.index ["booking_request_id"], name: "index_bookings_on_booking_request_id"
     t.index ["cancelled_by_user_id"], name: "index_bookings_on_cancelled_by_user_id"
@@ -124,6 +126,8 @@ ActiveRecord::Schema.define(version: 2021_04_13_153011) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "billing_fee", precision: 8, scale: 2
+    t.string "domain"
     t.index ["tenant_id"], name: "index_clients_on_tenant_id"
   end
 
@@ -151,6 +155,9 @@ ActiveRecord::Schema.define(version: 2021_04_13_153011) do
     t.date "contract_start_date"
     t.date "contract_end_date"
     t.decimal "private_rate", precision: 8, scale: 2
+    t.decimal "double_rate", precision: 8, scale: 2
+    t.decimal "double_private_rate", precision: 8, scale: 2
+    t.text "notes"
     t.index ["tenant_id"], name: "index_hotels_on_tenant_id"
   end
 

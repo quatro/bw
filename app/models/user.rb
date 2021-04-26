@@ -22,8 +22,12 @@ class User < ApplicationRecord
   scope :for_client, -> (client) { where(client: client) }
   scope :is_foreman, -> { where(is_foreman: true) }
 
+  def autocomplete_name
+    [full_name, employee_id, cost_group].compact.join(' / ')
+  end
+
   def full_name
-    [first, last].join(' ')
+    [first.try(:strip), last.try(:strip)].compact.join(' ')
   end
   persistize :full_name
 

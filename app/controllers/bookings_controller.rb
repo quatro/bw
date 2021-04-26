@@ -72,7 +72,6 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(
-        :rate,
         :tax,
         :assignee_id,
         :hotel_id,
@@ -82,6 +81,7 @@ class BookingsController < ApplicationController
         :assignee_id,
         booking_rooms_attributes: [
             :confirmation_number,
+            :rate,
             :booking_request_room_id
         ]
     )

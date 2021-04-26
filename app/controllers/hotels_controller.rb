@@ -3,6 +3,10 @@ class HotelsController < ApplicationController
   load_and_authorize_resource
   before_action :set_model
 
+  def detail
+    render partial:'hotels/detail', locals:{model: @model}
+  end
+
   def index
     @q = Hotel.ransack(params[:q])
     @models = @q.result(distinct: true).includes(:bookings).page(params[:page]).to_a.uniq
@@ -48,6 +52,6 @@ class HotelsController < ApplicationController
   end
 
   def hotel_params
-    params.require(:hotel).permit(:name, :tenant_id, :address, :city, :state, :zip, :rate, :private_rate, :contract_start_date, :contract_end_date, :phone_number)
+    params.require(:hotel).permit(:name, :tenant_id, :address, :city, :state, :zip, :rate, :private_rate, :double_rate, :double_private_rate, :contract_start_date, :contract_end_date, :phone_number, :notes)
   end
 end

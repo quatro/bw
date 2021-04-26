@@ -21,7 +21,7 @@ class Booking < ApplicationRecord
   scope :for_month,       -> (date) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", date.at_beginning_of_month, date.at_beginning_of_month.next_month()) }
   scope :between_dates,   -> (from, to) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", from, to) }
 
-  validates_presence_of :rate, :tax, :hotel
+  validates_presence_of :tax, :hotel
 
   accepts_nested_attributes_for :booking_rooms
 
@@ -85,8 +85,7 @@ class Booking < ApplicationRecord
 
   def is_booked
     booking_rooms.select{|br| !br.confirmation_number.blank?}.count == booking_request.booking_request_rooms.count &&
-    !rate.blank? &&
-    rate > 0
+    booking_rooms.select{|br| br.rate != 0}.count == booking_request.booking_request_rooms.count
   end
   persistize :is_booked
 
@@ -110,8 +109,13 @@ class Booking < ApplicationRecord
   end
   persistize :client_id
 
+  def rate_total
+    booking_rooms.map{|a| a.rate}.sum
+  end
+  persistize :rate_total
+
   def total
-    rate.present? && tax.present? ? rate + tax : 0
+    rate_total.present? && tax.present? && client.present? ? rate_total + tax + client.try(:billing_fee) : 0
   end
   persistize :total
 

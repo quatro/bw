@@ -2,6 +2,10 @@
 
   .row.mb-2
     .col-sm-6
+      .page-header
+        %h4 General
+      %hr
+
       - if model.errors.any?
         .alert.alert-danger
           #{model.errors.full_messages.join(', ')}
@@ -15,8 +19,23 @@
       =f.input :city
       =f.input :state, as: :select, collection: states
       =f.input :zip
-      =f.input :rate, label: "Client Rate"
-      =f.input :private_rate, label: "Hotel LNR"
+      =f.input :notes
+
+    .col-sm-6
+      .single
+        .page-header
+          %h4 Single Bed Rates
+        %hr
+        =f.input :rate, label: "Client Rate"
+        =f.input :private_rate, label: "Hotel LNR"
+
+      %br
+      .double
+        .page-header
+          %h4 Double Bed Rates
+        %hr
+        =f.input :double_rate, label: "Client Rate"
+        =f.input :double_private_rate, label: "Hotel LNR"
 
   .row.mb-2
     .col-sm-6

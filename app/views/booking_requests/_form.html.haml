@@ -43,6 +43,23 @@
 
 :javascript
 
+  function update_visibility_for_room_card(room_card) {
+    var dropdown = room_card.find('.room-size-dropdown').first();
+    var val = dropdown.val();
+    var guest1_div = room_card.find('.guest1').first();
+    var guest2_div = room_card.find('.guest2').first();
+
+    if(val == 'Double') {
+      guest1_div.show();
+      guest2_div.show();
+    }
+    else if(val == 'Single') {
+      guest1_div.show();
+      guest2_div.hide();
+      guest2_div.find('input').val('');
+    }
+  }
+
   function refresh_customer_list() {
 
     var prior_customer_id = $('#booking_request_customer_id').val();
@@ -130,6 +147,9 @@
     handle_new_customer_visibility();
     $('#booking_request_customer_id').on('change', handle_new_customer_visibility);
 
+    $(document).on('change', '.room-size-dropdown', function(e){
+      update_visibility_for_room_card($(this).closest('.room-card'));
+    });
   }
 
   $(document).ready(ready);

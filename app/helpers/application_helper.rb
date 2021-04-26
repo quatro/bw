@@ -44,6 +44,10 @@ module ApplicationHelper
     end
   end
 
+  def room_size_options
+    ['Single','Double']
+  end
+
   def date_human(date)
     unless date.nil?
       date.strftime("%A, %B %d")
