@@ -56,7 +56,7 @@ class ClientsController < ApplicationController
 
           # Make up an email
           if email.blank?
-            email = "#{first_name}.#{last_name}@#{@model.domain}"
+            email = "#{first_name}.#{last_name}@#{@model.domain_name}"
           end
 
 
@@ -139,6 +139,6 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:name, :tenant_id, :billing_fee, :domain)
+    params.require(:client).permit(:name, :tenant_id, :billing_fee, :domain_name)
   end
 end

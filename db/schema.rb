@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2021_04_24_143854) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "billing_fee", precision: 8, scale: 2
-    t.string "domain"
+    t.string "domain_name"
     t.index ["tenant_id"], name: "index_clients_on_tenant_id"
   end
 
