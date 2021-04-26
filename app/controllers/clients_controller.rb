@@ -52,7 +52,7 @@ class ClientsController < ApplicationController
           modified_date = row[11]
 
           # Foremen must have an email address
-          raise "Each foreman has to have an email address - #{first_name} / #{last_name}" is_foreman == "Yes" && email.blank?
+          raise "Each foreman has to have an email address - #{first_name} / #{last_name}" if is_foreman == "Yes" && email.blank?
 
           # Make up an email
           if email.blank?
