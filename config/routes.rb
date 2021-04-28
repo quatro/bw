@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :home, only:[:index, :dashboard] do
     collection do
       get :dashboard
+      get :privacy_policy
     end
   end
 

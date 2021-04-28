@@ -44,7 +44,7 @@ class ClientsController < ApplicationController
           job_title = row[3]
           phone = row[4]
           email = row[5]
-          is_foreman = row[6]
+          is_foreman = row[6].try(:strip)
           employment_status = row[7]
           cost_group = row[8]
           cost_center = row[9]

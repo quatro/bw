@@ -3,11 +3,13 @@
   .wrapper
     %nav.main-header.navbar.navbar-expand.navbar-white.navbar-light{style:'margin-left: 0px !important;'}
       %ul.navbar-nav
-        %li.nav-item
+        -#%li.nav-item
           %a.nav-link{"data-widget" => "pushmenu", :href => "#", :role => "button"}
             %i.fas.fa-bars
         %li.nav-item.d-none.d-sm-inline-block
           %a.nav-link{href: root_path} Home
+        %li.nav-item.d-none.d-sm-inline-block
+          %a.nav-link{href: privacy_policy_path} Privacy Policy
 
     .content-wrapper{style:'margin-left: 0px !important;'}
       %section.content
