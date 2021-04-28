@@ -59,8 +59,6 @@ class ClientsController < ApplicationController
             email = "#{first_name.gsub(/\s+/, "")}.#{last_name.gsub(/\s+/, "")}@#{@model.domain_name}"
           end
 
-          byebug if first_name == 'TYLER'
-
 
           # See if we can find the user
           user = User.find_by_email(email)
@@ -74,9 +72,6 @@ class ClientsController < ApplicationController
             user.password = random_password
             user.password_confirmation = random_password
             user.skip_confirmation!
-            if !user.save
-              byebug
-            end
 
           end
 
