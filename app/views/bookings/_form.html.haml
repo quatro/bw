@@ -46,6 +46,7 @@
   .row.mb-2
     .col-sm-6
       =f.submit "Finalize Booking", class: 'btn btn-success'
+      =link_to 'Relase Booking', release_booking_request_path(model.booking_request), method: :post, class: 'btn btn-warning'
 
 
 :javascript

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :public do
+  resources :pub do
     collection do
       get :privacy_policy
     end
@@ -77,6 +77,7 @@ Rails.application.routes.draw do
 
     member do
       get :book
+      post :release
       post :claim_and_book
     end
   end

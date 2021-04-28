@@ -23,3 +23,4 @@
           =link_to br.client_formatted, tenant_client_path(current_user.active_tenant, br.client)
         %td
           =link_to "Finish", book_booking_request_path(br), class:'btn btn-info'
+          =link_to "Release", release_booking_request_path(br), method: :post, class:'btn btn-warning'

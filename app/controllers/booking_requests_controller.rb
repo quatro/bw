@@ -44,6 +44,15 @@ class BookingRequestsController < ApplicationController
     @models = current_user.assigned_booking_requests.outstanding
   end
 
+  def release
+    if @model.update({assignee: nil})
+      redirect_to @model, notice: "#{@model.name} as been unassigned"
+    else
+      flash[:alert] = "Problem releasing this booking request"
+      redirect_to_back
+    end
+  end
+
   def book
     br = @model
 
