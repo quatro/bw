@@ -3,6 +3,8 @@ class Ability
 
   def initialize(user)
 
+    can :home, :privacy_policy
+
     if user.present?
 
       can :manage, :all if user.is_super_user?

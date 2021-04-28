@@ -20,10 +20,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :public do
+    collection do
+      get :privacy_policy
+    end
+  end
+
   resources :home, only:[:index, :dashboard] do
     collection do
       get :dashboard
-      get :privacy_policy
     end
   end
 
