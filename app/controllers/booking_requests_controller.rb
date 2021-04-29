@@ -38,6 +38,16 @@ class BookingRequestsController < ApplicationController
     end
   end
 
+  def destroy
+    if @model.destroy
+      flash[:notice] = "Successfully removed booking request"
+    else
+      flash[:alert] = "Problem removing booking request: #{@model.errors.full_messages}"
+    end
+
+    redirect_to_back
+  end
+
   def show; end
 
   def my

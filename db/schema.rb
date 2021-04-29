@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 2021_04_26_174428) do
     t.boolean "is_cancelled", default: false
     t.boolean "is_no_show", default: false
     t.bigint "cancelled_by_user_id"
-    t.decimal "rate", precision: 8, scale: 2
     t.decimal "rate_total", precision: 8, scale: 2
     t.index ["assignee_id"], name: "index_bookings_on_assignee_id"
     t.index ["booking_request_id"], name: "index_bookings_on_booking_request_id"

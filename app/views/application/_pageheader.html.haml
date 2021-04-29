@@ -8,8 +8,10 @@
       .col-sm-12
         - flash.each do |type, msg|
           - alert_class = alert_class_for_type(type)
-          %span.alert{class: alert_class}
-            #{msg}
+          .flash{style:'padding-top: 15px; padding-bottom: 15px;'}
+            %span.alert{class: alert_class}
+              #{msg}
+
 
     .row.mb-2
       .col-sm-6

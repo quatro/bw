@@ -25,5 +25,6 @@
             =link_to 'Edit', book_booking_request_path(br), class:'btn btn-default'
           - if !br.is_booked?
             =link_to "Claim & Book", claim_and_book_booking_request_path(br), method: 'post', class:'btn btn-info'
+            =link_to "Delete", booking_request_path(br), method: 'delete', data:{confirm: "Are you sure you wish to remove this booking request?"}, class:'btn btn-danger'
           - else
             =link_to "Booking", booking_path(br.booking), class:'btn btn-success'

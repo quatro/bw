@@ -109,11 +109,14 @@ class Booking < ApplicationRecord
   end
   persistize :client_id
 
+  # Designed to sum all of the rates across all of the rooms.  This value is used to determine a usage fee
   def rate_total
     booking_rooms.map{|a| a.rate}.sum
   end
   persistize :rate_total
 
+  # Designed to take the rate total and include tax as well as the client billing fee.  This is the value that
+  # is displayed on the report summary report
   def total
     rate_total.present? && tax.present? && client.present? ? rate_total + tax + client.try(:billing_fee) : 0
   end
