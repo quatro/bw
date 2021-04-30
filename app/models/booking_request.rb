@@ -111,8 +111,12 @@ class BookingRequest < ApplicationRecord
     ]
   end
 
+  def format_guests(room)
+    "#{room.guests.map{|u| u.full_name}.join(', ')}"
+  end
+
   def format_room(room, index)
-    "Room #{index}: #{room.guests.map{|u| u.full_name}.join(', ')}"
+    "Room #{index}: #{format_guests(room)}"
   end
 
 

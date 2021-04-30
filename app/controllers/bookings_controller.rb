@@ -24,7 +24,6 @@ class BookingsController < ApplicationController
 
     @model = Booking.new(booking_params)
     if @model.save
-      @model.send_confirmation_email
 
       redirect_to @model
     else
@@ -33,9 +32,14 @@ class BookingsController < ApplicationController
   end
 
   def edit; end
+  def show; end
 
-  def show
-
+  def update
+    if @model.update(booking_params)
+      redirect_to @model
+    else
+      render "edit"
+    end
   end
 
   def resend_email
@@ -82,6 +86,7 @@ class BookingsController < ApplicationController
         booking_rooms_attributes: [
             :confirmation_number,
             :rate,
+            :room_number,
             :booking_request_room_id
         ]
     )

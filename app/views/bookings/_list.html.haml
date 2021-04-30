@@ -24,3 +24,4 @@
         %td
           =link_to datetime_nice(booking.created_at), booking_path(booking)
         %td
+          =link_to 'Email', resend_email_booking_path(booking), class:'btn btn-success', method: :post, data:{confirm:'Are you sure you want to send this email?'}

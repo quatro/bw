@@ -1,0 +1,40 @@
+
+=render 'application/pageheader', title: "Booking for #{model.booking_request.requestor.full_name}", subtitle: model.booking_request.location_formatted
+
+
+%section.content
+  .container-fluid
+    .row
+      .col-lg-6
+        - [model.booking_request].each do |a|
+          =render 'application/showview', model: a
+          %hr
+
+        =render 'bookings/form', model: model
+
+
+      .col-lg-6
+
+        =render 'hotels/map', tenant: model.booking_request.tenant, center_address: model.booking_request.geocode_address
+
+
+
+:javascript
+
+  var ready = function() {
+
+
+    $(document).on('hotel_clicked', function(event,  data) {
+      console.log(data);
+
+      $('#booking_hotel_id').val(data.id);
+      $('#booking_rate').val(data.rate);
+    });
+
+  }
+
+  $(document).ready(ready);
+
+
+
+-#=render 'application/formview', title: "Booking for #{@model.booking_request.requestor.full_name}", key: :bookings, model: @model, show_view_models: [@model.booking_request]

@@ -92,6 +92,7 @@ Rails.application.routes.draw do
       post :cancel
       post :no_show
       post :resend_email
+      post :send_confirmation_email
     end
   end
 

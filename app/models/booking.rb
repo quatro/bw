@@ -21,7 +21,7 @@ class Booking < ApplicationRecord
   scope :for_month,       -> (date) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", date.at_beginning_of_month, date.at_beginning_of_month.next_month()) }
   scope :between_dates,   -> (from, to) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", from, to) }
 
-  validates_presence_of :tax, :hotel
+  validates_presence_of :hotel
 
   accepts_nested_attributes_for :booking_rooms
 

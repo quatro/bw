@@ -1,3 +1,4 @@
+- booking_save_text = model.new_record? ? "Finalize Booking" : "Update Booking"
 
 #hotel_details_destination
 
@@ -37,15 +38,17 @@
           - count += 1
           =room_form.input :booking_request_room_id, as: :hidden
           .row
-            .col-md-8
+            .col-md-7
               =room_form.input :confirmation_number, label: "Confirmation Number"
-            .col-md-4
+            .col-md-2
               =room_form.input :rate, label: "Rate", class:'room-rate'
+            .col-md-3
+              =room_form.input :room_number, label: "Room Number"
 
 
   .row.mb-2
     .col-sm-6
-      =f.submit "Finalize Booking", class: 'btn btn-success'
+      =f.submit booking_save_text, class: 'btn btn-success'
       =link_to 'Release Booking', release_booking_request_path(model.booking_request), method: :post, class: 'btn btn-warning'
 
 

@@ -43,7 +43,7 @@
           .alert.alert-danger
             No Show
 
-        =render 'application/showview', model: @model, show_edit: false, title: 'Booking'
+        =render 'application/showview', model: @model, show_edit: true, title: 'Booking'
 
         - if @model.can_cancel
           =link_to 'Cancel', cancel_booking_path(@model), method: :post, class:'btn btn-danger'

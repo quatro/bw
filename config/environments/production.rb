@@ -96,7 +96,7 @@ Rails.application.configure do
       :authentication => :plain,
       :user_name => 'apikey',
       :password => ENV.fetch('SENDGRID_API_KEY'),
-      :domain => 'heatbooking.com',
+      :domain => 'htri.com',
       :enable_starttls_auto => true
   }
 
