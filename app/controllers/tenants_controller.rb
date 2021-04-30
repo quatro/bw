@@ -15,7 +15,7 @@ class TenantsController < ApplicationController
   end
 
   def monthly_sales_data
-    return monthly_data(:rate, 'rgba(60,141,188,0.9)', 'Sales')
+    return monthly_data(:rate_total, 'rgba(60,141,188,0.9)', 'Sales')
   end
 
   def monthly_license_cost_data

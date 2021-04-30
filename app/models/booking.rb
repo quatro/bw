@@ -111,7 +111,7 @@ class Booking < ApplicationRecord
 
   # Designed to sum all of the rates across all of the rooms.  This value is used to determine a usage fee
   def rate_total
-    booking_rooms.map{|a| a.rate}.sum
+    booking_rooms.map{|a| a.rate.present? ? a.rate : 0}.sum
   end
   persistize :rate_total
 
