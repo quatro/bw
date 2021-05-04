@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_174428) do
+ActiveRecord::Schema.define(version: 2021_05_04_145638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_174428) do
     t.bigint "customer_id"
     t.string "address"
     t.string "new_customer_name"
+    t.string "requestor_full_name"
     t.index ["assignee_id"], name: "index_booking_requests_on_assignee_id"
     t.index ["client_id"], name: "index_booking_requests_on_client_id"
     t.index ["customer_id"], name: "index_booking_requests_on_customer_id"

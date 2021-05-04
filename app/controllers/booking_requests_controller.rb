@@ -93,7 +93,8 @@ class BookingRequestsController < ApplicationController
       .permit(
         :assignee_id, 
         :tenant_id, 
-        :requestor_id, 
+        :requestor_id,
+        :requestor_full_name,
         :client_id, 
         :date_from, 
         :date_to, 

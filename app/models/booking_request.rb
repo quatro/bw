@@ -8,7 +8,7 @@ class BookingRequest < ApplicationRecord
   belongs_to :tenant
   belongs_to :client
   belongs_to :customer, optional: true
-  belongs_to :requestor, class_name: 'User', foreign_key: 'requestor_id'
+  belongs_to :requestor, class_name: 'User', foreign_key: 'requestor_id', optional: true
   belongs_to :assignee, class_name: 'User', foreign_key: 'assignee_id', optional: true
   has_one :booking, dependent: :destroy
   has_many :booking_request_rooms, dependent: :destroy
@@ -22,6 +22,7 @@ class BookingRequest < ApplicationRecord
 
   validate :ensure_rooms_have_at_least_one_guest
   validate :ensure_guests_exist
+  validate :ensure_requestor_full_name_present
 
   def nights
     date_to.to_date - date_from.to_date if date_from.present? && date_to.present?
@@ -60,7 +61,7 @@ class BookingRequest < ApplicationRecord
   end
 
   def name
-    ["Request for", location_formatted, "on", dates_formatted, "by", requestor.full_name].join(" ")
+    ["Request for", location_formatted, "on", dates_formatted, "by", requestor.try(:full_name)].join(" ")
   end
 
   def location_formatted
@@ -90,6 +91,15 @@ class BookingRequest < ApplicationRecord
   def edit_path
     Rails.application.routes.url_helpers.edit_booking_request_path(self)
   end
+
+  def requestor_id
+    # If a name is provided we need to go based off this
+    return assign_requestor_id_for_autocomplete_name(requestor_full_name) if !requestor_full_name.blank?
+
+    # If no name is provided, then keep what was previously there
+    return attributes[:requestor_id]
+  end
+  persistize :requestor_id
 
   def requestor_name
     requestor.present? ? requestor.try(:full_name) : attributes[:requestor_name]
@@ -131,6 +141,12 @@ class BookingRequest < ApplicationRecord
     end
   end
 
+  def ensure_requestor_full_name_present
+    if requestor_full_name.blank?
+      errors.add(:requestor, 'must exist')
+    end
+  end
+
   def ensure_guests_exist
     booking_request_rooms.each do |brr|
       if !brr.guest1_name.blank? && !User.where(full_name: convert_autocomplete_name_to_full_name(brr.guest1_name)).any?
@@ -145,5 +161,12 @@ class BookingRequest < ApplicationRecord
 
   def convert_autocomplete_name_to_full_name(autocomplete_name)
     autocomplete_name.present? ? autocomplete_name.split(' / ')[0].strip : ''
+  end
+
+  def assign_requestor_id_for_autocomplete_name(name)
+    if !name.blank?
+      full_name = name.split(' ( ')[0].strip
+      return User.where(full_name: full_name).first.try(:id)
+    end
   end
 end

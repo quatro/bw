@@ -12,7 +12,8 @@
 
 
       =f.input :client_id, as: :select, collection: current_user.active_tenant.clients, include_blank: false
-      =f.input :requestor_id, as: :select, collection: []
+      -#=f.input :requestor_id, as: :string, input_html:{class:'requestor-name'}
+      =f.input :requestor_full_name, as: :string, label: 'Requestor', input_html:{class:'requestor-name'}
 
       =f.input :date_from, as: :string, input_html:{class:'datepicker', autocomplete: "off"}
       =f.input :date_to, as: :string, input_html:{class:'datepicker', autocomplete: "off"}
@@ -104,7 +105,7 @@
 
   function make_fields_autocompletable() {
     $(".guest1_name").autocomplete({
-      serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val(),
+      serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val() + "&autocomplete_format=autocomplete_guest",
       minChars: 3,
       onSelect: function (suggestion) {
         $('#selected_option').html(suggestion.value);
@@ -112,12 +113,22 @@
     });
 
     $(".guest2_name").autocomplete({
-      serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val(),
+      serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val() + "&autocomplete_format=autocomplete_guest",
       minChars: 3,
       onSelect: function (suggestion) {
         $('#selected_option').html(suggestion.value);
       }
     });
+
+
+    $(".requestor-name").autocomplete({
+      serviceUrl: '/users/autocomplete?client_id=' + $('#booking_request_client_id').val() + "&autocomplete_format=autocomplete_requestor",
+      minChars: 3,
+      onSelect: function (suggestion) {
+        $('#selected_option').html(suggestion.value);
+      }
+    });
+
   }
 
   var ready = function() {
@@ -128,9 +139,9 @@
       dateFormat:"yy-mm-dd"
     });
 
-    refresh_user_list();
+    // refresh_user_list();
     $('#booking_request_client_id').on('change', function(e){
-      refresh_user_list();
+      // refresh_user_list();
     });
 
     // Set the proper customer

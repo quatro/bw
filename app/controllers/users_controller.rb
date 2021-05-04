@@ -10,7 +10,10 @@ class UsersController < ApplicationController
   def autocomplete
     @client = Client.where(id: params[:client_id]) if params[:client_id]
     @models = Searchers::UserSearcher.new.search(User.for_client(@client), params[:query])
-    @results = @models.map { |u| {value: u.autocomplete_name, data: u.autocomplete_name}}
+
+    autocomplete_format = params[:autocomplete_format]
+    autocomplete_format_name = autocomplete_format.present? ? autocomplete_format : "autocomplete_guest"
+    @results = @models.map { |u| {value: u.send(autocomplete_format_name), data: u.send(autocomplete_format_name)}}
     @suggestions = { suggestions: @results }
     render json: @suggestions
   end
