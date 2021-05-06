@@ -165,7 +165,7 @@ class BookingRequest < ApplicationRecord
 
   def assign_requestor_id_for_autocomplete_name(name)
     if !name.blank?
-      full_name = name.split(' ( ')[0].strip
+      full_name = name.split('(')[0].strip
       return User.where(full_name: full_name).first.try(:id)
     end
   end
