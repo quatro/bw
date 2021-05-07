@@ -6,5 +6,6 @@
 
 all:
   default_page_title:                             Heat Booking
+  booking_confirmation_cc_email:                  confirmation@itggo.com
 
 development:

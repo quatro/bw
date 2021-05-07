@@ -138,6 +138,6 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:name, :tenant_id, :billing_fee, :domain_name)
+    params.require(:client).permit(:name, :tenant_id, :billing_fee, :domain_name, :confirmation_email)
   end
 end
