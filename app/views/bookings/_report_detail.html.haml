@@ -9,7 +9,6 @@
       %th Guest 2 First Name
       %th Guest 2 Last Name
       %th Guest 2 Cost Center
-      %th Employee Cost Group
       %th Room #
       %th Night
       %th Rate
@@ -42,7 +41,6 @@
             %td #{brr.guest2.try(:first)}
             %td #{brr.guest2.try(:last)}
             %td #{brr.guest2.try(:cost_center)}
-            %td #{model.requestor.cost_group}
             %td &nbsp;
             %td #{day.strftime("%Y-%m-%d")}
             %td #{room.rate}

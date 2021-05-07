@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_141845) do
+ActiveRecord::Schema.define(version: 2021_05_07_142837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_141845) do
     t.boolean "is_no_show", default: false
     t.bigint "cancelled_by_user_id"
     t.decimal "rate_total", precision: 8, scale: 2
+    t.boolean "is_paf_sent", default: false
     t.index ["assignee_id"], name: "index_bookings_on_assignee_id"
     t.index ["booking_request_id"], name: "index_bookings_on_booking_request_id"
     t.index ["cancelled_by_user_id"], name: "index_bookings_on_cancelled_by_user_id"

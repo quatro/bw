@@ -6,7 +6,13 @@ class BookingsController < ApplicationController
   def index; end
 
   def completed
-    @q = Booking.for_tenant(current_user.active_tenant).completed.ransack(params[:q])
+    @q = Booking.for_tenant(current_user.active_tenant).completed.paf_not_sent.ransack(params[:q])
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page]).to_a.uniq
+  end
+
+  def is_paf_sent
+    @q = Booking.for_tenant(current_user.active_tenant).is_paf_sent
+             .ransack(params[:q])
     @models = @q.result(distinct: true).includes(:booking_request).page(params[:page]).to_a.uniq
   end
 
@@ -65,6 +71,16 @@ class BookingsController < ApplicationController
       redirect_to @model, notice: 'Successfully set this booking as a no-show'
     else
       flash[:alert] = "Unable to set this booking as a no-show: #{@model.errors.full_messages}"
+      redirect_to_back
+    end
+  end
+
+  def mark_paf_sent
+    if @model.update({is_paf_sent: true})
+      flash[:notice] = "Successfully marked as PAF sent"
+      redirect_to_back
+    else
+      flash[:alert] = "Error marking PAF as sent: #{@model.errors.full_messages}"
       redirect_to_back
     end
   end

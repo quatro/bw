@@ -110,6 +110,13 @@
                   %span.right.badge.badge-success #{completed_booking_count(current_user.active_tenant)}
 
             %li.nav-item
+              %a.nav-link{href: is_paf_sent_bookings_path}
+                %i.nav-icon.fas.fa-arrow-right
+                %p
+                  PAF Sent
+                  %span.right.badge.badge-success #{is_paf_sent_booking_count(current_user.active_tenant)}
+
+            %li.nav-item
               %a.nav-link{href: list_cancelled_bookings_path}
                 %i.nav-icon.fas.fa-times
                 %p

@@ -84,6 +84,7 @@ Rails.application.routes.draw do
   resources :bookings do
     collection do
       get :completed
+      get :is_paf_sent
       get :list_cancelled
       get :list_no_show
     end
@@ -93,6 +94,7 @@ Rails.application.routes.draw do
       post :no_show
       post :resend_email
       post :send_confirmation_email
+      post :mark_paf_sent
     end
   end
 

@@ -17,7 +17,11 @@ module ApplicationHelper
   end
 
   def completed_booking_count(tenant)
-    human_number(Booking.for_tenant(tenant).completed.count)
+    human_number(Booking.for_tenant(tenant).completed.paf_not_sent.count)
+  end
+
+  def is_paf_sent_booking_count(tenant)
+    human_number(Booking.for_tenant(tenant).is_paf_sent.count)
   end
 
   def tenant_hotel_count(tenant)
