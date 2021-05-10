@@ -100,6 +100,7 @@ class BookingsController < ApplicationController
         :client_id,
         :assignee_id,
         booking_rooms_attributes: [
+            :id,
             :confirmation_number,
             :rate,
             :room_number,

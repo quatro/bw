@@ -39,6 +39,7 @@
           =room_form.input :booking_request_room_id, as: :hidden
           .row
             .col-md-7
+              =room_form.input :id, as: :hidden
               =room_form.input :confirmation_number, label: "Confirmation Number"
             .col-md-2
               =room_form.input :rate, label: "Rate", class:'room-rate'
