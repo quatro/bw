@@ -65,7 +65,7 @@ class BookingRequest < ApplicationRecord
   end
 
   def location_formatted
-    [address, city, state].join(', ')
+    [address, city, state].reject { |c| c.blank? }.join(', ')
   end
 
   def date_from_human
