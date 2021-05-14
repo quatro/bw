@@ -61,7 +61,8 @@
   .row.mb-2
     .col-sm-6
       =f.submit booking_save_text, class: 'btn btn-success'
-      =link_to 'Release Booking', release_booking_request_path(model.booking_request), method: :post, class: 'btn btn-warning'
+      - if !model.is_paf_sent
+        =link_to 'Release Booking', release_booking_request_path(model.booking_request), method: :post, class: 'btn btn-warning'
 
 
 :javascript
