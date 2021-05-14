@@ -7,6 +7,14 @@ class BookingRequestRoom < ApplicationRecord
   # validates :guest1, presence: true
   #
 
+  def guest2_last_name_report
+    return guest2.present? ? guest2.last : "OUT"
+  end
+
+  def guest2_first_name_report
+    return guest2.present? ? guest2.first : "ODD MAN"
+  end
+
   def is_single
     room_size == 'Single'
   end

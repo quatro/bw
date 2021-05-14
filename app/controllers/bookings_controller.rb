@@ -94,6 +94,16 @@ class BookingsController < ApplicationController
     end
   end
 
+  def mark_invoiced
+    if @model.update({is_invoiced: true})
+      flash[:notice] = "Successfully marked as Invoiced"
+      redirect_to_back
+    else
+      flash[:alert] = "Error marking Invoiced: #{@model.errors.full_messages}"
+      redirect_to_back
+    end
+  end
+
   private
   def set_model
     @model = Booking.where(id: params[:id]).first if params[:id]

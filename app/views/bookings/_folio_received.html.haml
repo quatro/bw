@@ -27,3 +27,4 @@
         %td
           =link_to 'View', booking_path(booking), class:'btn btn-info'
           =link_to 'Edit', edit_booking_path(booking), class:'btn btn-info'
+          =link_to "Mark as Invoiced", mark_invoiced_booking_path(booking), method: :post, class:'btn btn-success'

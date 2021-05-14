@@ -18,6 +18,10 @@ class BookingRoom < ApplicationRecord
   end
   persistize :tenant_id
 
+  def rate_plus_fee
+    rate.present? && fee.present? ? rate + fee : 0
+  end
+  persistize :rate_plus_fee
 
   def guest_names
     booking_request_room.try(:guests).map{|u| u.full_name}.join(', ')
@@ -27,4 +31,9 @@ class BookingRoom < ApplicationRecord
     [booking_request_room.try(:guest1), booking_request_room.try(:guest2)].compact
   end
 
+
+  def denormalize
+    self.rate_plus_fee_will_change!
+    save
+  end
 end

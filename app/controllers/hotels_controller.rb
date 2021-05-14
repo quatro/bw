@@ -9,7 +9,7 @@ class HotelsController < ApplicationController
 
   def index
     @q = Hotel.ransack(params[:q])
-    @models = @q.result(distinct: true).includes(:bookings).page(params[:page]).to_a.uniq
+    @models = @q.result(distinct: true).includes(:bookings).page(params[:page])
   end
 
   def new

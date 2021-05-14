@@ -98,6 +98,7 @@ Rails.application.routes.draw do
       post :resend_email
       post :send_confirmation_email
       post :mark_paf_sent
+      post :mark_invoiced
     end
   end
 

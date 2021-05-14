@@ -1,6 +1,7 @@
 %table.data-table-bookings.stripe
   %thead
     %tr
+      %th Booking #
       %th Guest 1 ID
       %th Guest 1 First Name
       %th Guest 1 Last Name
@@ -33,19 +34,21 @@
           - brr = room.booking_request_room
 
           %tr
+            %td
+              =link_to model.id, edit_booking_path(model)
             %td #{brr.guest1.try(:employee_id)}
             %td #{brr.guest1.try(:first)}
             %td #{brr.guest1.try(:last)}
             %td #{brr.guest1.try(:cost_center)}
             %td #{brr.guest2.try(:employee_id)}
-            %td #{brr.guest2.try(:first)}
-            %td #{brr.guest2.try(:last)}
+            %td #{brr.guest2_first_name_report}
+            %td #{brr.guest2_last_name_report}
             %td #{brr.guest2.try(:cost_center)}
             %td #{room.room_number}
             %td #{day.strftime("%Y-%m-%d")}
-            %td #{room.rate}
+            %td #{room.rate_plus_fee}
             %td &nbsp;
-            %td #{model.tax}
+            %td #{room.tax}
             %td #{room.total}
             %td #{model.requestor.cost_group}
             -#%td #{br.job_identifier}

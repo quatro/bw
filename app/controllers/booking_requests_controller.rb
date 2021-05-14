@@ -10,7 +10,7 @@ class BookingRequestsController < ApplicationController
   end
 
   def outstanding
-    @q = BookingRequest.outstanding_for_tenant(current_user.active_tenant).unassigned.order(id: :asc).ransack
+    @q = BookingRequest.outstanding_for_tenant(current_user.active_tenant).unassigned.order(id: :asc).ransack(params[:q])
     @models = @q.result(distinct: true).page(params[:page])
   end
 

@@ -1,6 +1,7 @@
 - title = local_assigns[:title].nil? ? nil : title
 - list_partial = local_assigns[:list_partial].nil? ? "#{key.to_s}/list" : list_partial
 - filter_partial = local_assigns[:filter_partial].nil? ? "#{key}/filter" : filter_partial
+- filter_reset_url = local_assigns[:filter_reset_url].nil? ? nil : filter_reset_url
 - has_filter = local_assigns[:has_filter].nil? ? false : has_filter
 - new_link = local_assigns[:new_link].nil? ? nil : new_link
 - other_links = local_assigns[:other_links].nil? ? [] : other_links
@@ -27,7 +28,7 @@
           =render list_partial, models: models
 
         .col-lg-3
-          =render filter_partial, q: @q
+          =render filter_partial, q: @q, filter_reset_url: filter_reset_url
 
       - else
         .col-lg-12

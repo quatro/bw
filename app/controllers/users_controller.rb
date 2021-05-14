@@ -28,15 +28,14 @@ class UsersController < ApplicationController
   end
 
   def staff
-    @models = User.for_tenant(current_user.active_tenant)
+    @q = User.for_tenant(current_user.active_tenant).ransack(params[:q])
+    @models = @q.result(distinct: true).page(params[:page])
   end
 
   def bookings
     @models = @model.bookings
   end
-  def show
-
-  end
+  def show; end
 
   def client_users
     client = Client.where(id: params[:client_id]).first if params[:client_id]

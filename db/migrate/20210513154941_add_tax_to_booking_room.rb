@@ -10,9 +10,9 @@ class AddTaxToBookingRoom < ActiveRecord::Migration[6.1]
     add_column :bookings, :status_name, :string, default: "Booked"
     add_column :bookings, :rooms_formatted, :string
 
-    # BookingRequestRoom.all.each{|a| a.try(:denormalize)}
-    # BookingRequest.all.each{|a| a.try(:denormalize)}
-    # BookingRoom.all.each{|a| a.try(:denormalize)}
-    # Booking.all.each{|a| a.try(:denormalize)}
+    BookingRequestRoom.all.each{|a| a.try(:denormalize)}
+    BookingRequest.all.each{|a| a.try(:denormalize)}
+    BookingRoom.all.each{|a| a.try(:denormalize)}
+    Booking.all.each{|a| a.try(:denormalize)}
   end
 end

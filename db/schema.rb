@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_154941) do
+ActiveRecord::Schema.define(version: 2021_05_14_121822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_154941) do
     t.decimal "total", precision: 8, scale: 2
     t.decimal "fee", precision: 6, scale: 2
     t.boolean "is_folio_received", default: false
+    t.decimal "rate_plus_fee", precision: 8, scale: 2
     t.index ["booking_id"], name: "index_booking_rooms_on_booking_id"
     t.index ["booking_request_room_id"], name: "index_booking_rooms_on_booking_request_room_id"
     t.index ["client_id"], name: "index_booking_rooms_on_client_id"
