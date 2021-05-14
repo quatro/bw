@@ -24,7 +24,8 @@
             %a#view_hotel_detail{href:'#'}
               %i.fas.fa-lg.fa-arrow-circle-right
 
-      =f.input :tax
+      =f.input :is_folio_received, label: "Is Folio Received?"
+      -#=f.input :tax
 
       %br
       - count = 0
@@ -37,14 +38,24 @@
 
           - count += 1
           =room_form.input :booking_request_room_id, as: :hidden
-          .row
+          .row{data:{id: room_form.object.id}}
             .col-md-7
-              =room_form.input :id, as: :hidden
               =room_form.input :confirmation_number, label: "Confirmation Number"
-            .col-md-2
-              =room_form.input :rate, label: "Rate", class:'room-rate'
-            .col-md-3
               =room_form.input :room_number, label: "Room Number"
+              =room_form.input :id, as: :hidden
+            .col-md-5
+              .row
+                .col-md-12
+                  =room_form.input :rate, label: "Rate", input_html:{class:'room-rate'}
+              .row
+                .col-md-12
+                  =room_form.input :tax, label: "Tax", input_html:{class:'room-tax'}
+              .row
+                .col-md-12
+                  =room_form.input :fee, label: "Fee", input_html:{readonly: true, class:'room-fee'}
+              .row
+                .col-md-12
+                  =room_form.input :total, label: "Total", input_html:{readonly: true, class:'room-total'}
 
 
   .row.mb-2
@@ -81,6 +92,16 @@
     });
   }
 
+  function calculate_totals() {
+    $.each($('.room-div'), function(i,item){
+      var rate = parseFloat($(this).find('.room-rate').first().val());
+      var tax = parseFloat($(this).find('.room-tax').first().val());
+      var fee = parseFloat($(this).find('.room-fee').first().val());
+
+      $(this).find('.room-total').first().val(rate + tax + fee);
+    });
+  }
+
 
   var ready = function() {
 
@@ -105,6 +126,8 @@
         }
       });
     });
+
+    $(document).on('change', 'input', calculate_totals);
   }
 
   $(document).ready(ready);

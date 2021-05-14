@@ -22,3 +22,15 @@
  .autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
  .autocomplete-group { padding: 2px 5px; }
  .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+
+
+ .pagination {
+     padding: 10px;
+ }
+ .pagination > a, em, span {
+     padding: 5px;
+ }
+
+input[type=checkbox] {
+    transform: scale(1.5);
+}

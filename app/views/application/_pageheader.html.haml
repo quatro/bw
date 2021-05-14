@@ -1,4 +1,4 @@
-- title = local_assigns[:title].nil? ? '' : title
+- title = local_assigns[:title].nil? ? nil : title
 - should_show_breadcrumbs = local_assigns[:should_show_breadcrumbs].nil? ? true : should_show_breadcrumbs
 
 
@@ -15,7 +15,8 @@
 
     .row.mb-2
       .col-sm-6
-        %h1.m-0.text-dark #{title}
+        - if title.present?
+          %h1.m-0.text-dark #{title}
 
         - if local_assigns[:subtitle].present?
           %p.m-0.text-muted #{subtitle}

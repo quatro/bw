@@ -41,12 +41,12 @@
             %td #{brr.guest2.try(:first)}
             %td #{brr.guest2.try(:last)}
             %td #{brr.guest2.try(:cost_center)}
-            %td &nbsp;
+            %td #{room.room_number}
             %td #{day.strftime("%Y-%m-%d")}
             %td #{room.rate}
             %td &nbsp;
             %td #{model.tax}
-            %td #{model.total}
+            %td #{room.total}
             %td #{model.requestor.cost_group}
             -#%td #{br.job_identifier}
             %td #{br.reason}

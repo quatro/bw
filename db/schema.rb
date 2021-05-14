@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_142837) do
+ActiveRecord::Schema.define(version: 2021_05_13_154941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_142837) do
     t.string "address"
     t.string "new_customer_name"
     t.string "requestor_full_name"
+    t.string "rooms_formatted"
     t.index ["assignee_id"], name: "index_booking_requests_on_assignee_id"
     t.index ["client_id"], name: "index_booking_requests_on_client_id"
     t.index ["customer_id"], name: "index_booking_requests_on_customer_id"
@@ -87,6 +88,10 @@ ActiveRecord::Schema.define(version: 2021_05_07_142837) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "room_number"
     t.decimal "rate", precision: 8, scale: 2
+    t.decimal "tax", precision: 6, scale: 2
+    t.decimal "total", precision: 8, scale: 2
+    t.decimal "fee", precision: 6, scale: 2
+    t.boolean "is_folio_received", default: false
     t.index ["booking_id"], name: "index_booking_rooms_on_booking_id"
     t.index ["booking_request_room_id"], name: "index_booking_rooms_on_booking_request_room_id"
     t.index ["client_id"], name: "index_booking_rooms_on_client_id"
@@ -114,6 +119,10 @@ ActiveRecord::Schema.define(version: 2021_05_07_142837) do
     t.bigint "cancelled_by_user_id"
     t.decimal "rate_total", precision: 8, scale: 2
     t.boolean "is_paf_sent", default: false
+    t.boolean "is_folio_received", default: false
+    t.boolean "is_invoiced", default: false
+    t.string "status_name", default: "Booked"
+    t.string "rooms_formatted"
     t.index ["assignee_id"], name: "index_bookings_on_assignee_id"
     t.index ["booking_request_id"], name: "index_bookings_on_booking_request_id"
     t.index ["cancelled_by_user_id"], name: "index_bookings_on_cancelled_by_user_id"

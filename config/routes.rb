@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       member do
         get :upload_staff
         post :do_upload_staff
+        get :users
       end
     end
   end
@@ -85,6 +86,8 @@ Rails.application.routes.draw do
     collection do
       get :completed
       get :is_paf_sent
+      get :is_folio_received
+      get :is_invoiced
       get :list_cancelled
       get :list_no_show
     end

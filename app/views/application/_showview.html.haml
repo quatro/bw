@@ -1,6 +1,7 @@
 - show_edit = local_assigns[:show_edit].nil? ? true : show_edit
 - title = local_assigns[:title].nil? ? '' : title
 - show_header = [show_edit, !title.blank?].select{|a| a}.any?
+- additional_links = local_assigns[:additional_links].nil? ? [] : additional_links
 
 %section.content
   .container-fluid
@@ -13,6 +14,9 @@
                 %h2 #{title}
               - if show_edit
                 =link_to "Edit", model.edit_path
+              - additional_links.each do |label, href|
+                &nbsp;|&nbsp;
+                =link_to label, href
           .card-body
             %ul.todo-list
               - model.show_map.each do |a|

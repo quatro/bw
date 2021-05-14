@@ -1,4 +1,5 @@
-= search_form_for q, url: completed_bookings_path do |f|
+
+= search_form_for q, url: request.url do |f|
 
   .row.mb-2
     .col-sm-12
@@ -7,8 +8,14 @@
         =f.search_field :booking_request_date_from_gteq, class:'form-control datepicker'
 
       .form-group
-        =f.label :booking_request_date_to_gt, "Date To"
+        =f.label :booking_request_date_to_lt, "Date To"
         =f.search_field :booking_request_date_to_lt, class:'form-control datepicker'
+
+      .form-group
+        =f.label :booking_request_rooms_formatted_cont, "Guest Names Include"
+        =f.search_field :booking_request_rooms_formatted_cont, class:'form-control'
+
+
 
   -#\# Attributes may be chained. Search multiple attributes for one value...
   -#\#{f.label :name_or_description_or_email_or_articles_title_cont}

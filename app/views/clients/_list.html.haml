@@ -10,5 +10,6 @@
       %tr
         %td #{client.name}
         %td
+          =link_to "Users", users_tenant_client_path(current_user.active_tenant, client), class:'btn btn-info'
           =link_to "Show", tenant_client_path(current_user.active_tenant, client), class:'btn btn-info'
           =link_to "Edit", edit_tenant_client_path(current_user.active_tenant, client), class:'btn btn-info'

@@ -13,6 +13,15 @@ class UsersController < ApplicationController
 
     autocomplete_format = params[:autocomplete_format]
     autocomplete_format_name = autocomplete_format.present? ? autocomplete_format : "autocomplete_guest"
+
+    # Determine if we only want foremen
+    # Room for optimization here
+    is_only_foreman = autocomplete_format.present? && autocomplete_format == 'autocomplete_requestor'
+
+    if is_only_foreman
+      @models = @models.select{|a| a.is_foreman}
+    end
+
     @results = @models.map { |u| {value: u.send(autocomplete_format_name), data: u.send(autocomplete_format_name)}}
     @suggestions = { suggestions: @results }
     render json: @suggestions

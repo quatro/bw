@@ -107,14 +107,28 @@
                 %i.nav-icon.fas.fa-check
                 %p
                   Booked
-                  %span.right.badge.badge-success #{completed_booking_count(current_user.active_tenant)}
+                  %span.right.badge.badge-info #{completed_booking_count(current_user.active_tenant)}
 
             %li.nav-item
               %a.nav-link{href: is_paf_sent_bookings_path}
                 %i.nav-icon.fas.fa-arrow-right
                 %p
                   PAF Sent
-                  %span.right.badge.badge-success #{is_paf_sent_booking_count(current_user.active_tenant)}
+                  %span.right.badge.badge-info #{is_paf_sent_booking_count(current_user.active_tenant)}
+
+            %li.nav-item
+              %a.nav-link{href: is_folio_received_bookings_path}
+                %i.nav-icon.fas.fa-arrow-left
+                %p
+                  Folio Received
+                  %span.right.badge.badge-info #{is_folio_received_booking_count(current_user.active_tenant)}
+
+            %li.nav-item
+              %a.nav-link{href: is_invoiced_bookings_path}
+                %i.nav-icon.fas.fa-file-invoice
+                %p
+                  Invoiced
+                  %span.right.badge.badge-success #{is_invoiced_booking_count(current_user.active_tenant)}
 
             %li.nav-item
               %a.nav-link{href: list_cancelled_bookings_path}

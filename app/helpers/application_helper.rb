@@ -24,6 +24,14 @@ module ApplicationHelper
     human_number(Booking.for_tenant(tenant).is_paf_sent.count)
   end
 
+  def is_invoiced_booking_count(tenant)
+    human_number(Booking.for_tenant(tenant).is_invoiced.count)
+  end
+
+  def is_folio_received_booking_count(tenant)
+    human_number(Booking.for_tenant(tenant).is_folio_received.count)
+  end
+
   def tenant_hotel_count(tenant)
     Hotel.for_tenant(tenant).count
   end

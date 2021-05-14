@@ -14,7 +14,17 @@
               %input.form-control.from-date.datepicker
             .col-md-6
               %input.form-control.to-date.datepicker
-
+          %br
+          .row
+            .col-md-6
+              .page-header
+                %h4 Status
+              %select.form-control.status
+                %option{value: ''}
+                  &nbsp;
+                - ['Pending','Booked','PAF Sent','Folio Received','Invoiced'].each do |s|
+                  %option{value: s}
+                    #{s}
           .row
             .col-md-12
               %br
@@ -37,6 +47,7 @@
       data: {
         from: $('.from-date').first().val(),
         to: $('.to-date').first().val(),
+        status: $('.status').first().val()
       },
       success: function(data) {
         $('#results').html(data);

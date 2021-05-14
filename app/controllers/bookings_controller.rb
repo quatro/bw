@@ -7,23 +7,32 @@ class BookingsController < ApplicationController
 
   def completed
     @q = Booking.for_tenant(current_user.active_tenant).completed.paf_not_sent.ransack(params[:q])
-    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page]).to_a.uniq
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page])
   end
 
   def is_paf_sent
-    @q = Booking.for_tenant(current_user.active_tenant).is_paf_sent
-             .ransack(params[:q])
-    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page]).to_a.uniq
+    @q = Booking.for_tenant(current_user.active_tenant).is_paf_sent.ransack(params[:q])
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page])
+  end
+
+  def is_folio_received
+    @q = Booking.for_tenant(current_user.active_tenant).is_folio_received.ransack(params[:q])
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page])
+  end
+
+  def is_invoiced
+    @q = Booking.for_tenant(current_user.active_tenant).is_invoiced.ransack(params[:q])
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page])
   end
 
   def list_cancelled
     @q = Booking.for_tenant(current_user.active_tenant).cancelled.ransack(params[:q])
-    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page]).to_a.uniq
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page])
   end
 
   def list_no_show
     @q = Booking.for_tenant(current_user.active_tenant).no_show.ransack(params[:q])
-    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page]).to_a.uniq
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page])
   end
 
   def create
@@ -99,12 +108,16 @@ class BookingsController < ApplicationController
         :requestor_id,
         :client_id,
         :assignee_id,
+        :is_folio_received,
         booking_rooms_attributes: [
             :id,
             :confirmation_number,
             :rate,
             :room_number,
-            :booking_request_room_id
+            :booking_request_room_id,
+            :tax,
+            :fee,
+            :total
         ]
     )
   end

@@ -6,7 +6,8 @@
       %th Requestor
       %th Dates
       %th Location
-      %th Client
+      -#%th Client
+      %th Guests
       %th Created
       %th
 
@@ -17,8 +18,9 @@
           =link_to br.requestor.full_name, user_path(br.requestor)
         %td #{br.dates_formatted}
         %td #{br.location_formatted}
-        %td
+        -#%td
           =link_to br.client_formatted, tenant_client_path(current_user.active_tenant, br.client)
+        %td #{raw(br.rooms_formatted)}
         %td #{datetime_nice(br.created_at)}
         %td
           - if br.booking.present? && !br.booking.is_booked?

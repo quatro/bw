@@ -1,0 +1,29 @@
+
+%table.data-table-requests.stripe
+  %thead
+    %tr
+      %th Customer
+      %th Dates
+      %th Location
+      -#%th Client
+      %th Assignee
+      %th Guest Name(s)
+      %th Rooms
+      %th
+
+  %tbody
+    - models.each do |booking|
+      - br = booking.booking_request
+      %tr
+        %td #{booking.requestor.full_name}
+        %td #{br.dates_formatted}
+        %td #{br.location_formatted}
+        -#%td
+          =link_to br.client_formatted, tenant_client_path(current_user.active_tenant, br.client)
+        %td
+          =link_to br.assignee.try(:full_name), user_path(br.assignee)
+        %td #{raw(booking.rooms_formatted)}
+        %td #{raw(booking.rooms)}
+        %td
+          =link_to 'View', booking_path(booking), class:'btn btn-info'
+          =link_to 'Edit', edit_booking_path(booking), class:'btn btn-info'

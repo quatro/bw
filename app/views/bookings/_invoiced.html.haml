@@ -2,13 +2,12 @@
 %table.data-table-requests.stripe
   %thead
     %tr
-      %th Requestor
+      %th Customer
       %th Dates
       %th Location
       -#%th Client
       %th Assignee
-      -#%th Serviced
-      %th Guests
+      %th Guest Name(s)
       %th Rooms
       %th
 
@@ -17,19 +16,15 @@
       - br = booking.booking_request
       %tr
         %td #{booking.requestor.full_name}
-        %td
-          =link_to br.dates_formatted, edit_booking_path(booking)
+        %td #{br.dates_formatted}
         %td #{br.location_formatted}
         -#%td
           =link_to br.client_formatted, tenant_client_path(current_user.active_tenant, br.client)
         %td
           =link_to br.assignee.try(:full_name), user_path(br.assignee)
-        -#%td
-          =link_to datetime_nice(booking.created_at), booking_path(booking)
         %td #{raw(booking.rooms_formatted)}
         %td #{raw(booking.rooms)}
         %td
           =link_to 'Email', resend_email_booking_path(booking), class:'btn btn-success', method: :post, data:{confirm:'Are you sure you want to send this email?'}
-          - if !booking.is_paf_sent
-            =link_to 'Mark PAF Sent', mark_paf_sent_booking_path(booking), class:'btn btn-success', method: :post, data:{confirm:'Are you sure you want to mark this as PAF Sent?'}
-
+          =link_to 'View', booking_path(booking), class:'btn btn-info'
+          =link_to 'Edit', edit_booking_path(booking), class:'btn btn-info'

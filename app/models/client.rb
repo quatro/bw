@@ -1,4 +1,5 @@
 class Client < ApplicationRecord
+  include ActionView::Helpers::NumberHelper
 
   belongs_to :tenant
   has_many :booking_requests, dependent: :destroy
@@ -14,7 +15,10 @@ class Client < ApplicationRecord
 
   def show_map
     [
-        ["name", "Name", Proc.new {|val| val}]
+        ["name", "Name", Proc.new {|val| val}],
+        ["billing_fee", "Billing Fee", Proc.new {|val| number_to_currency(val)}],
+        ["domain_name", "Domain", Proc.new {|val| val}],
+        ["confirmation_email", "Confirmation Email", Proc.new {|val| val}]
     ]
   end
 

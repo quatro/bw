@@ -1,0 +1,10 @@
+
+=render 'application/pageheader', title: "#{@model.name} Users"
+
+
+%section.content
+  .container-fluid
+    .row
+
+      .col-lg-6.col-6
+        =render 'application/tableview', models: @models, key: :client_users, should_show_breadcrumbs: false, new_link: new_client_user_users_path({client_id: @model.id}), other_links:[["Upload Staff", upload_staff_tenant_client_path(@model.tenant, @model)]]

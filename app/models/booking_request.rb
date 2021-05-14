@@ -106,6 +106,11 @@ class BookingRequest < ApplicationRecord
   end
   persistize :requestor_name
 
+  def rooms_formatted
+    booking_request_rooms.each_with_index.map{|r, i| format_room(r, i+1)}.join("<br />")
+  end
+  persistize :rooms_formatted
+
   def show_map
     [
         ["location_formatted", "Location", Proc.new{|val| val}],

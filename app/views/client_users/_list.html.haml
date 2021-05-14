@@ -6,6 +6,7 @@
       %th Last
       %th Email
       %th Booking Requests
+      %th Foreman?
       %th
 
   %tbody
@@ -15,6 +16,10 @@
         %td #{u.last}
         %td #{u.email}
         %td #{u.requested_bookings.count}
+        %td
+          - if u.is_foreman
+            %span.badge.badge-success Yes
+
         %td
           =link_to "Show", user_path(u)
           =link_to "Edit", edit_user_path(u)

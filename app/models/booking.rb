@@ -13,19 +13,23 @@ class Booking < ApplicationRecord
 
   has_many :booking_rooms
 
-  scope :for_tenant,      ->(tenant) { where(tenant: tenant).order(:created_at) }
-  scope :last_months,     ->(months_count) { joins(:booking_request).where("date_from >= ?", months_count.months.ago)}
-  scope :for_month,       -> (date) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", date.at_beginning_of_month, date.at_beginning_of_month.next_month()) }
-  scope :between_dates,   -> (from, to) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", from, to) }
+  scope :for_tenant,        ->(tenant) { where(tenant: tenant).order(:created_at) }
+  scope :last_months,       ->(months_count) { joins(:booking_request).where("date_from >= ?", months_count.months.ago)}
+  scope :for_month,         -> (date) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", date.at_beginning_of_month, date.at_beginning_of_month.next_month()) }
+  scope :between_dates,     -> (from, to) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", from, to) }
 
-  scope :completed,       -> { where(is_cancelled: false, is_no_show: false)}
-  scope :cancelled,       -> { where(is_cancelled: true, is_no_show: false)}
-  scope :no_show,         -> { where(is_cancelled: false, is_no_show: true)}
+  scope :completed,         -> { where(is_cancelled: false, is_no_show: false)}
+  scope :cancelled,         -> { where(is_cancelled: true, is_no_show: false)}
+  scope :no_show,           -> { where(is_cancelled: false, is_no_show: true)}
 
-  scope :is_paf_sent,     -> { where(is_paf_sent: true) }
-  scope :paf_not_sent,    -> { where(is_paf_sent: false) }
-  # scope :is_invoiced,     -> {  }
+  scope :paf_not_sent,      -> { where(is_paf_sent: false) }
+  scope :is_invoiced,       -> { where(status_name: 'Invoiced')}
+  scope :is_folio_received, -> { where(status_name: 'Folio Received')}
+  scope :is_paf_sent,       -> { where(status_name: 'PAF Sent')}
+  scope :is_booked,         -> { where(status_name: 'Booked')}
+  scope :is_pending,        -> { where(status_name: 'Pending')}
 
+  scope :has_status,        ->(status) { where(status_name: status)}
 
   validates_presence_of :hotel
 
@@ -124,7 +128,7 @@ class Booking < ApplicationRecord
   # Designed to take the rate total and include tax as well as the client billing fee.  This is the value that
   # is displayed on the report summary report
   def total
-    rate_total.present? && tax.present? && client.present? ? rate_total + tax + client.try(:billing_fee) : 0
+    booking_rooms.map{|b| b.total.present? ? b.total : 0}.sum
   end
   persistize :total
 
@@ -145,14 +149,37 @@ class Booking < ApplicationRecord
     booking_rooms.each_with_index.map{|br, i| format_room(br, i+1)}.join("<br />")
   end
 
+  def rooms_formatted
+    booking_request.rooms_formatted
+  end
+  persistize :rooms_formatted
+
+  def rooms
+    booking_rooms.each_with_index.map{|br, i| format_room_with_number(br, i+1)}.join("<br />")
+  end
+
+  def room_numbers
+    booking_rooms.each_with_index.map{|br, i| format_room_number(br, i+1)}.join("<br />")
+  end
+
+  def status_name
+    return "Invoiced" if is_invoiced
+    return "Folio Received" if is_folio_received
+    return "PAF Sent" if is_paf_sent
+    return "Booked" if is_booked
+    return "Pending"
+  end
+  persistize :status_name
+
 
   def show_map
     vals = [
         ["total", "Total", Proc.new {|val| val}],
         ["tax", "Tax", Proc.new {|val| val}],
         ["hotel_id", "Hotel", Proc.new {|val| Hotel.find(val).try(:name)}],
-        # ["confirmation_number", "Confirmation #", Proc.new {|val| val}],
-        ["booking_rooms", "Confirmation Number(s)", Proc.new {|val| val.each_with_index.map{|r, i| format_room(r, i+1)}.join("<br />")}]
+        # ["confirmation_number", "Confirmation #", Proc.new {|val| val}],,
+        ["booking_rooms", "Confirmation Number(s)", Proc.new {|val| val.each_with_index.map{|r, i| format_room(r, i+1)}.join("<br />")}],
+        ["room_numbers", "Room Numbers", Proc.new {|val| val}]
     ]
 
     # vals << ["is_cancelled", "Cancelled?", Proc.new{|val| "Yes"}] if is_cancelled
@@ -162,6 +189,14 @@ class Booking < ApplicationRecord
 
   def format_room(room, index)
     "Room #{index}: #{room.confirmation_number}"
+  end
+
+  def format_room_with_number(room, index)
+    "Room #{index}: #{room.confirmation_number} (#{room.room_number})"
+  end
+
+  def format_room_number(room, index)
+    "Room #{index}: #{room.room_number}"
   end
 
   def can_cancel

@@ -98,9 +98,14 @@ class ClientsController < ApplicationController
     return redirect_to tenant_client_path(@model.tenant, @model)
   end
 
+  def users
+    @q = @model.users.order(last: :asc).ransack(params[:q])
+    @models = @q.result(distinct: true).page(params[:page])
+  end
+
   def index
     @q = Client.ransack(params[:q])
-    @models = @q.result(distinct: true).includes(:bookings).page(params[:page]).to_a.uniq
+    @models = @q.result(distinct: true).includes(:bookings).page(params[:page])
   end
 
   def new

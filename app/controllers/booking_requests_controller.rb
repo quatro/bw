@@ -10,7 +10,8 @@ class BookingRequestsController < ApplicationController
   end
 
   def outstanding
-    @models = BookingRequest.outstanding_for_tenant(current_user.active_tenant).unassigned.order(id: :asc).limit(100)
+    @q = BookingRequest.outstanding_for_tenant(current_user.active_tenant).unassigned.order(id: :asc).ransack
+    @models = @q.result(distinct: true).page(params[:page])
   end
 
   def edit
@@ -51,7 +52,8 @@ class BookingRequestsController < ApplicationController
   def show; end
 
   def my
-    @models = current_user.assigned_booking_requests.outstanding
+    @q = current_user.assigned_booking_requests.outstanding.ransack
+    @models = @q.result(distinct: true).page(params[:page])
   end
 
   def release
@@ -72,7 +74,7 @@ class BookingRequestsController < ApplicationController
     @model = Booking.new({booking_request: br})
 
     br.booking_request_rooms.each do |brr|
-      @model.booking_rooms.build({booking_request_room: brr}) if !@model.booking_rooms.select{|br| br.booking_request_room_id == brr.try(:id)}.any?
+      @model.booking_rooms.build({booking_request_room: brr, fee: br.client.billing_fee}) if !@model.booking_rooms.select{|br| br.booking_request_room_id == brr.try(:id)}.any?
     end
   end
 

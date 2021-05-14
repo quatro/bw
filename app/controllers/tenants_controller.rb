@@ -6,10 +6,14 @@ class TenantsController < ApplicationController
   def report; end
   def detail_report; end
   def run_detail_report
-    from = DateTime.parse(params[:from]) if params[:from]
-    to = DateTime.parse(params[:to]) if params[:to]
+    from = DateTime.parse(params[:from]) if !params[:from].blank?
+    to = DateTime.parse(params[:to]) if !params[:to].blank?
+    status = params[:status]
 
-    models = Booking.for_tenant(current_user.active_tenant).completed.between_dates(from, to).order(:created_at)
+    from = DateTime.parse('2001-01-01') if from.blank?
+    to = DateTime.parse('2100-01-01') if to.blank?
+
+    models = Booking.for_tenant(current_user.active_tenant).completed.between_dates(from, to).has_status(status).order(:created_at)
 
     render partial:'bookings/report_detail', locals:{models: models}
   end
