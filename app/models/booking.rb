@@ -18,18 +18,19 @@ class Booking < ApplicationRecord
   scope :for_month,         -> (date) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", date.at_beginning_of_month, date.at_beginning_of_month.next_month()) }
   scope :between_dates,     -> (from, to) { joins(:booking_request).where("booking_requests.date_from >= ? AND booking_requests.date_from < ?", from, to) }
 
-  scope :completed,         -> { where(is_cancelled: false, is_no_show: false)}
-  scope :cancelled,         -> { where(is_cancelled: true, is_no_show: false)}
-  scope :no_show,           -> { where(is_cancelled: false, is_no_show: true)}
+  scope :completed,             -> { where(is_cancelled: false, is_no_show: false)}
+  scope :cancelled,             -> { where(is_cancelled: true, is_no_show: false)}
+  scope :no_show,               -> { where(is_cancelled: false, is_no_show: true)}
+  scope :cancelled_or_no_show,  -> { where("is_cancelled = true OR is_no_show = true") }
 
-  scope :paf_not_sent,      -> { where(is_paf_sent: false) }
-  scope :is_invoiced,       -> { where(status_name: 'Invoiced')}
-  scope :is_folio_received, -> { where(status_name: 'Folio Received')}
-  scope :is_paf_sent,       -> { where(status_name: 'PAF Sent')}
-  scope :is_booked,         -> { where(status_name: 'Booked')}
-  scope :is_pending,        -> { where(status_name: 'Pending')}
+  scope :paf_not_sent,          -> { where(is_paf_sent: false) }
+  scope :is_invoiced,           -> { where(status_name: 'Invoiced').completed }
+  scope :is_folio_received,     -> { where(status_name: 'Folio Received').completed }
+  scope :is_paf_sent,           -> { where(status_name: 'PAF Sent').completed }
+  scope :is_booked,             -> { where(status_name: 'Booked').completed }
+  scope :is_pending,            -> { where(status_name: 'Pending').completed }
 
-  scope :has_status,        ->(status) { where(status_name: status)}
+  scope :has_status,            ->(status) { where(status_name: status)}
 
   validates_presence_of :hotel
 
