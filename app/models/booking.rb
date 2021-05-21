@@ -31,7 +31,7 @@ class Booking < ApplicationRecord
   scope :is_booked,             -> { where(status_name: 'Booked').completed }
   scope :is_pending,            -> { where(status_name: 'Pending').completed }
 
-  scope :has_status,            ->(status) { where(status_name: status)}
+  scope :has_status,            ->(status) { where("status_name = ? OR '' = ?", status, status)}
 
   validates_presence_of :hotel
 
