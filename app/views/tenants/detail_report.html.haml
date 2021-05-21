@@ -25,6 +25,21 @@
                 - ['Pending','Booked','PAF Sent','Folio Received','Invoiced'].each do |s|
                   %option{value: s}
                     #{s}
+
+
+          %br
+          .row
+            .col-md-6
+              .page-header
+                %h4 Report Format
+              %select.form-control.types
+                %option{value: ''}
+                  &nbsp;
+                - ['Customer Invoice','Rooms Expense'].each do |s|
+                  %option{value: s}
+                    #{s}
+
+
           .row
             .col-md-12
               %br
@@ -47,7 +62,8 @@
       data: {
         from: $('.from-date').first().val(),
         to: $('.to-date').first().val(),
-        status: $('.status').first().val()
+        status: $('.status').first().val(),
+        types: $('.types').first().val()
       },
       success: function(data) {
         $('#results').html(data);

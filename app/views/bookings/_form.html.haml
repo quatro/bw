@@ -47,6 +47,7 @@
               .row
                 .col-md-12
                   =room_form.input :rate, label: "Rate", input_html:{class:'room-rate'}
+                  =room_form.input :internal_rate, as: :hidden, input_html:{class:'room-rate-internal'}
               .row
                 .col-md-12
                   =room_form.input :tax, label: "Tax", input_html:{class:'room-tax'}
@@ -56,13 +57,18 @@
               .row
                 .col-md-12
                   =room_form.input :total, label: "Total", input_html:{readonly: true, class:'room-total'}
+                  =room_form.input :internal_total, as: :hidden, input_html:{readonly: true, class:'room-total-internal'}
 
 
   .row.mb-2
-    .col-sm-6
+    .col-sm-12
       =f.submit booking_save_text, class: 'btn btn-success'
       - if !model.is_paf_sent
         =link_to 'Release Booking', release_booking_request_path(model.booking_request), method: :post, class: 'btn btn-warning'
+      - if @model.can_cancel
+        =link_to 'Cancel', cancel_booking_path(model), method: :post, class:'btn btn-danger'
+      - if @model.can_no_show
+        =link_to 'Assign as No Show', no_show_booking_path(model), method: :post, class:'btn btn-danger'
 
 
 :javascript
@@ -81,14 +87,15 @@
 
           if(room_size == 'Double') {
             $(this).find( "[name$='[rate]'" ).first().val(data.double_rate);
+            $(this).find( "[name$='[internal_rate]'" ).first().val(data.double_private_rate);
           } else if(room_size == 'Single') {
             $(this).find( "[name$='[rate]'" ).first().val(data.rate);
+            $(this).find( "[name$='[internal_rate]'" ).first().val(data.private_rate);
           }
 
         });
 
-        // $('#booking_rate').val(data.rate);
-
+        calculate_totals();
       }
     });
   }
@@ -100,6 +107,10 @@
       var fee = parseFloat($(this).find('.room-fee').first().val());
 
       $(this).find('.room-total').first().val(rate + tax + fee);
+
+      // Now do internal
+      var internal_rate = parseFloat($(this).find('.room-rate-internal').first().val());
+      $(this).find('.room-total-internal').first().val(internal_rate + tax + fee);
     });
   }
 
@@ -127,6 +138,10 @@
         }
       });
     });
+
+    // Calculate on load
+    load_hotel_rate();
+    calculate_totals();
 
     $(document).on('change', 'input', calculate_totals);
   }

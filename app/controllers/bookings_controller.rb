@@ -25,6 +25,11 @@ class BookingsController < ApplicationController
     @models = @q.result(distinct: true).includes(:booking_request).page(params[:page])
   end
 
+  def is_paid
+    @q = Booking.for_tenant(current_user.active_tenant).is_paid.ransack(params[:q])
+    @models = @q.result(distinct: true).includes(:booking_request).page(params[:page])
+  end
+
   def list_cancelled
     @q = Booking.for_tenant(current_user.active_tenant).cancelled.ransack(params[:q])
     @models = @q.result(distinct: true).includes(:booking_request).page(params[:page])
@@ -85,28 +90,32 @@ class BookingsController < ApplicationController
   end
 
   def mark_paf_sent
-    if @model.update({is_paf_sent: true})
-      flash[:notice] = "Successfully marked as PAF sent"
-      redirect_to_back
-    else
-      flash[:alert] = "Error marking PAF as sent: #{@model.errors.full_messages}"
-      redirect_to_back
-    end
+    mark(:is_paf_sent, "PAF Sent")
   end
 
   def mark_invoiced
-    if @model.update({is_invoiced: true})
-      flash[:notice] = "Successfully marked as Invoiced"
-      redirect_to_back
-    else
-      flash[:alert] = "Error marking Invoiced: #{@model.errors.full_messages}"
-      redirect_to_back
-    end
+    mark(:is_invoiced, "Invoiced")
+  end
+
+  def mark_paid
+    mark(:is_paid, 'Paid')
   end
 
   private
   def set_model
     @model = Booking.where(id: params[:id]).first if params[:id]
+  end
+
+  def mark(prop, text)
+    @model.send("#{prop}=", true)
+
+    if @model.save
+      flash[:notice] = "Successfully marked as #{text}"
+      redirect_to_back
+    else
+      flash[:alert] = "Error marking #{text}: #{@model.errors.full_messages}"
+      redirect_to_back
+    end
   end
 
   def booking_params
@@ -123,11 +132,13 @@ class BookingsController < ApplicationController
             :id,
             :confirmation_number,
             :rate,
+            :internal_rate,
             :room_number,
             :booking_request_room_id,
             :tax,
             :fee,
-            :total
+            :total,
+            :internal_total
         ]
     )
   end

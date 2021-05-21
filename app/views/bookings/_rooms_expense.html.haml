@@ -1,0 +1,83 @@
+%table.data-table-bookings.stripe
+  %thead
+    %tr
+      %th Booking #
+      %th Guest 1 ID
+      %th Guest 1 First Name
+      %th Guest 1 Last Name
+      %th Guest 1 Cost Center
+      %th Guest 2 ID
+      %th Guest 2 First Name
+      %th Guest 2 Last Name
+      %th Guest 2 Cost Center
+      %th Room #
+      %th Night
+      %th Rate
+      %th Misc Charge
+      %th External Tax
+      %th Internal Tax (+6%)
+      %th Total
+      %th Cost Group
+      -#%th Job
+      %th Reason
+      %th Hotel Name
+      %th City
+      %th State
+      %th Notes
+
+  %tbody
+    - models.each do |model|
+      - br = model.booking_request
+
+      - model.nights.times.each do |i|
+        - model.booking_rooms.each do |room|
+          - day = model.booking_request.date_from + i.days
+          - brr = room.booking_request_room
+
+          %tr
+            %td
+              =link_to model.id, edit_booking_path(model)
+            %td #{brr.guest1.try(:employee_id)}
+            %td #{brr.guest1.try(:first)}
+            %td #{brr.guest1.try(:last)}
+            %td #{brr.guest1.try(:cost_center)}
+            %td #{brr.guest2.try(:employee_id)}
+            %td #{brr.guest2_first_name_report}
+            %td #{brr.guest2_last_name_report}
+            %td #{brr.guest2.try(:cost_center)}
+            %td #{room.room_number}
+            %td #{day.strftime("%Y-%m-%d")}
+            %td #{room.internal_rate_plus_fee}
+            %td &nbsp;
+            %td #{room.tax}
+            %td #{room.internal_tax}
+            %td #{room.internal_total}
+            %td #{model.requestor.cost_group}
+            -#%td #{br.job_identifier}
+            %td #{br.reason}
+            %td #{model.hotel.try(:name)}
+            %td #{br.city}
+            %td #{br.state}
+            %th &nbsp;
+
+
+
+
+:javascript
+
+  var ready = function() {
+    $('.data-table-bookings').DataTable({
+        pageLength: 2000,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        paging: false,
+        searching: false,
+        sorting: true,
+        info: false,
+        order:[]
+    });
+  }
+
+  $(document).ready(ready);

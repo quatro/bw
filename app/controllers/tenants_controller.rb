@@ -9,13 +9,14 @@ class TenantsController < ApplicationController
     from = DateTime.parse(params[:from]) if !params[:from].blank?
     to = DateTime.parse(params[:to]) if !params[:to].blank?
     status = params[:status]
+    types = params[:types]
 
     from = DateTime.parse('2001-01-01') if from.blank?
     to = DateTime.parse('2100-01-01') if to.blank?
 
     models = Booking.for_tenant(current_user.active_tenant).completed.between_dates(from, to).has_status(status).order(:created_at)
 
-    render partial:'bookings/report_detail', locals:{models: models}
+    render partial:"bookings/#{types.parameterize.underscore}", locals:{models: models}
   end
 
   def monthly_sales_data

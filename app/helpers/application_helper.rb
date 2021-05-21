@@ -28,6 +28,10 @@ module ApplicationHelper
     human_number(Booking.for_tenant(tenant).is_invoiced.count)
   end
 
+  def is_paid_booking_count(tenant)
+    human_number(Booking.for_tenant(tenant).is_paid.count)
+  end
+
   def is_folio_received_booking_count(tenant)
     human_number(Booking.for_tenant(tenant).is_folio_received.count)
   end

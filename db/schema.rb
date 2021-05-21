@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_14_121822) do
+ActiveRecord::Schema.define(version: 2021_05_21_173259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -93,6 +93,10 @@ ActiveRecord::Schema.define(version: 2021_05_14_121822) do
     t.decimal "fee", precision: 6, scale: 2
     t.boolean "is_folio_received", default: false
     t.decimal "rate_plus_fee", precision: 8, scale: 2
+    t.decimal "internal_rate", precision: 8, scale: 2
+    t.decimal "internal_rate_plus_fee", precision: 8, scale: 2
+    t.decimal "internal_total", precision: 8, scale: 2
+    t.decimal "internal_tax", precision: 8, scale: 2
     t.index ["booking_id"], name: "index_booking_rooms_on_booking_id"
     t.index ["booking_request_room_id"], name: "index_booking_rooms_on_booking_request_room_id"
     t.index ["client_id"], name: "index_booking_rooms_on_client_id"
@@ -124,6 +128,8 @@ ActiveRecord::Schema.define(version: 2021_05_14_121822) do
     t.boolean "is_invoiced", default: false
     t.string "status_name", default: "Booked"
     t.string "rooms_formatted"
+    t.boolean "is_paid", default: false
+    t.decimal "internal_total", precision: 8, scale: 2
     t.index ["assignee_id"], name: "index_bookings_on_assignee_id"
     t.index ["booking_request_id"], name: "index_bookings_on_booking_request_id"
     t.index ["cancelled_by_user_id"], name: "index_bookings_on_cancelled_by_user_id"

@@ -88,6 +88,7 @@ Rails.application.routes.draw do
       get :is_paf_sent
       get :is_folio_received
       get :is_invoiced
+      get :is_paid
       get :list_cancelled
       get :list_no_show
     end
@@ -99,6 +100,7 @@ Rails.application.routes.draw do
       post :send_confirmation_email
       post :mark_paf_sent
       post :mark_invoiced
+      post :mark_paid
     end
   end
 

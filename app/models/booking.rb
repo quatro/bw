@@ -24,6 +24,7 @@ class Booking < ApplicationRecord
   scope :cancelled_or_no_show,  -> { where("is_cancelled = true OR is_no_show = true") }
 
   scope :paf_not_sent,          -> { where(is_paf_sent: false) }
+  scope :is_paid,               -> { where(status_name: 'Paid').completed }
   scope :is_invoiced,           -> { where(status_name: 'Invoiced').completed }
   scope :is_folio_received,     -> { where(status_name: 'Folio Received').completed }
   scope :is_paf_sent,           -> { where(status_name: 'PAF Sent').completed }
@@ -133,6 +134,11 @@ class Booking < ApplicationRecord
   end
   persistize :total
 
+  def internal_total
+    booking_rooms.map{|b| b.internal_total.present? ? b.internal_total : 0}.sum
+  end
+  persistize :internal_total
+
 
   def edit_path
     Rails.application.routes.url_helpers.edit_booking_path(self)
@@ -164,6 +170,7 @@ class Booking < ApplicationRecord
   end
 
   def status_name
+    return "Paid" if is_paid
     return "Invoiced" if is_invoiced
     return "Folio Received" if is_folio_received
     return "PAF Sent" if is_paf_sent
@@ -201,17 +208,38 @@ class Booking < ApplicationRecord
   end
 
   def can_cancel
-    !is_cancelled && !is_no_show
+    !is_cancelled && !is_no_show && (['Booked'].include?(status_name))
   end
 
   def can_no_show
-    !is_cancelled && !is_no_show
+    !is_cancelled && !is_no_show && (['Booked'].include?(status_name))
   end
 
   def denormalize
     self.is_booked_will_change!
     save
   end
+
+  def calculate_totals
+
+    # Make sure we have
+
+    update({
+      total: rate.present? ? rate : 0 + tax.present? ? tax : 0 + client.billing_fee,
+      internal_total: internal_rate.present? ? internal_rate : 0 + tax.present? ? tax : 0 + client.billing_fee
+    })
+  end
+
+  def self.calculate_totals
+
+    # First make sure all rooms have an internal rate, when we initially launched we weren't storing this.  We need this now for reporting speed purposes
+    BookingRoom.where(internal_rate:nil).each{|a| a.update({internal_rate: a.booking_request_room.room_size == 'Double' ? a.booking.hotel.double_private_rate : a.booking.hotel.private_rate}) }
+
+    # Now Calculate all totals based on data on the booking
+    Booking.all.each{|a| a.calculate_totals}
+  end
+
+
 
   private
   def license_fee_calculator

@@ -25,6 +25,10 @@ class BookingRequestsController < ApplicationController
     @model = BookingRequest.new(booking_request_params)
 
     if @model.save
+
+      # This allows for some fields to be denormalized, particularly ones that rely on some denormalization from BookingRequestRoom
+      @model.denormalize
+
       redirect_to book_booking_request_path(@model)
     else
       render "new"
