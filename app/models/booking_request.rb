@@ -130,8 +130,13 @@ class BookingRequest < ApplicationRecord
         ["customer_id", "Customer", Proc.new{|val| Customer.find_by_id(val).try(:name)}],
         ["booking_request_rooms", "Rooms", Proc.new {|val| val.each_with_index.map{|r, i| format_room(r, i+1)}.join("<br />")}],
         ["status", "Status", Proc.new {|val| val}],
-        ["conflicts", "Conflicts", Proc.new {|val| val.map{|a| link_to(a.name, '#')}.join('<br />')}]
+        ["conflicts", "Conflicts", Proc.new {|val| val.map{|a| link_to(a.name, a.appropriate_link)}.join('<br />')}]
     ]
+  end
+
+  def appropriate_link
+    return Rails.application.routes.url_helpers.edit_booking_path(booking) if booking.present?
+    return Rails.application.routes.url_helpers.edit_booking_request_path(self)
   end
 
   def format_guests(room)
