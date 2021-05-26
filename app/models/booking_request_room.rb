@@ -6,6 +6,10 @@ class BookingRequestRoom < ApplicationRecord
 
   has_one :booking_request_room
 
+  has_many :guest_rooms
+
+  after_save :update_guest_rooms
+
   # validates :guest1, presence: true
   #
 
@@ -50,6 +54,25 @@ class BookingRequestRoom < ApplicationRecord
   def denormalize
     self.guest2_id_will_change!
     save
+  end
+
+  def each_guest(&b)
+    [guest1, guest2].compact.each do |g|
+      b.call(g)
+    end
+  end
+
+  def update_guest_rooms
+
+    # Clean out the rooms and recreate
+    guest_rooms.destroy_all
+
+    # Recreate all of the GuestRoom
+    each_guest do |g|
+      booking_request.each_day do |day|
+        guest_rooms.create({date: day, guest: g})
+      end
+    end
   end
 
   private

@@ -23,3 +23,17 @@ Things you may want to cover:
 
 * ...
 # booking-web
+
+
+query = "SELECT * FROM
+    (
+        select 
+        guest_rooms.date, 
+        guest_rooms.guest_id, 
+        count(guest_rooms.guest_id) as total,
+        STRING_AGG(guest_rooms.id::character varying, ',')
+        FROM guest_rooms 
+        GROUP BY guest_rooms.date, guest_rooms.guest_id
+    ) groups
+    
+    WHERE groups.total > 1"

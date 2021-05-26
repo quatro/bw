@@ -134,6 +134,44 @@ class BookingRequest < ApplicationRecord
     "Room #{index}: #{format_guests(room)}"
   end
 
+  def each_day(&b)
+    day = date_from
+
+    while day < date_to
+      b.call(day)
+      day = day + 1
+    end
+  end
+
+  def self.conflicts
+    query = "SELECT * FROM
+    (
+        select
+        guest_rooms.date,
+        guest_rooms.guest_id,
+        count(guest_rooms.guest_id) as total,
+        STRING_AGG(guest_rooms.id::character varying, ',') as ids
+        FROM guest_rooms
+        GROUP BY guest_rooms.date, guest_rooms.guest_id
+    ) groups
+
+    WHERE groups.total > 1"
+
+
+    ids = ActiveRecord::Base.connection.execute(query).map do |row|
+      row['ids'].split(',')
+    end.flatten.compact
+
+
+    BookingRequest.joins("
+      LEFT OUTER JOIN booking_request_rooms on booking_request_rooms.booking_request_id = booking_requests.id
+      LEFT OUTER JOIN guest_rooms on guest_rooms.booking_request_room_id = booking_request_rooms.id").where("guest_rooms.id IN (?)", ids).uniq
+
+    # GuestRoom
+    #     .includes({booking_request_room: [:booking_request]})
+    #     .where(id: ids)
+  end
+
 
   def denormalize
     self.requestor_name_will_change!
