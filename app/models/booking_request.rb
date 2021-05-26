@@ -1,5 +1,6 @@
 class BookingRequest < ApplicationRecord
   include ApplicationHelper
+  include ActionView::Helpers::UrlHelper
 
   default_scope { order(date_from: :desc) }
 
@@ -68,6 +69,11 @@ class BookingRequest < ApplicationRecord
     [address, city, state].reject { |c| c.blank? }.join(', ')
   end
 
+  def status
+    return booking.status_name if booking.present?
+    return "Outstanding"
+  end
+
   def date_from_human
     date_human(date_from)
   end
@@ -122,7 +128,9 @@ class BookingRequest < ApplicationRecord
         ["reason", "Reason", Proc.new {|val| val}],
         ["job_identifier", "Job Identifier", Proc.new {|val| val}],
         ["customer_id", "Customer", Proc.new{|val| Customer.find_by_id(val).try(:name)}],
-        ["booking_request_rooms", "Rooms", Proc.new {|val| val.each_with_index.map{|r, i| format_room(r, i+1)}.join("<br />")}]
+        ["booking_request_rooms", "Rooms", Proc.new {|val| val.each_with_index.map{|r, i| format_room(r, i+1)}.join("<br />")}],
+        ["status", "Status", Proc.new {|val| val}],
+        ["conflicts", "Conflicts", Proc.new {|val| val.map{|a| link_to(a.name, '#')}.join('<br />')}]
     ]
   end
 
@@ -141,6 +149,14 @@ class BookingRequest < ApplicationRecord
       b.call(day)
       day = day + 1
     end
+  end
+
+  def conflicts
+
+    booking_request_rooms.flat_map{|brr| brr.guest_rooms}.map do |gr|
+      GuestRoom.where("date = ? AND guest_id = ? AND id != ?", gr.date, gr.guest_id, gr.id)
+    end.flatten.map{|gr| gr.booking_request_room.booking_request}.uniq
+
   end
 
   def self.conflicts

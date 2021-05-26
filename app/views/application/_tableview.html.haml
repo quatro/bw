@@ -3,6 +3,7 @@
 - filter_partial = local_assigns[:filter_partial].nil? ? "#{key}/filter" : filter_partial
 - filter_reset_url = local_assigns[:filter_reset_url].nil? ? nil : filter_reset_url
 - has_filter = local_assigns[:has_filter].nil? ? false : has_filter
+- has_pagination = local_assigns[:has_pagination].nil? ? true : has_pagination
 - new_link = local_assigns[:new_link].nil? ? nil : new_link
 - other_links = local_assigns[:other_links].nil? ? [] : other_links
 - should_display_new_link = new_link.present?
@@ -15,9 +16,10 @@
 %section.content
   .container-fluid
 
-    .row
-      .col-md-12
-        =will_paginate models
+    - if has_pagination
+      .row
+        .col-md-12
+          =will_paginate models
 
     .row
       - if has_filter
@@ -40,9 +42,10 @@
           %hr
           =render list_partial, models: models
 
-    .row
-      .col-md-12
-        =will_paginate models
+    - if has_pagination
+      .row
+        .col-md-12
+          =will_paginate models
 
 
 :javascript
