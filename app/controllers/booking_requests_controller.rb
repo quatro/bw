@@ -15,10 +15,9 @@ class BookingRequestsController < ApplicationController
   end
 
   def edit
-    if @model.is_booked?
+    if !@model.can_edit?
       return redirect_to root_path, alert: 'This request has already been booked and cannot be edited'
     end
-
   end
 
   def create
@@ -61,11 +60,15 @@ class BookingRequestsController < ApplicationController
   end
 
   def release
-    if @model.update({assignee: nil})
-      redirect_to @model, notice: "#{@model.name} as been unassigned"
+    if @model.can_release
+      if @model.update({assignee: nil})
+        redirect_to @model, notice: "#{@model.name} as been unassigned"
+      else
+        flash[:alert] = "Problem releasing this booking request"
+        redirect_to_back
+      end
     else
-      flash[:alert] = "Problem releasing this booking request"
-      redirect_to_back
+      flash[:alert] = "You cannot release a booking request that has already been booked"
     end
   end
 
@@ -73,7 +76,7 @@ class BookingRequestsController < ApplicationController
     br = @model
 
     # If it's already booked we don't want to book again
-    return redirect_to root_path, alert: 'This request has already been booked and cannot be edited' if br.is_booked?
+    return redirect_to edit_booking_path(br.booking) if br.is_booked?
 
     @model = Booking.new({booking_request: br})
 

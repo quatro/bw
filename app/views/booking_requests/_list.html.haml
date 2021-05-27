@@ -23,8 +23,7 @@
         %td #{raw(br.rooms_formatted)}
         %td #{datetime_nice(br.created_at)}
         %td
-          - if br.booking.present? && !br.booking.is_booked?
-            =link_to 'Edit', book_booking_request_path(br), class:'btn btn-default'
+          =link_to 'Edit', edit_booking_request_path(br), class:'btn btn-default'
           - if !br.is_booked?
             =link_to "Claim & Book", claim_and_book_booking_request_path(br), method: 'post', class:'btn btn-info'
             =link_to "Delete", booking_request_path(br), method: 'delete', data:{confirm: "Are you sure you wish to remove this booking request?"}, class:'btn btn-danger'

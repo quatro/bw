@@ -156,6 +156,14 @@ class BookingRequest < ApplicationRecord
     end
   end
 
+  def can_release
+    return booking.nil?
+  end
+
+  def can_edit?
+    true
+  end
+
   def conflicts
 
     booking_request_rooms.flat_map{|brr| brr.guest_rooms}.map do |gr|

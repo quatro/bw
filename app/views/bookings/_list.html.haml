@@ -29,6 +29,7 @@
         %td #{raw(booking.rooms_formatted)}
         %td #{raw(booking.rooms)}
         %td
+          =link_to 'Edit', edit_booking_request_path(booking.booking_request), class:'btn btn-info'
           =link_to 'Email', resend_email_booking_path(booking), class:'btn btn-success', method: :post, data:{confirm:'Are you sure you want to send this email?'}
           - if !booking.is_paf_sent
             =link_to 'Mark PAF Sent', mark_paf_sent_booking_path(booking), class:'btn btn-success', method: :post, data:{confirm:'Are you sure you want to mark this as PAF Sent?'}
